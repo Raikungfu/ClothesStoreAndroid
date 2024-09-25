@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <full-backup-content>
+        <include name="files/"/>
+        <include name="databases/"/>
+    </full-backup-content>
+</resources>

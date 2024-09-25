@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Clothes Store</string>
+    <string name="title_home">Home</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_bag">Bag</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
+    <string name="enter_your_email">Enter your email...</string>
+    <string name="enter_your_username">Enter your username...</string>
+    <string name="todo">TODO</string>
+    <string name="enter_your_password">Enter your password...</string>
+    <string name="register">REGISTER</string>
+    <string name="login">LOGIN</string>
+    <string name="or_sign_up_with_social_account">Or sign up with social account</string>
+    <string name="image_description">Image Description</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="enter_your_phone">Enter your phone number...</string>
+    <string name="dont_have_an_account">Don’t have an account? </string>
+    <string name="forgot_password_reset">Forgot password? </string>
+    <string name="forgot_password">FORGOT PASSWORD</string>
+</resources>
