@@ -4,16 +4,24 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShopViewModel extends ViewModel {
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
+import com.prmproject.clothesstoremobileandroid.Data.repository.CategoryRepository;
+import com.prmproject.clothesstoremobileandroid.Data.repository.ProductRepository;
 
-    private final MutableLiveData<String> mText;
+public class ShopViewModel extends ViewModel {
+    private ProductRepository productRepository;
+    private CategoryRepository categoryRepository;
 
     public ShopViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        productRepository = new ProductRepository();
+        categoryRepository = new CategoryRepository();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<ListResponse> getListCategory() {
+        return categoryRepository.getListCategory();
+    }
+
+    public LiveData<ListResponse> getListProduct(String filter, Integer pageNumber, Integer categoryId, Integer sellerId) {
+        return productRepository.getListProduct(filter, pageNumber, categoryId, sellerId);
     }
 }

@@ -9,13 +9,21 @@
         android:id="@+id/navigation_home"
         android:name="com.prmproject.clothesstoremobileandroid.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
 
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_shop"
+            app:destination="@id/navigation_shop" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_shop"
         android:name="com.prmproject.clothesstoremobileandroid.ui.shop.ShopFragment"
         android:label="@string/title_shop"
-        tools:layout="@layout/fragment_shop" />
+        tools:layout="@layout/fragment_shop">
+    <argument
+    android:name="categoryId"
+    app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_bag"

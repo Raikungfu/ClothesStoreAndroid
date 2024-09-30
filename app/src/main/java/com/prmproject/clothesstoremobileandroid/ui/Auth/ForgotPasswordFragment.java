@@ -16,7 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserForgotPassword;
-import com.prmproject.clothesstoremobileandroid.Data.model.viewModel.AuthViewModel;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 
@@ -26,12 +25,13 @@ public class ForgotPasswordFragment extends Fragment {
     private AuthViewModel authViewModel;
     private UserForgotPassword user = new UserForgotPassword();
     private String tokenVerifyOtp;
+    NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forgot_password, container, false);
-
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         emailEditText = view.findViewById(R.id.editTextEmail);
         otpEditText = view.findViewById(R.id.editTextOtp);
@@ -87,13 +87,11 @@ public class ForgotPasswordFragment extends Fragment {
 
         TextView linkToLogin = view.findViewById(R.id.txt_login);
         linkToLogin.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
             navController.navigate(R.id.action_navigation_forgot_password_to_navigation_login);
         });
 
         TextView linkToSignUp = view.findViewById(R.id.txt_register);
         linkToSignUp.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
             navController.navigate(R.id.action_navigation_forgot_password_to_navigation_register);
         });
 
@@ -148,7 +146,6 @@ public class ForgotPasswordFragment extends Fragment {
         authViewModel.resetPassword(user).observe(getViewLifecycleOwner(), response -> {
             if (response != null && response.isStatus()) {
                 ((MainActivity) getActivity()).onMessage("Reset password successful! Login now..." + response.getMessage());
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
                 navController.navigate(R.id.action_navigation_forgot_password_to_navigation_login);
             } else {
                 ((MainActivity) getActivity()).onMessage("Reset password failed! " + response.getMessage());

@@ -31,11 +31,12 @@ public class ErrorResponse {
         this.errorMessages = errorMessages;
     }
 
-    public void convertErrorToString(){
+    public String convertErrorToString(){
         this.errorMessages = new StringBuilder();
         for (Map.Entry<String, List<String>> entry : this.getErrors().entrySet()) {
             this.errorMessages.append(entry.getKey()).append(": ")
                     .append(TextUtils.join(", ", entry.getValue())).append("\n");
         }
+        return this.errorMessages.toString();
     }
 }

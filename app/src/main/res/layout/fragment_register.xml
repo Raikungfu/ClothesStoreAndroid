@@ -161,18 +161,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
-        <ImageView
-            android:id="@+id/img_rect_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@drawable/img_rect_facebook" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
-
             <ImageView
                 android:id="@+id/img_button_google"
                 android:layout_width="64dp"

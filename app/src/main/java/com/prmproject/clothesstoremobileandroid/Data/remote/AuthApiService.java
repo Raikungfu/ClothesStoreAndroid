@@ -8,10 +8,9 @@ import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserRegist
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface UserApiService {
+public interface AuthApiService {
     @POST("api/Auth/login")
     Call<TokenResponse> login(@Body UserLogin user);
 

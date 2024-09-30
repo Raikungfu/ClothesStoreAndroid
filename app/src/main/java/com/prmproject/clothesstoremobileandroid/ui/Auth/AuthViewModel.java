@@ -1,4 +1,4 @@
-package com.prmproject.clothesstoremobileandroid.Data.model.viewModel;
+package com.prmproject.clothesstoremobileandroid.ui.Auth;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

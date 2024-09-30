@@ -3,121 +3,146 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Product {
-    private int productId;
-    private String name;
-    private String img;
-    private int quantity;
-    private String description;
-    private long newPrice;
-    private long oldPrice;
-    private long quantitySold;
-    private int categoryId;
-    private int sellerId;
-    private Category category;
-    private Seller seller;
-    private List<Option> options;
+    private int ProductId;
+    private String Name;
+    private String Img;
+    private int Quantity;
+    private String Description;
+    private long NewPrice;
+    private Long OldPrice;
+    private long QuantitySold;
+    private Integer CategoryId;
+    private Integer SellerId;
+    private Category Category;
+    private Seller Seller;
+    private List<Option> Options;
+    private Float RatingPoint;
+    private Integer RatingCount;
+
+    public Product() {
+    }
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getImg() {
-        return img;
+        return Img;
     }
 
     public void setImg(String img) {
-        this.img = img;
+        Img = img;
     }
 
     public int getQuantity() {
-        return quantity;
+        return Quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        Quantity = quantity;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        Description = description;
     }
 
     public long getNewPrice() {
-        return newPrice;
+        return NewPrice;
     }
 
     public void setNewPrice(long newPrice) {
-        this.newPrice = newPrice;
+        NewPrice = newPrice;
     }
 
-    public long getOldPrice() {
-        return oldPrice;
+    public Long getOldPrice() {
+        return OldPrice;
     }
 
     public void setOldPrice(long oldPrice) {
-        this.oldPrice = oldPrice;
+        OldPrice = oldPrice;
     }
 
     public long getQuantitySold() {
-        return quantitySold;
+        return QuantitySold;
     }
 
     public void setQuantitySold(long quantitySold) {
-        this.quantitySold = quantitySold;
+        QuantitySold = quantitySold;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Integer getCategoryId() {
+        return CategoryId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryId(Integer categoryId) {
+        CategoryId = categoryId;
     }
 
-    public int getSellerId() {
-        return sellerId;
+    public Integer getSellerId() {
+        return SellerId;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setSellerId(Integer sellerId) {
+        SellerId = sellerId;
     }
 
-    public Category getCategory() {
-        return category;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Category getCategory() {
+        return Category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(com.prmproject.clothesstoremobileandroid.Data.model.Category category) {
+        Category = category;
     }
 
-    public Seller getSeller() {
-        return seller;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Seller getSeller() {
+        return Seller;
     }
 
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    public void setSeller(com.prmproject.clothesstoremobileandroid.Data.model.Seller seller) {
+        Seller = seller;
     }
 
     public List<Option> getOptions() {
-        return options;
+        return Options;
     }
 
     public void setOptions(List<Option> options) {
-        this.options = options;
+        Options = options;
+    }
+
+    public void setOldPrice(Long oldPrice) {
+        OldPrice = oldPrice;
+    }
+
+    public Float getRatingPoint() {
+        return RatingPoint;
+    }
+
+    public void setRatingPoint(Float ratingPoint) {
+        RatingPoint = ratingPoint;
+    }
+
+    public Integer getRatingCount() {
+        return RatingCount;
+    }
+
+    public void setRatingCount(Integer ratingCount) {
+        RatingCount = ratingCount;
     }
 }

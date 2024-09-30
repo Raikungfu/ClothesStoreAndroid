@@ -1,7 +1,5 @@
 package com.prmproject.clothesstoremobileandroid.Data.repository;
 
-import android.text.TextUtils;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -13,20 +11,17 @@ import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserForgot
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserLogin;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.TokenResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserRegister;
-import com.prmproject.clothesstoremobileandroid.Data.remote.UserApiService;
-
-import java.util.List;
-import java.util.Map;
+import com.prmproject.clothesstoremobileandroid.Data.remote.AuthApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuthRepository {
-    private UserApiService apiService;
+    private AuthApiService apiService;
 
     public AuthRepository() {
-        apiService = RetrofitClient.getInstance().create(UserApiService.class);
+        apiService = RetrofitClient.getInstance().create(AuthApiService.class);
     }
 
     public LiveData<TokenResponse> login(UserLogin user) {

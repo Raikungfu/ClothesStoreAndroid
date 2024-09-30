@@ -3,41 +3,40 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Category {
-    private int categoryId;
-    private String name;
-    private String img;
-    private List<Product> products;
+    private int CategoryId;
+    private String Name;
+    private String Img;
+    private List<Product> Products;
 
     public int getCategoryId() {
-        return categoryId;
+        return CategoryId;
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        this.CategoryId = categoryId;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getImg() {
-        return img;
+        return Img;
     }
 
     public void setImg(String img) {
-        this.img = img;
+        this.Img = img;
     }
 
     public List<Product> getProducts() {
-        return products;
+        return Products;
     }
 
     public void setProducts(List<Product> products) {
-        this.products = products;
+        this.Products = products;
     }
-// Getters and Setters
 }
