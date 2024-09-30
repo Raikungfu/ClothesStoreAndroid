@@ -27,7 +27,7 @@ android {
 
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:7248/\"")
+            buildConfigField("String", "BASE_URL", "\"https://prm392-b8cwcfd6hhhbe0fy.japanwest-01.azurewebsites.net/\"")
         }
     }
     compileOptions {
