@@ -27,7 +27,7 @@ android {
 
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://prm392-b8cwcfd6hhhbe0fy.japanwest-01.azurewebsites.net/\"")
+            buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }
     compileOptions {
@@ -63,4 +63,5 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.microsoft.signalr:signalr:5.0.11")
 }

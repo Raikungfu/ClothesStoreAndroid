@@ -1,17 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
         android:title="Home" />
     <item
-        android:id="@+id/navigation_shop"
         android:title="Shop" />
     <item
-        android:id="@+id/navigation_bag"
         android:title="Bag" />
     <item
-        android:id="@+id/navigation_favourites"
         android:title="Favourites" />
     <item
-        android:id="@+id/navigation_login"
         android:title="Profile" />
 </menu>

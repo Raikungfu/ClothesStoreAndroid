@@ -45,7 +45,7 @@ public class LoginFragment extends Fragment {
                 authViewModel.login(user).observe(getViewLifecycleOwner(), response -> {
                     if (response != null && response.isStatus()) {
                         ((MainActivity) getActivity()).onMessage("Login successful!");
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("TOKEN_KEY", response.getToken());
                         editor.apply();

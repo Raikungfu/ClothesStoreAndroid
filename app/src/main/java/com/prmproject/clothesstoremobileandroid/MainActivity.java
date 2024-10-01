@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                 R.id.navigation_home,
                 R.id.navigation_shop,
                 R.id.navigation_bag,
-                R.id.navigation_favourites,
+                R.id.navigation_list_chat,
                 R.id.navigation_login)
                 .setOpenableLayout(drawerLayout)
                 .build();

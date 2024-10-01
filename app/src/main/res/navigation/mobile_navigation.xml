@@ -10,19 +10,17 @@
         android:name="com.prmproject.clothesstoremobileandroid.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
-
         <action
             android:id="@+id/action_navigation_home_to_navigation_shop"
             app:destination="@id/navigation_shop" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_shop"
         android:name="com.prmproject.clothesstoremobileandroid.ui.shop.ShopFragment"
         android:label="@string/title_shop"
         tools:layout="@layout/fragment_shop">
-    <argument
-    android:name="categoryId"
-    app:argType="integer" />
+        <argument android:name="categoryId" app:argType="integer" />
     </fragment>
 
     <fragment
@@ -34,7 +32,7 @@
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.prmproject.clothesstoremobileandroid.ui.favourites.FavouritesFragment"
-        android:label="@string/title_favourites"
+        android:label="@string/title_chat"
         tools:layout="@layout/fragment_favourites" />
     <fragment
         android:id="@+id/navigation_login"
@@ -75,4 +73,33 @@
             app:destination="@id/navigation_login" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_list_chat"
+        android:name="com.prmproject.clothesstoremobileandroid.ui.Chat.ChatListFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_list_chat">
+        <action
+            android:id="@+id/action_navigation_list_chat_to_navigation_chat"
+            app:destination="@id/navigation_chat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.prmproject.clothesstoremobileandroid.ui.Chat.ChatFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_chat">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login_required"
+        android:name="com.prmproject.clothesstoremobileandroid.ui.Auth.LoginRequiredFragment"
+        android:label="Login Required"
+        tools:layout="@layout/fragment_login_required">
+        <action
+            android:id="@+id/action_navigation_login_required_to_navigation_register"
+            app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_login_required_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
 </navigation>
