@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:title="Tiêu đề Tùy Chỉnh">
+            app:title="Test">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
@@ -30,8 +30,8 @@
                 android:layout_gravity="end"
                 android:layoutDirection="rtl"
                 app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.appcompat.widget.Toolbar>
         <fragment

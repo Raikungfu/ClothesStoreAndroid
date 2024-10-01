@@ -1,6 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:background="#FFFFFF" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ScrollView android:clipChildren="false" android:clipToPadding="false" android:id="@+id/re0xhc3e9zk4" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="#FFFFFF">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/r68eukz180zi_rl" android:layout_width="match_parent" android:layout_height="439dp" android:layout_marginBottom="18dp">
+                    <ImageView android:id="@+id/r68eukz180zi" android:layout_width="match_parent" android:layout_height="439dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingVertical="18dp" />
+
+
+
+                </RelativeLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rxzfbog1iy2" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="20dp" android:layout_marginHorizontal="20dp" android:orientation="horizontal">
+                    <TextView android:id="@+id/rba5ogfhj9jf" android:textColor="#000000" android:textSize="26sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="$17,00"/>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/r70psgd1z222" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                </LinearLayout>
+                <TextView android:id="@+id/rqw9i0sc4sub" android:textColor="#000000" android:textSize="15sp" android:layout_marginBottom="14dp" android:layout_marginHorizontal="20dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam arcu mauris, scelerisque eu mauris id, pretium pulvinar sapien."/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rhmu1tskka3q" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="12dp" android:layout_marginHorizontal="20dp" android:orientation="horizontal">
+                    <TextView android:id="@+id/r9hlckd6gtp8" android:textColor="#000000" android:textSize="20sp" android:layout_marginEnd="11dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Color"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/raynronkcbv6" android:layout_width="54dp" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="@drawable/cr4bf8f8f8" android:paddingVertical="9dp" android:layout_marginEnd="6dp" android:orientation="vertical">
+                        <TextView android:id="@+id/rlrgx4x31ygb" android:textColor="#000000" android:textSize="14sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Pink"/>
+                    </LinearLayout>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rr75kh4hovka" android:layout_width="54dp" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="@drawable/cr4bf8f8f8" android:paddingVertical="10dp" android:orientation="vertical">
+                        <TextView android:id="@+id/rqma0x8jf0ua" android:textColor="#000000" android:textSize="14sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Green"/>
+                    </LinearLayout>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r43vdcqboi4u" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"> </LinearLayout>
+                    <ImageView android:id="@+id/rwozuv6a08v" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ryilhwuhh0wd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/rp1dridyaxr"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginEnd="6dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher"
+                        app:shapeAppearanceOverlay="@style/cr5" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/rxt8aztvl8nd"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginEnd="6dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher"
+                        app:shapeAppearanceOverlay="@style/cr5" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/r9jnuxxzgmsi"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher"
+                        app:shapeAppearanceOverlay="@style/cr5" />
+                </LinearLayout>
+
+                <TextView android:id="@+id/rxtffzl6vsv" android:textColor="#000000" android:textSize="20sp" android:layout_marginBottom="17dp" android:layout_marginStart="20dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Specifications"/>
+                <TextView android:id="@+id/rxi23128ejld" android:textColor="#202020" android:textSize="17sp" android:layout_marginBottom="7dp" android:layout_marginStart="21dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Material"/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r7toc1isd7v4" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="20dp" android:layout_marginHorizontal="21dp" android:orientation="horizontal">
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rmn6ee9hxpu" android:layout_width="96dp" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="@drawable/cr4bffebeb" android:paddingVertical="9dp" android:layout_marginEnd="6dp" android:orientation="vertical">
+                        <TextView android:id="@+id/r79uwq9epr9" android:textColor="#000000" android:textSize="14sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Cotton 95%"/>
+                    </LinearLayout>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rd8fdlsebeyf" android:layout_width="84dp" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="@drawable/cr4bffebeb" android:paddingVertical="9dp" android:orientation="vertical">
+                        <TextView android:id="@+id/rmbxeiimgxk" android:textColor="#000000" android:textSize="14sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Nylon 5%"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView android:id="@+id/ryg0k5brvtnh" android:textColor="#202020" android:textSize="17sp" android:layout_marginBottom="7dp" android:layout_marginStart="21dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Origin"/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rmh4x8egdsl" android:layout_width="59dp" android:layout_height="25dp" android:gravity="center_horizontal" android:background="@drawable/cr4be5ebfc" android:paddingVertical="10dp" android:layout_marginBottom="10dp" android:layout_marginHorizontal="20dp" android:orientation="vertical">
+                    <TextView android:id="@+id/rev6bxd26alo" android:textColor="#000000" android:textSize="14sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="EU"/>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rb2xtcip3qwl" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="25dp" android:layout_marginHorizontal="19dp" android:orientation="horizontal">
+                    <TextView android:id="@+id/rgclu31m89hw" android:textColor="#202020" android:textSize="17sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Size guide"/>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                    <ImageView android:id="@+id/r8uovdz2m7e7" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                </LinearLayout>
+
+
+
+                <TextView android:id="@+id/r95vruwh3t8" android:textColor="#000000" android:textSize="20sp" android:layout_marginBottom="17dp" android:layout_marginStart="22dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Rating &amp; Reviews"/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rx53m28yv0ja" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="20dp" android:layout_marginHorizontal="21dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <ImageView android:id="@+id/rk6seujelcwa" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="8dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <ImageView android:id="@+id/rp1u8xxwqvtf" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="8dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <ImageView android:id="@+id/ru1s491uf47" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="8dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <ImageView android:id="@+id/r1yb7uy2n1g5" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="8dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <ImageView android:id="@+id/rti7buzfgr2b" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="15dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rmtpihhnro3" android:layout_width="38dp" android:layout_height="wrap_content" android:clipChildren="false" android:clipToPadding="false">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rnbzgyd48t4k" android:layout_width="match_parent" android:layout_height="20dp" android:background="@drawable/cr6bdfe9ff" android:orientation="vertical"> </LinearLayout>
+                        </LinearLayout>
+                        <TextView android:id="@+id/rnp8pt2hvz49" android:textColor="#202020" android:textSize="14sp" android:layout_marginBottom="-1dp" android:layout_marginStart="6dp" android:layout_alignParentBottom="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="4/5"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r24a1et4bp1d" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp" android:layout_marginHorizontal="20dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <ImageView android:id="@+id/rlskvxiujz3" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginEnd="20dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r4224qe449bl" android:layout_width="63dp" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <TextView android:id="@+id/ru2l5g8djzr" android:textColor="#000000" android:textSize="16sp" android:layout_marginBottom="3dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Veronika"/>
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r5ihftn8hd0s" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                            <ImageView android:id="@+id/rdqexjb99s8" android:layout_width="15dp" android:layout_height="15dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                            <ImageView android:id="@+id/rmn1w01ta5sl" android:layout_width="15dp" android:layout_height="15dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                            <ImageView android:id="@+id/r2evoral0r7e" android:layout_width="15dp" android:layout_height="15dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <ImageView android:id="@+id/rsbsir4le8b" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginTop="25dp" android:layout_marginEnd="5dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    <ImageView android:id="@+id/ry348cfus0n" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginTop="25dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                </LinearLayout>
+                <TextView android:id="@+id/rnlxc7esxf3k" android:textColor="#000000" android:textSize="12sp" android:layout_marginBottom="23dp" android:layout_marginHorizontal="29dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed ..."/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r6urwtrhyrrt" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="@drawable/cr11b004cff" android:paddingTop="18dp" android:paddingBottom="6dp" android:layout_marginBottom="23dp" android:layout_marginHorizontal="19dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                    <TextView android:id="@+id/roh9j6sd3t2" android:textColor="#F3F3F3" android:textSize="16sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="View All Reviews"/>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r6ff7mp3ef6" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:layout_marginHorizontal="15dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <TextView android:id="@+id/rk7v3dtk89z" android:textColor="#202020" android:textSize="21sp" android:layout_marginTop="10dp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="Most Popular"/>
+                    <TextView android:id="@+id/rp9eb7g9nbqh" android:textColor="#202020" android:textSize="15sp" android:layout_marginTop="11dp" android:layout_marginEnd="14dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="See All"/>
+                    <ImageView android:id="@+id/r0d2v9yzl6a4g" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                </LinearLayout>
+                <HorizontalScrollView android:clipChildren="false" android:clipToPadding="false" android:id="@+id/r60h6m8veb0j" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="28dp" android:layout_marginHorizontal="20dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rty9x4skvbx" android:layout_width="104dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingVertical="6dp" android:paddingHorizontal="5dp" android:layout_marginEnd="6dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/r3ubpy58rhaq" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="103dp" android:layout_marginBottom="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r07rpn52a3ro" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                                <TextView android:id="@+id/r70741jxqgk5" android:textColor="#000000" android:textSize="15sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1780"/>
+                                <ImageView android:id="@+id/raolbkarrrkl" android:layout_width="10dp" android:layout_height="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rx1b2wciduzl" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical"> </LinearLayout>
+                                <TextView android:id="@+id/rie4t6vjr01s" android:textColor="#202020" android:textSize="13sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="New"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rl7km0dptsms" android:layout_width="104dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingVertical="6dp" android:paddingHorizontal="5dp" android:layout_marginEnd="6dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/rk6v9qyw4o7" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="103dp" android:layout_marginBottom="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rsit1ztmuwqs" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                                <TextView android:id="@+id/r2z1gh21thj5" android:textColor="#000000" android:textSize="15sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1780"/>
+                                <ImageView android:id="@+id/r1js0ud94hva" android:layout_width="10dp" android:layout_height="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r9nvwfi4q05d" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical"> </LinearLayout>
+                                <TextView android:id="@+id/rkqqd4ko2ksr" android:textColor="#202020" android:textSize="13sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Sale"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rd50ayq0qyt9" android:layout_width="104dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingVertical="6dp" android:paddingHorizontal="5dp" android:layout_marginEnd="6dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/r5itobcza5bc" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="103dp" android:layout_marginBottom="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rmak9g7jjvy" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                                <TextView android:id="@+id/r467bmy6405h" android:textColor="#000000" android:textSize="15sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1780"/>
+                                <ImageView android:id="@+id/rqzaxye508zm" android:layout_width="10dp" android:layout_height="10dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rkivkabsn3es" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical"> </LinearLayout>
+                                <TextView android:id="@+id/rhx0j39hojhe" android:textColor="#202020" android:textSize="13sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Hot"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rkbz3espe45" android:layout_width="104dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingVertical="6dp" android:paddingHorizontal="5dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/rcofxoq8cv3t" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="103dp" android:layout_marginBottom="11dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                            <TextView android:id="@+id/rhd4kpdji39r" android:textColor="#000000" android:textSize="15sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1780"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <TextView android:id="@+id/rixu20xq6m4m" android:textColor="#000000" android:textSize="20sp" android:layout_marginBottom="20dp" android:layout_marginStart="21dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="You Might Like"/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r04vofdxt9096" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="10dp" android:layout_marginHorizontal="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/ri2jllflij1" android:layout_width="165dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingHorizontal="5dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/r4y6vpdlg5hi" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="171dp" android:layout_marginTop="5dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    </LinearLayout>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rjqe7a5mop0c" android:layout_width="165dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingHorizontal="5dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/rf4a3e54oqja" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="171dp" android:layout_marginTop="5dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r0vp0ojgnmnz" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="13dp" android:layout_marginHorizontal="30dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <TextView android:id="@+id/r8ie0y48pe4g" android:textColor="#000000" android:textSize="12sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="Lorem ipsum dolor sit amet consectetur"/>
+                    <TextView android:id="@+id/rkp5yjcxk6e" android:textColor="#000000" android:textSize="12sp" android:layout_height="wrap_content" android:layout_width="114dp" android:text="Lorem ipsum dolor sit amet consectetur"/>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rjfb6jw951pi" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="8dp" android:layout_marginHorizontal="30dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <TextView android:id="@+id/rfgdfmlfwwcs" android:textColor="#202020" android:textSize="17sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="$17,00"/>
+                    <TextView android:id="@+id/rg5ckagt88c8" android:textColor="#202020" android:textSize="17sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="$17,00"/>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rzq2owbzlsp" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="10dp" android:layout_marginHorizontal="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rcrnao1b9vmm" android:layout_width="165dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingHorizontal="5dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/r4g044ec9mm3" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="171dp" android:layout_marginTop="5dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    </LinearLayout>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r1cnrw7fldqo" android:layout_width="165dp" android:layout_height="wrap_content" android:background="@drawable/cr9bffffff" android:paddingHorizontal="5dp" android:elevation="10dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/ry9v62ba52b" app:shapeAppearanceOverlay="@style/cr5" android:layout_width="match_parent" android:layout_height="171dp" android:layout_marginTop="5dp" android:src="@mipmap/ic_launcher" android:scaleType="fitXY"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rm6qrfphx1a8" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="13dp" android:layout_marginHorizontal="30dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <TextView android:id="@+id/rw3utca704u" android:textColor="#000000" android:textSize="12sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="Lorem ipsum dolor sit amet consectetur"/>
+                    <TextView android:id="@+id/rfwt6d1hzaz" android:textColor="#000000" android:textSize="12sp" android:layout_height="wrap_content" android:layout_width="114dp" android:text="Lorem ipsum dolor sit amet consectetur"/>
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rkkdmrz2akrr" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="8dp" android:layout_marginHorizontal="30dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+                    <TextView android:id="@+id/r1pwrybwnklq" android:textColor="#202020" android:textSize="17sp" android:layout_marginEnd="4dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:text="$17,00"/>
+                    <TextView android:id="@+id/rus1ga2lth6e" android:textColor="#202020" android:textSize="17sp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="$17,00"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/rma16emj3gkl" android:layout_width="match_parent" android:layout_height="wrap_content" android:clipChildren="false" android:clipToPadding="false">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+
+                        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/rmd5x15q671o" android:layout_marginBottom="0dp" android:layout_marginStart="0dp" android:layout_alignParentBottom="true" android:layout_width="match_parent" android:layout_height="84dp" android:background="#FFFFFF" android:elevation="1dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/r4zhlulyb2i6" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginTop="10dp" android:layout_marginBottom="20dp" android:layout_marginHorizontal="20dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="horizontal">
+
+                            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/repnxa8tx46n"
+                                android:layout_width="128dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cr11b202020"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingVertical="16dp">
+
+                                <TextView
+                                    android:id="@+id/r60eyx4pw09b"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add to cart"
+                                    android:textColor="#F3F3F3"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/rmigxgpbu0p"
+                                android:layout_width="128dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cr11b004cff"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingVertical="16dp">
+
+                                <TextView
+                                    android:id="@+id/rp0swz4uej6g"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Buy now"
+                                    android:textColor="#F3F3F3"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/r49shcrxz69h" android:layout_width="match_parent" android:layout_height="5dp" android:background="@drawable/cr34b000000" android:layout_marginHorizontal="120dp" android:clipChildren="false" android:clipToPadding="false" android:orientation="vertical"> </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

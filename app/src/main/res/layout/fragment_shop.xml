@@ -9,7 +9,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="44dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,14 +23,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:paddingHorizontal="8dp"/>
+                android:paddingHorizontal="8dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productRecyclerView"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:paddingHorizontal="8dp"
-                android:layout_height="wrap_content"/>
+                android:paddingHorizontal="8dp" />
 
         </LinearLayout>
 

@@ -27,7 +27,7 @@ android {
 
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://prm392-b8cwcfd6hhhbe0fy.japanwest-01.azurewebsites.net/\"")
+            buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }
     compileOptions {
@@ -51,6 +51,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation(libs.recyclerview)
+    implementation(libs.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

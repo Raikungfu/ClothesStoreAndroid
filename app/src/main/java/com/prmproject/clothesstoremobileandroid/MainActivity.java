@@ -1,9 +1,13 @@
 package com.prmproject.clothesstoremobileandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,7 @@ import com.prmproject.clothesstoremobileandroid.Data.repository.MessageListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
+
 public class MainActivity extends AppCompatActivity implements MessageListener {
 
     private ActivityMainBinding binding;
@@ -30,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+//------------------------------------
+
+
+//---------------------------------------------------
         setSupportActionBar(binding.toolbar);
 
         if (getSupportActionBar() != null) {

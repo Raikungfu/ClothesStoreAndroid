@@ -12,4 +12,10 @@
     <color name="red">#FF0000</color>
     <color name="gray">#808080</color>
     <color name="purple_700">#673AB7</color>
+
+
+    <color name="brown">#864912</color>
+    <color name="lightGrey">#efefef</color>
+    <color name="grey">#919191</color>
+    <color name="darkGrey">#707070</color>
 </resources>
