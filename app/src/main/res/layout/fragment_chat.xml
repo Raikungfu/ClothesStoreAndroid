@@ -22,9 +22,9 @@
 
         <ImageView
             android:id="@+id/mediaButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_shop_black_24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/add"
             android:contentDescription="Media"/>
 
         <EditText
@@ -37,10 +37,10 @@
 
         <ImageView
             android:id="@+id/sendButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_favourites_black_24dp"
-            android:contentDescription="Send"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/send"
+            android:contentDescription="@string/send"
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 </LinearLayout>

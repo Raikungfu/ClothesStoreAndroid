@@ -22,4 +22,5 @@
     <string name="rating_reviews"><![CDATA[Rating & Review]]></string>
     <string name="title_product_detail">Product Detail</string>
     <string name="message_hint">Enter messages....</string>
+    <string name="send"></string>
 </resources>
