@@ -1,67 +1,67 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 public class Option {
-    private int optionId;
-    private int optionGroupId;
-    private int productId;
-    private String name;
-    private float price;
-    private ProductOption productOptions;
-    private Product product;
+    private int OptionId;
+    private int OptionGroupId;
+    private int ProductId;
+    private String Name;
+    private float Price;
+    private ProductOption ProductOptions;
+    private Product Product;
 
     public int getOptionId() {
-        return optionId;
+        return OptionId;
     }
 
     public void setOptionId(int optionId) {
-        this.optionId = optionId;
+        OptionId = optionId;
     }
 
     public int getOptionGroupId() {
-        return optionGroupId;
+        return OptionGroupId;
     }
 
     public void setOptionGroupId(int optionGroupId) {
-        this.optionGroupId = optionGroupId;
+        OptionGroupId = optionGroupId;
     }
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public float getPrice() {
-        return price;
+        return Price;
     }
 
     public void setPrice(float price) {
-        this.price = price;
+        Price = price;
     }
 
     public ProductOption getProductOptions() {
-        return productOptions;
+        return ProductOptions;
     }
 
     public void setProductOptions(ProductOption productOptions) {
-        this.productOptions = productOptions;
+        ProductOptions = productOptions;
     }
 
-    public Product getProduct() {
-        return product;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Product getProduct() {
+        return Product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(com.prmproject.clothesstoremobileandroid.Data.model.Product product) {
+        Product = product;
     }
 }

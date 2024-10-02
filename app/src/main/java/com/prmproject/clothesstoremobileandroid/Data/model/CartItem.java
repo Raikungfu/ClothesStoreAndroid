@@ -1,58 +1,58 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 public class CartItem {
-    private int cartItemId;
-    private int quantity;
-    private int cartId;
-    private int productId;
-    private Cart cart;
-    private Product product;
+    private int CartItemId;
+    private int Quantity;
+    private int CartId;
+    private int ProductId;
+    private Cart Cart;
+    private Product Product;
 
     public int getCartItemId() {
-        return cartItemId;
+        return CartItemId;
     }
 
     public void setCartItemId(int cartItemId) {
-        this.cartItemId = cartItemId;
+        CartItemId = cartItemId;
     }
 
     public int getQuantity() {
-        return quantity;
+        return Quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        Quantity = quantity;
     }
 
     public int getCartId() {
-        return cartId;
+        return CartId;
     }
 
     public void setCartId(int cartId) {
-        this.cartId = cartId;
+        CartId = cartId;
     }
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
-    public Cart getCart() {
-        return cart;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Cart getCart() {
+        return Cart;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setCart(com.prmproject.clothesstoremobileandroid.Data.model.Cart cart) {
+        Cart = cart;
     }
 
-    public Product getProduct() {
-        return product;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Product getProduct() {
+        return Product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(com.prmproject.clothesstoremobileandroid.Data.model.Product product) {
+        Product = product;
     }
 }
 

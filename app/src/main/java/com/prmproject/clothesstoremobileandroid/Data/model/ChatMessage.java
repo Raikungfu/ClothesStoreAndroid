@@ -1,88 +1,86 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
-import java.util.Date;
-
 public class ChatMessage {
-    private int messageId;
-    private int roomId;
-    private int senderId;
-    private String content;
-    private String media;
-    private String icon;
-    private Date timestamp;
-    private Chat chat;
-    private User user;
+    private int MessageId;
+    private int RoomId;
+    private int SenderId;
+    private String Content;
+    private String Media;
+    private String Icon;
+    private String Timestamp;
+    private Chat Chat;
+    private User User;
 
     public int getMessageId() {
-        return messageId;
+        return MessageId;
     }
 
     public void setMessageId(int messageId) {
-        this.messageId = messageId;
+        MessageId = messageId;
     }
 
     public int getRoomId() {
-        return roomId;
+        return RoomId;
     }
 
     public void setRoomId(int roomId) {
-        this.roomId = roomId;
+        RoomId = roomId;
     }
 
     public int getSenderId() {
-        return senderId;
+        return SenderId;
     }
 
     public void setSenderId(int senderId) {
-        this.senderId = senderId;
+        SenderId = senderId;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        Content = content;
     }
 
     public String getMedia() {
-        return media;
+        return Media;
     }
 
     public void setMedia(String media) {
-        this.media = media;
+        Media = media;
     }
 
     public String getIcon() {
-        return icon;
+        return Icon;
     }
 
     public void setIcon(String icon) {
-        this.icon = icon;
+        Icon = icon;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public String getTimestamp() {
+        return Timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(String timestamp) {
+        Timestamp = timestamp;
     }
 
-    public Chat getChat() {
-        return chat;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Chat getChat() {
+        return Chat;
     }
 
-    public void setChat(Chat chat) {
-        this.chat = chat;
+    public void setChat(com.prmproject.clothesstoremobileandroid.Data.model.Chat chat) {
+        Chat = chat;
     }
 
-    public User getUser() {
-        return user;
+    public com.prmproject.clothesstoremobileandroid.Data.model.User getUser() {
+        return User;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(com.prmproject.clothesstoremobileandroid.Data.model.User user) {
+        User = user;
     }
 }
 

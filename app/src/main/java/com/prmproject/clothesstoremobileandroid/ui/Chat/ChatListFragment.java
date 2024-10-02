@@ -34,13 +34,12 @@ public class ChatListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        binding = FragmentListChatBinding.inflate(inflater, container, false);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
         String key = sharedPreferences.getString("TOKEN_KEY", null);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
 
         if (key != null && !key.isBlank()) {
-            binding = FragmentListChatBinding.inflate(inflater, container, false);
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
             recyclerView = binding.recyclerViewChat;
 
@@ -53,9 +52,6 @@ public class ChatListFragment extends Fragment {
                 }
             });
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-            recyclerView.setAdapter(chatListAdapter);
         }else{
             navController.popBackStack(R.id.navigation_list_chat, true);
             navController.navigate(R.id.navigation_login_required);
@@ -65,7 +61,7 @@ public class ChatListFragment extends Fragment {
 
     private void navigateToChatMessageFragment(ChatItemResponse chatItemResponse) {
         Bundle args = new Bundle();
-        args.putInt("categoryId", chatItemResponse.getRoomId());
+        args.putInt("roomId", chatItemResponse.getRoomId());
 
         navController.navigate(R.id.navigation_chat, args);
     }

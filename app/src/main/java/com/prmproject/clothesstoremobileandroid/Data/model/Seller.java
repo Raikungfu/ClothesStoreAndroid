@@ -3,86 +3,85 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Seller {
-    private int sellerId;
-    private String avt;
-    private String cover;
-    private String companyName;
-    private String address;
-    private String description;
-    private int userId;
-    private User user;
-    private List<Product> products;
+    private int SellerId;
+    private String Avt;
+    private String Cover;
+    private String CompanyName;
+    private String Address;
+    private String Description;
+    private int UserId;
+    private User User;
+    private List<Product> Products;
 
     public int getSellerId() {
-        return sellerId;
+        return SellerId;
     }
 
     public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+        SellerId = sellerId;
     }
 
     public String getAvt() {
-        return avt;
+        return Avt;
     }
 
     public void setAvt(String avt) {
-        this.avt = avt;
+        Avt = avt;
     }
 
     public String getCover() {
-        return cover;
+        return Cover;
     }
 
     public void setCover(String cover) {
-        this.cover = cover;
+        Cover = cover;
     }
 
     public String getCompanyName() {
-        return companyName;
+        return CompanyName;
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+        CompanyName = companyName;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        Description = description;
     }
 
     public int getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        UserId = userId;
     }
 
-    public User getUser() {
-        return user;
+    public com.prmproject.clothesstoremobileandroid.Data.model.User getUser() {
+        return User;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(com.prmproject.clothesstoremobileandroid.Data.model.User user) {
+        User = user;
     }
 
     public List<Product> getProducts() {
-        return products;
+        return Products;
     }
 
     public void setProducts(List<Product> products) {
-        this.products = products;
+        Products = products;
     }
-// Getters and Setters
 }

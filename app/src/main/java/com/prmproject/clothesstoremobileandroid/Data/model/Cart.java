@@ -2,41 +2,41 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Cart {
-    private int cartId;
-    private int customerId;
-    private Customer customer;
-    private List<Product> products;
+    private int CartId;
+    private int CustomerId;
+    private Customer Customer;
+    private List<Product> Products;
 
     public int getCartId() {
-        return cartId;
+        return CartId;
     }
 
     public void setCartId(int cartId) {
-        this.cartId = cartId;
+        CartId = cartId;
     }
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        CustomerId = customerId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Customer getCustomer() {
+        return Customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(com.prmproject.clothesstoremobileandroid.Data.model.Customer customer) {
+        Customer = customer;
     }
 
     public List<Product> getProducts() {
-        return products;
+        return Products;
     }
 
     public void setProducts(List<Product> products) {
-        this.products = products;
+        Products = products;
     }
 }
 

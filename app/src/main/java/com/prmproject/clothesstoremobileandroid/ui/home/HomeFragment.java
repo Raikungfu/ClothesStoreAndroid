@@ -1,7 +1,6 @@
 package com.prmproject.clothesstoremobileandroid.ui.home;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +23,6 @@ import com.prmproject.clothesstoremobileandroid.databinding.FragmentHomeBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.CategoryAdapter;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.ProductAdapter;
 import com.prmproject.clothesstoremobileandroid.ui.common.AutoScrollManager;
-import com.prmproject.clothesstoremobileandroid.ui.shop.ShopFragment;
 
 import java.util.List;
 
@@ -96,7 +93,7 @@ public class HomeFragment extends Fragment {
     private void setupRecyclerView(RecyclerView recyclerView, List<Product> productList, ProductAdapter productAdapter, ListResponse<Product> productListResponse, AutoScrollManager autoScrollManager) {
         if (productListResponse != null && productListResponse.isSuccess()) {
             productList = productListResponse.getItems();
-            productAdapter = new ProductAdapter(productList);
+            productAdapter = new ProductAdapter(productList, this::onProductSelected);
             recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
             recyclerView.setAdapter(productAdapter);
 
@@ -106,6 +103,16 @@ public class HomeFragment extends Fragment {
         } else {
             Log.e("HomeFragment", "ListResponse is null");
         }
+    }
+
+    private void onProductSelected(Product product) {
+        Bundle args = new Bundle();
+        args.putInt("productId", product.getProductId());
+
+
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+        navController.popBackStack(R.id.navigation_home, true);
+        navController.navigate(R.id.navigation_product_detail, args);
     }
 
     @Override

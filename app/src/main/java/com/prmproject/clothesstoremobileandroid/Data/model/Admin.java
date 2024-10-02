@@ -1,50 +1,50 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 public class Admin {
-    private int adminId;
-    private String avt;
-    private String cover;
-    private int userId;
-    private User user;
+    private int AdminId;
+    private String Avt;
+    private String Cover;
+    private int UserId;
+    private User User;
 
     public int getAdminId() {
-        return adminId;
+        return AdminId;
     }
 
     public void setAdminId(int adminId) {
-        this.adminId = adminId;
+        AdminId = adminId;
     }
 
     public String getAvt() {
-        return avt;
+        return Avt;
     }
 
     public void setAvt(String avt) {
-        this.avt = avt;
+        Avt = avt;
     }
 
     public String getCover() {
-        return cover;
+        return Cover;
     }
 
     public void setCover(String cover) {
-        this.cover = cover;
+        Cover = cover;
     }
 
     public int getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        UserId = userId;
     }
 
-    public User getUser() {
-        return user;
+    public com.prmproject.clothesstoremobileandroid.Data.model.User getUser() {
+        return User;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(com.prmproject.clothesstoremobileandroid.Data.model.User user) {
+        User = user;
     }
 }
 

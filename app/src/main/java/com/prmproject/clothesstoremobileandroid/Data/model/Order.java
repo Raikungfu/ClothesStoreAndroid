@@ -3,121 +3,121 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.Date;
 
 public class Order {
-    private int orderId;
-    private int customerId;
-    private String shipName;
-    private String shipMail;
-    private String shipPhone;
-    private String shipAddress;
-    private Date orderDate;
-    private int shipFee;
-    private String discountCode;
-    private double totalAmount;
-    private String paymentMethod;
-    private String status;
-    private Customer customer;
+    private int OrderId;
+    private int CustomerId;
+    private String ShipName;
+    private String ShipMail;
+    private String ShipPhone;
+    private String ShipAddress;
+    private Date OrderDate;
+    private int ShipFee;
+    private String DiscountCode;
+    private double TotalAmount;
+    private String PaymentMethod;
+    private String Status;
+    private Customer Customer;
 
     public int getOrderId() {
-        return orderId;
+        return OrderId;
     }
 
     public void setOrderId(int orderId) {
-        this.orderId = orderId;
+        OrderId = orderId;
     }
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        CustomerId = customerId;
     }
 
     public String getShipName() {
-        return shipName;
+        return ShipName;
     }
 
     public void setShipName(String shipName) {
-        this.shipName = shipName;
+        ShipName = shipName;
     }
 
     public String getShipMail() {
-        return shipMail;
+        return ShipMail;
     }
 
     public void setShipMail(String shipMail) {
-        this.shipMail = shipMail;
+        ShipMail = shipMail;
     }
 
     public String getShipPhone() {
-        return shipPhone;
+        return ShipPhone;
     }
 
     public void setShipPhone(String shipPhone) {
-        this.shipPhone = shipPhone;
+        ShipPhone = shipPhone;
     }
 
     public String getShipAddress() {
-        return shipAddress;
+        return ShipAddress;
     }
 
     public void setShipAddress(String shipAddress) {
-        this.shipAddress = shipAddress;
+        ShipAddress = shipAddress;
     }
 
     public Date getOrderDate() {
-        return orderDate;
+        return OrderDate;
     }
 
     public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+        OrderDate = orderDate;
     }
 
     public int getShipFee() {
-        return shipFee;
+        return ShipFee;
     }
 
     public void setShipFee(int shipFee) {
-        this.shipFee = shipFee;
+        ShipFee = shipFee;
     }
 
     public String getDiscountCode() {
-        return discountCode;
+        return DiscountCode;
     }
 
     public void setDiscountCode(String discountCode) {
-        this.discountCode = discountCode;
+        DiscountCode = discountCode;
     }
 
     public double getTotalAmount() {
-        return totalAmount;
+        return TotalAmount;
     }
 
     public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+        TotalAmount = totalAmount;
     }
 
     public String getPaymentMethod() {
-        return paymentMethod;
+        return PaymentMethod;
     }
 
     public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+        PaymentMethod = paymentMethod;
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        Status = status;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Customer getCustomer() {
+        return Customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(com.prmproject.clothesstoremobileandroid.Data.model.Customer customer) {
+        Customer = customer;
     }
 }

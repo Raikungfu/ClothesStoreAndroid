@@ -9,12 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.Category;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
+import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentShopBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.CategoryAdapter;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.ProductAdapter;
@@ -25,6 +28,7 @@ import java.util.List;
 public class ShopFragment extends Fragment {
     private FragmentShopBinding binding;
     private ShopViewModel shopViewModel;
+    private NavController navController;
 
     private RecyclerView categoryRecyclerView;
     private RecyclerView productRecyclerView;
@@ -38,6 +42,7 @@ public class ShopFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentShopBinding.inflate(inflater, container, false);
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
 
         setupRecyclerViews();
 
@@ -86,10 +91,18 @@ public class ShopFragment extends Fragment {
         shopViewModel.getListProduct(filter, 1, categoryId, null).observe(getViewLifecycleOwner(), productListResponse -> {
             if (productListResponse != null && productListResponse.isSuccess()) {
                 List<Product> productList = productListResponse.getItems();
-                productAdapter = new ProductAdapter(productList);
+                productAdapter = new ProductAdapter(productList, this::onProductSelected);
                 productRecyclerView.setAdapter(productAdapter);
             }
         });
+    }
+
+    private void onProductSelected(Product product) {
+        Bundle args = new Bundle();
+        args.putInt("productId", product.getProductId());
+
+        navController.popBackStack(R.id.navigation_shop, true);
+        navController.navigate(R.id.navigation_product_detail, args);
     }
 
     @Override

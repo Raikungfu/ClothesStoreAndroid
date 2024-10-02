@@ -50,18 +50,20 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatVi
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS", Locale.getDefault());
         SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
 
-        try {
-            Date date = inputFormat.parse(chatItem.getLatestMessageTime());
-            if (date != null) {
-                String formattedDate = outputFormat.format(date);
-                holder.messageTime.setText(formattedDate);
-            } else {
-                holder.messageTime.setText("No Time Available");
+        String latestMessageTime = chatItem.getLatestMessageTime();
+        if (latestMessageTime != null && !latestMessageTime.isEmpty()) {
+            try {
+                Date date = inputFormat.parse(latestMessageTime);
+                if (date != null) {
+                    String formattedDate = outputFormat.format(date);
+                    holder.messageTime.setText(formattedDate);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                holder.messageTime.setText("Error Parsing Date");
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
-            holder.messageTime.setText("Error Parsing Date");
         }
+
 
         Glide.with(holder.itemView.getContext())
                 .load(chatItem.getAvatar())

@@ -3,58 +3,58 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Chat {
-    private int roomId;
-    private int customerId;
-    private int sellerId;
-    private Customer customer;
-    private Seller seller;
-    private List<ChatMessage> chatMessages;
+    private int RoomId;
+    private int UserId1;
+    private int UserId2;
+    private User User1;
+    private User User2;
+    private List<ChatMessage> ChatMessages;
 
     public int getRoomId() {
-        return roomId;
+        return RoomId;
     }
 
     public void setRoomId(int roomId) {
-        this.roomId = roomId;
+        RoomId = roomId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getUserId1() {
+        return UserId1;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setUserId1(int userId1) {
+        UserId1 = userId1;
     }
 
-    public int getSellerId() {
-        return sellerId;
+    public int getUserId2() {
+        return UserId2;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setUserId2(int userId2) {
+        UserId2 = userId2;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public User getUser1() {
+        return User1;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setUser1(User user1) {
+        User1 = user1;
     }
 
-    public Seller getSeller() {
-        return seller;
+    public User getUser2() {
+        return User2;
     }
 
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    public void setUser2(User user2) {
+        User2 = user2;
     }
 
     public List<ChatMessage> getChatMessages() {
-        return chatMessages;
+        return ChatMessages;
     }
 
     public void setChatMessages(List<ChatMessage> chatMessages) {
-        this.chatMessages = chatMessages;
+        ChatMessages = chatMessages;
     }
 }

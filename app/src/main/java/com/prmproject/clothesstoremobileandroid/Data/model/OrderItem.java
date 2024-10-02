@@ -1,67 +1,67 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 public class OrderItem {
-    private int orderItemId;
-    private int orderId;
-    private int productId;
-    private String note;
-    private int quantity;
-    private Order order;
-    private Product product;
+    private int OrderItemId;
+    private int OrderId;
+    private int ProductId;
+    private String Note;
+    private int Quantity;
+    private Order Order;
+    private Product Product;
 
     public int getOrderItemId() {
-        return orderItemId;
+        return OrderItemId;
     }
 
     public void setOrderItemId(int orderItemId) {
-        this.orderItemId = orderItemId;
+        OrderItemId = orderItemId;
     }
 
     public int getOrderId() {
-        return orderId;
+        return OrderId;
     }
 
     public void setOrderId(int orderId) {
-        this.orderId = orderId;
+        OrderId = orderId;
     }
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
     public String getNote() {
-        return note;
+        return Note;
     }
 
     public void setNote(String note) {
-        this.note = note;
+        Note = note;
     }
 
     public int getQuantity() {
-        return quantity;
+        return Quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        Quantity = quantity;
     }
 
-    public Order getOrder() {
-        return order;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Order getOrder() {
+        return Order;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(com.prmproject.clothesstoremobileandroid.Data.model.Order order) {
+        Order = order;
     }
 
-    public Product getProduct() {
-        return product;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Product getProduct() {
+        return Product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(com.prmproject.clothesstoremobileandroid.Data.model.Product product) {
+        Product = product;
     }
 }

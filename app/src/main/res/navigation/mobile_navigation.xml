@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_shop"
             app:destination="@id/navigation_shop" />
+
     </fragment>
 
     <fragment
@@ -22,6 +23,17 @@
         tools:layout="@layout/fragment_shop">
         <argument android:name="categoryId" app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product_detail"
+        android:name="com.prmproject.clothesstoremobileandroid.ui.Product.ProductDetailFragment"
+        android:label="@string/title_product_detail"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_bag"
@@ -76,7 +88,7 @@
     <fragment
         android:id="@+id/navigation_list_chat"
         android:name="com.prmproject.clothesstoremobileandroid.ui.Chat.ChatListFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_chat"
         tools:layout="@layout/fragment_list_chat">
         <action
             android:id="@+id/action_navigation_list_chat_to_navigation_chat"
@@ -86,7 +98,7 @@
     <fragment
         android:id="@+id/navigation_chat"
         android:name="com.prmproject.clothesstoremobileandroid.ui.Chat.ChatFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_message"
         tools:layout="@layout/fragment_chat">
     </fragment>
 

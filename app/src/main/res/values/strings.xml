@@ -4,6 +4,7 @@
     <string name="title_shop">Shop</string>
     <string name="title_bag">Bag</string>
     <string name="title_chat">Chat</string>
+    <string name="title_message">Message</string>
     <string name="title_profile">Profile</string>
     <string name="enter_your_email">Enter your email...</string>
     <string name="enter_your_username">Enter your username...</string>
@@ -18,4 +19,7 @@
     <string name="dont_have_an_account">Don’t have an account? </string>
     <string name="forgot_password_reset">Forgot password? </string>
     <string name="forgot_password">FORGOT PASSWORD</string>
+    <string name="rating_reviews"><![CDATA[Rating & Review]]></string>
+    <string name="title_product_detail">Product Detail</string>
+    <string name="message_hint">Enter messages....</string>
 </resources>

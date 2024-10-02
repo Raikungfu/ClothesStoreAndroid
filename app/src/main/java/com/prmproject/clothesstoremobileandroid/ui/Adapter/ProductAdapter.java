@@ -3,7 +3,6 @@ package com.prmproject.clothesstoremobileandroid.ui.Adapter;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +21,16 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private List<Product> productList;
+    private OnProductClickListener productClickListener;
 
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(List<Product> productList, OnProductClickListener listener) {
         this.productList = productList;
+        productClickListener = listener;
     }
 
+    public interface OnProductClickListener {
+        void onProductClick(Product product);
+    }
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -90,7 +94,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+    public class ProductViewHolder extends RecyclerView.ViewHolder {
         TextView productName, productNewPrice, productOldPrice, productDiscount, voteCountTextView, ratingScoreTextView;
         ImageView productImage, star1, star2, star3, star4, star5;
 
@@ -109,6 +113,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             star3 = itemView.findViewById(R.id.ratingStar3);
             star4 = itemView.findViewById(R.id.ratingStar4);
             star5 = itemView.findViewById(R.id.ratingStar5);
+
+            itemView.setOnClickListener(v -> {
+                if (productClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        productClickListener.onProductClick(productList.get(position));
+                    }
+                }
+            });
         }
     }
 }

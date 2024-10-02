@@ -12,7 +12,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:background="#80000000" />
 
     <TextView
@@ -20,10 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Category Name"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="8dp"
-        android:background="@drawable/text_background" /> <!-- Background cho text -->
+        android:background="@drawable/text_background" />
 </FrameLayout>
