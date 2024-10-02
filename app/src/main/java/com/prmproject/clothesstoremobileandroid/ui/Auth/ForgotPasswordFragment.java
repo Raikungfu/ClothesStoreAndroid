@@ -119,8 +119,7 @@ public class ForgotPasswordFragment extends Fragment {
 
     private void verifyOtp(int otp) {
         user.setOtp(otp);
-        user.setToken(tokenVerifyOtp);
-        authViewModel.verifyOtp(user).observe(getViewLifecycleOwner(), response -> {
+        authViewModel.verifyOtp(user, tokenVerifyOtp).observe(getViewLifecycleOwner(), response -> {
             if (response != null && response.isStatus()) {
                 tokenVerifyOtp = response.getToken();
 
@@ -142,8 +141,7 @@ public class ForgotPasswordFragment extends Fragment {
 
     private void resetPassword(String newPassword) {
         user.setNewPassword(newPassword);
-        user.setToken(tokenVerifyOtp);
-        authViewModel.resetPassword(user).observe(getViewLifecycleOwner(), response -> {
+        authViewModel.resetPassword(user, tokenVerifyOtp).observe(getViewLifecycleOwner(), response -> {
             if (response != null && response.isStatus()) {
                 ((MainActivity) getActivity()).onMessage("Reset password successful! Login now..." + response.getMessage());
                 navController.navigate(R.id.action_navigation_forgot_password_to_navigation_login);

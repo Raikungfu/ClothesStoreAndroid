@@ -10,6 +10,7 @@ public class ChatMessage {
     private String Timestamp;
     private Chat Chat;
     private User User;
+    private boolean IsSender;
 
     public int getMessageId() {
         return MessageId;
@@ -81,6 +82,14 @@ public class ChatMessage {
 
     public void setUser(com.prmproject.clothesstoremobileandroid.Data.model.User user) {
         User = user;
+    }
+
+    public boolean isSender() {
+        return IsSender;
+    }
+
+    public void setSender(boolean sender) {
+        IsSender = sender;
     }
 }
 

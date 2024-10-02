@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ChatItemResponse;
+import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentListChatBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.ChatListAdapter;
@@ -35,28 +36,34 @@ public class ChatListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentListChatBinding.inflate(inflater, container, false);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
-        String key = sharedPreferences.getString("TOKEN_KEY", null);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
 
-        if (key != null && !key.isBlank()) {
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
             recyclerView = binding.recyclerViewChat;
 
-            chatViewModel.getListChat(key).observe(getViewLifecycleOwner(), categoryListResponse -> {
+            chatViewModel.getListChat().observe(getViewLifecycleOwner(), categoryListResponse -> {
                 if (categoryListResponse != null && categoryListResponse.isSuccess()) {
                     chatItems = categoryListResponse.getItems();
                     chatListAdapter = new ChatListAdapter(chatItems, this::navigateToChatMessageFragment);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
                     recyclerView.setAdapter(chatListAdapter);
+                } else if (!categoryListResponse.isSuccess() && categoryListResponse.getCodeError() == 401) {
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.remove("TOKEN_KEY");
+                    editor.apply();
+                    ((MainActivity) requireActivity()).onMessage("Login failed! " + categoryListResponse.getErrorMessage());
+                    requireLogin();
+                }else if (!categoryListResponse.isSuccess()){
+                    ((MainActivity) requireActivity()).onMessage("Load data failed! " + categoryListResponse.getErrorMessage());
                 }
             });
-
-        }else{
-            navController.popBackStack(R.id.navigation_list_chat, true);
-            navController.navigate(R.id.navigation_login_required);
-        }
         return binding.getRoot();
+    }
+
+    private void requireLogin(){
+        navController.popBackStack(R.id.navigation_home, true);
+        navController.navigate(R.id.navigation_login_required);
     }
 
     private void navigateToChatMessageFragment(ChatItemResponse chatItemResponse) {

@@ -3,9 +3,11 @@ package com.prmproject.clothesstoremobileandroid.ui.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.ChatMessage;
@@ -53,6 +55,27 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                     holder.messageTime.setText("Error Parsing Date");
                 }
             }
+
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.messageContainer.getLayoutParams();
+
+            int leftMargin = 0;
+            int rightMargin = 0;
+
+            if (message.isSender()) {
+                leftMargin = 200;
+                holder.messageContainer.setBackgroundResource(R.color.colorPrimary);
+                holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
+                holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
+            } else {
+                rightMargin = 200;
+                holder.messageContainer.setBackgroundResource(R.color.colorSecondary);
+                holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
+                holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
+            }
+
+            params.setMargins(leftMargin, params.topMargin, rightMargin, params.bottomMargin);
+            holder.messageContainer.setLayoutParams(params);
+
         }
     }
 
@@ -64,9 +87,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         private final TextView messageContent;
         private final TextView messageTime;
+        private final LinearLayout messageContainer;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
+            messageContainer = itemView.findViewById(R.id.messageContainer);
             messageContent = itemView.findViewById(R.id.messageContent);
             messageTime = itemView.findViewById(R.id.messageTime);
         }

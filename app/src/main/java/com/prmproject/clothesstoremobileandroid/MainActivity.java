@@ -53,11 +53,35 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        navView.setOnItemSelectedListener(item -> {
-            if (navController != null) {
-                return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+        /*navView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home){
+                navController.popBackStack(R.id.navigation_home, false);
+            }else if (itemId == R.id.navigation_shop){
+                navController.popBackStack(R.id.navigation_shop, false);
+            } else if (itemId == R.id.navigation_bag) {
+                navController.popBackStack(R.id.navigation_bag, false);
+            } else if (itemId == R.id.navigation_list_chat) {
+                navController.popBackStack(R.id.navigation_list_chat, false);
+            }else if (itemId == R.id.navigation_login){
+                navController.popBackStack(R.id.navigation_login, false);
             }
+
+            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
             return false;
+        });*/
+
+        navView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == itemId) {
+                return true;
+            }
+
+            navController.popBackStack(itemId, false);
+
+            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
         });
 
         searchView = findViewById(R.id.search_view);

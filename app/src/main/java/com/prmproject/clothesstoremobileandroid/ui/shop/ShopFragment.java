@@ -100,8 +100,6 @@ public class ShopFragment extends Fragment {
     private void onProductSelected(Product product) {
         Bundle args = new Bundle();
         args.putInt("productId", product.getProductId());
-
-        navController.popBackStack(R.id.navigation_shop, true);
         navController.navigate(R.id.navigation_product_detail, args);
     }
 

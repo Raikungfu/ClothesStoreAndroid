@@ -27,10 +27,10 @@ public class ChatRepository {
         responseListMessageData = new ResponseListData<>();
     }
 
-    public LiveData<ListResponse> getListChat(String token) {
+    public LiveData<ListResponse> getListChat() {
         MutableLiveData<ListResponse> responseListLiveData = new MutableLiveData<>();
 
-        apiService.getListChat(token).enqueue(new Callback<List<ChatItemResponse>>() {
+        apiService.getListChat().enqueue(new Callback<List<ChatItemResponse>>() {
             @Override
             public void onResponse(Call<List<ChatItemResponse>> call, Response<List<ChatItemResponse>> response) {
                 responseListLiveData.postValue(responseListData.getListData(response).getValue());

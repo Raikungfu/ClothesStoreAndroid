@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface ChatApiService {
     @GET("api/Chat/listchat")
-    Call<List<ChatItemResponse>> getListChat(@Query("token") String token);
+    Call<List<ChatItemResponse>> getListChat();
 
     @GET("api/ChatMessage/room/{roomId}")
     Call<List<ChatMessage>> getChatMessages(@Path("roomId") int roomId, @Query("token") String token);

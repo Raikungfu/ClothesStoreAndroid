@@ -86,7 +86,6 @@ public class HomeFragment extends Fragment {
         args.putInt("categoryId", categoryId);
 
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-        navController.popBackStack(R.id.navigation_home, true);
         navController.navigate(R.id.navigation_shop, args);
     }
 
@@ -111,7 +110,6 @@ public class HomeFragment extends Fragment {
 
 
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-        navController.popBackStack(R.id.navigation_home, true);
         navController.navigate(R.id.navigation_product_detail, args);
     }
 

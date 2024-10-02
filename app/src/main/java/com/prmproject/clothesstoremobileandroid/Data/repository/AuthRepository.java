@@ -30,6 +30,7 @@ public class AuthRepository {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 tokenLiveData.postValue(responseToken(response).getValue());
+                RetrofitClient.updateToken(responseToken(response).getValue().getToken());
             }
 
             @Override
@@ -72,7 +73,8 @@ public class AuthRepository {
         return tokenLiveData;
     }
 
-    public LiveData<MessageResponse> resetPassword(UserForgotPassword user) {
+    public LiveData<MessageResponse> resetPassword(UserForgotPassword user, String token) {
+        RetrofitClient.updateToken(token);
         MutableLiveData<MessageResponse> messageLiveData = new MutableLiveData<>();
         apiService.resetPassword(user).enqueue(new Callback<MessageResponse>() {
             @Override
@@ -89,7 +91,8 @@ public class AuthRepository {
     }
 
 
-    public LiveData<TokenResponse> verifyOtp(UserForgotPassword user) {
+    public LiveData<TokenResponse> verifyOtp(UserForgotPassword user, String token) {
+        RetrofitClient.updateToken(token);
         MutableLiveData<TokenResponse> tokenLiveData = new MutableLiveData<>();
         apiService.verifyOtp(user).enqueue(new Callback<TokenResponse>() {
             @Override

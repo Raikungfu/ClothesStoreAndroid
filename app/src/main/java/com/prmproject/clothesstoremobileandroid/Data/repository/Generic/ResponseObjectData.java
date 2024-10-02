@@ -27,7 +27,7 @@ public class ResponseObjectData<T> {
                     errorMessage = "Error parsing error response.";
                 }
             }
-            tokenLiveData.setValue(new ObjectResponse<>(null, errorMessage, false));
+            tokenLiveData.setValue(new ObjectResponse<>(null, errorMessage, false, response.code()));
         }
 
         return tokenLiveData;

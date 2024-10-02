@@ -4,7 +4,6 @@ public class UserForgotPassword {
     private String NewPassword;
     private String Email;
     private Integer Otp;
-    private String Token;
 
     public UserForgotPassword() {
     }
@@ -31,13 +30,5 @@ public class UserForgotPassword {
 
     public void setOtp(Integer otp) {
         Otp = otp;
-    }
-
-    public String getToken() {
-        return Token;
-    }
-
-    public void setToken(String token) {
-        Token = token;
     }
 }

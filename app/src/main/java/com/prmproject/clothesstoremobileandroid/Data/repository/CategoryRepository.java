@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.prmproject.Network.RetrofitClient;
 import com.prmproject.clothesstoremobileandroid.Data.model.Category;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
-import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserRegister;
 import com.prmproject.clothesstoremobileandroid.Data.remote.CategoryApiService;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseListData;
 

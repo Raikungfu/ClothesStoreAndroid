@@ -13,8 +13,8 @@ public class ChatViewModel extends ViewModel {
         chatRepository = new ChatRepository();
     }
 
-    public LiveData<ListResponse> getListChat(String token) {
-        return chatRepository.getListChat(token);
+    public LiveData<ListResponse> getListChat() {
+        return chatRepository.getListChat();
     }
 
     public LiveData<ListResponse> getChatMessages(int id, String token) {

@@ -29,11 +29,11 @@ public class AuthViewModel extends ViewModel {
         return authRepository.sendOtpToEmail(email);
     }
 
-    public LiveData<MessageResponse> resetPassword(UserForgotPassword email) {
-        return authRepository.resetPassword(email);
+    public LiveData<MessageResponse> resetPassword(UserForgotPassword email, String token) {
+        return authRepository.resetPassword(email, token);
     }
 
-    public LiveData<TokenResponse> verifyOtp(UserForgotPassword email) {
-        return authRepository.verifyOtp(email);
+    public LiveData<TokenResponse> verifyOtp(UserForgotPassword email, String token) {
+        return authRepository.verifyOtp(email, token);
     }
 }

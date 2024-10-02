@@ -67,13 +67,13 @@ public class ChatFragment extends Fragment {
                 if (chatMessagesListResponse != null && chatMessagesListResponse.isSuccess()) {
                     chatMessages = chatMessagesListResponse.getItems();
                     messageAdapter = new MessageAdapter(chatMessages);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
                     recyclerView.setAdapter(messageAdapter);
                 }
             });
 
         }else{
-            navController.popBackStack(R.id.navigation_chat, true);
+            navController.popBackStack(R.id.navigation_home, true);
             navController.navigate(R.id.navigation_login_required);
         }
     }

@@ -4,8 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ErrorResponse;
-import androidx.lifecycle.MutableLiveData;
-import com.google.gson.Gson;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
 
 import java.util.List;
@@ -31,7 +29,8 @@ public class ResponseListData<T> {
                     errorMessage = "Error parsing error response.";
                 }
             }
-            tokenLiveData.setValue(new ListResponse<>(null, errorMessage, false));
+
+            tokenLiveData.setValue(new ListResponse<>(null, errorMessage, false, response.code()));
         }
 
         return tokenLiveData;
