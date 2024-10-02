@@ -10,8 +10,8 @@ public class ClothesStore extends Application {
     public void onCreate() {
         super.onCreate();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE);
-        String token = sharedPreferences.getString("token", null);
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        String token = sharedPreferences.getString("TOKEN_KEY", null);
 
         if (token != null) {
             RetrofitClient.updateToken(token);

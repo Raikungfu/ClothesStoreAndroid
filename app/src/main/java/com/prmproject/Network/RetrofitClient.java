@@ -17,12 +17,10 @@ public class RetrofitClient {
         if (retrofit == null) {
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
-            // Thêm interceptor để chèn token vào header
             clientBuilder.addInterceptor(chain -> {
                 Request originalRequest = chain.request();
                 Request.Builder requestBuilder = originalRequest.newBuilder();
 
-                // Thêm token vào header nếu có
                 if (token != null) {
                     requestBuilder.addHeader("Authorization", "Bearer " + token);
                 }
@@ -31,7 +29,6 @@ public class RetrofitClient {
                 return chain.proceed(request);
             });
 
-            // Logging (tuỳ chọn)
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             clientBuilder.addInterceptor(loggingInterceptor);
