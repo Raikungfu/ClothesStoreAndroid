@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.prmproject.Network.RetrofitClient;
+import com.prmproject.clothesstoremobileandroid.ClothesStore;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserLogin;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
@@ -47,7 +49,11 @@ public class LoginFragment extends Fragment {
                         ((MainActivity) getActivity()).onMessage("Login successful!");
                         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("TOKEN_KEY", response.getToken());
+                        String token = response.getToken();
+                        editor.putString("TOKEN_KEY", token);
+                        RetrofitClient.updateToken(token);
+                        ((ClothesStore) requireActivity().getApplication()).getSignalRService().updateToken(token);
+                        ((ClothesStore) requireActivity().getApplication()).getSignalRService().startConnection();
                         editor.apply();
                         navController.navigate(R.id.navigation_home);
                     } else {

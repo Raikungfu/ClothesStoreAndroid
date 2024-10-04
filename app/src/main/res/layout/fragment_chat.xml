@@ -20,11 +20,11 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="8dp">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/mediaButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/add"
             android:contentDescription="Media"/>
 
         <EditText
@@ -35,12 +35,12 @@
             android:hint="@string/message_hint"
             android:layout_marginHorizontal="8dp" />
 
-        <ImageView
-            android:id="@+id/sendButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/send"
-            android:contentDescription="@string/send"
-            android:layout_marginStart="8dp"/>
+    <ImageButton
+        android:id="@+id/sendButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/send"
+        android:contentDescription="@string/send"
+        android:layout_marginStart="8dp"/>
     </LinearLayout>
 </LinearLayout>

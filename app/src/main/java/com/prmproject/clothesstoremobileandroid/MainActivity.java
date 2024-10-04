@@ -13,6 +13,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.StatusMessage;
 import com.prmproject.clothesstoremobileandroid.databinding.ActivityMainBinding;
 import com.prmproject.clothesstoremobileandroid.Data.repository.MessageListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,34 +55,12 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        /*navView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-            if (itemId == R.id.navigation_home){
-                navController.popBackStack(R.id.navigation_home, false);
-            }else if (itemId == R.id.navigation_shop){
-                navController.popBackStack(R.id.navigation_shop, false);
-            } else if (itemId == R.id.navigation_bag) {
-                navController.popBackStack(R.id.navigation_bag, false);
-            } else if (itemId == R.id.navigation_list_chat) {
-                navController.popBackStack(R.id.navigation_list_chat, false);
-            }else if (itemId == R.id.navigation_login){
-                navController.popBackStack(R.id.navigation_login, false);
-            }
-
-            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
-            return false;
-        });*/
-
         navView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
-
             if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == itemId) {
                 return true;
             }
-
             navController.popBackStack(itemId, false);
-
             return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
         });
 
@@ -129,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                 }
             });
         }
+
+        listenFromServer();
     }
 
     @Override
@@ -148,5 +130,11 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         if (view != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    private void listenFromServer(){
+        ((ClothesStore) getApplication()).getSignalRService().getHubConnection().on("ErrorResponse", (StatusMessage errorMessage) -> {
+            onMessage(errorMessage.getStatus() + ": " + errorMessage.getContent());
+        }, StatusMessage.class);
     }
 }

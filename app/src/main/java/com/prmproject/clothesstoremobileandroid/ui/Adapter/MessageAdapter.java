@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.ChatMessage;
@@ -20,10 +21,23 @@ import java.util.List;
 import java.util.Locale;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
-    private final List<ChatMessage> messages;
+    private final AsyncListDiffer<ChatMessage> differ;
 
-    public MessageAdapter(List<ChatMessage> messages) {
-        this.messages = messages;
+    public MessageAdapter() {
+        differ = new AsyncListDiffer<>(this, new DiffCallback<>());
+    }
+
+    public class MessageViewHolder extends RecyclerView.ViewHolder {
+        private final TextView messageContent;
+        private final TextView messageTime;
+        private final LinearLayout messageContainer;
+
+        public MessageViewHolder(@NonNull View itemView) {
+            super(itemView);
+            messageContainer = itemView.findViewById(R.id.messageContainer);
+            messageContent = itemView.findViewById(R.id.messageContent);
+            messageTime = itemView.findViewById(R.id.messageTime);
+        }
     }
 
     @NonNull
@@ -35,7 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
-        ChatMessage message = messages.get(position);
+        ChatMessage message = differ.getCurrentList().get(position);
         if(message != null){
             holder.messageContent.setText(message.getContent());
 
@@ -81,19 +95,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return differ.getCurrentList().size();
     }
 
-    public class MessageViewHolder extends RecyclerView.ViewHolder {
-        private final TextView messageContent;
-        private final TextView messageTime;
-        private final LinearLayout messageContainer;
-
-        public MessageViewHolder(@NonNull View itemView) {
-            super(itemView);
-            messageContainer = itemView.findViewById(R.id.messageContainer);
-            messageContent = itemView.findViewById(R.id.messageContent);
-            messageTime = itemView.findViewById(R.id.messageTime);
-        }
+    public void submitList(List<ChatMessage> newChatMessages, Runnable onListChanged) {
+        differ.submitList(newChatMessages, onListChanged);
     }
+
 }

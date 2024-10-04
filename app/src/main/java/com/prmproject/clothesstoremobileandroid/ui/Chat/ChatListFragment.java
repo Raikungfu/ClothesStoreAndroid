@@ -1,8 +1,6 @@
 package com.prmproject.clothesstoremobileandroid.ui.Chat;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -41,21 +39,17 @@ public class ChatListFragment extends Fragment {
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
             recyclerView = binding.recyclerViewChat;
 
-            chatViewModel.getListChat().observe(getViewLifecycleOwner(), categoryListResponse -> {
-                if (categoryListResponse != null && categoryListResponse.isSuccess()) {
-                    chatItems = categoryListResponse.getItems();
+            chatViewModel.getListChat().observe(getViewLifecycleOwner(), chatListResponse -> {
+                if (chatListResponse != null && chatListResponse.isSuccess()) {
+                    chatItems = chatListResponse.getItems();
                     chatListAdapter = new ChatListAdapter(chatItems, this::navigateToChatMessageFragment);
                     recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
                     recyclerView.setAdapter(chatListAdapter);
-                } else if (!categoryListResponse.isSuccess() && categoryListResponse.getCodeError() == 401) {
-                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.remove("TOKEN_KEY");
-                    editor.apply();
-                    ((MainActivity) requireActivity()).onMessage("Login failed! " + categoryListResponse.getErrorMessage());
+                } else if (!chatListResponse.isSuccess() && chatListResponse.getCodeError() == 401) {
+                    ((MainActivity) requireActivity()).onMessage("Login failed! " + chatListResponse.getErrorMessage());
                     requireLogin();
-                }else if (!categoryListResponse.isSuccess()){
-                    ((MainActivity) requireActivity()).onMessage("Load data failed! " + categoryListResponse.getErrorMessage());
+                }else if (!chatListResponse.isSuccess()){
+                    ((MainActivity) requireActivity()).onMessage("Load data failed! " + chatListResponse.getErrorMessage());
                 }
             });
         return binding.getRoot();
@@ -70,6 +64,6 @@ public class ChatListFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt("roomId", chatItemResponse.getRoomId());
 
-        navController.navigate(R.id.navigation_chat, args);
+        navController.navigate(R.id.action_navigation_list_chat_to_navigation_chat, args);
     }
 }

@@ -1,16 +1,23 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 public class ChatMessage {
-    private int MessageId;
-    private int RoomId;
-    private int SenderId;
+    private Integer MessageId;
+    private Integer RoomId;
+    private Integer SenderId;
     private String Content;
     private String Media;
     private String Icon;
     private String Timestamp;
     private Chat Chat;
     private User User;
-    private boolean IsSender;
+    private Boolean IsSender;
+
+    public ChatMessage(String content, int roomId, String media, String icon) {
+        Content = content;
+        Media = media;
+        Icon = icon;
+        RoomId = roomId;
+    }
 
     public int getMessageId() {
         return MessageId;

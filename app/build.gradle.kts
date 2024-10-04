@@ -27,7 +27,9 @@ android {
 
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.1.166:7248/\"")
+
+            // buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }
     compileOptions {
@@ -63,5 +65,9 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("com.squareup.picasso:picasso:2.71828")
-    implementation("com.microsoft.signalr:signalr:5.0.11")
+    implementation("com.microsoft.signalr:signalr:7.0.0")
+    implementation("org.slf4j:slf4j-jdk14:1.7.25")
+    implementation("org.slf4j:slf4j-api:1.7.25")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
 }

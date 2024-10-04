@@ -100,6 +100,7 @@
         android:name="com.prmproject.clothesstoremobileandroid.ui.Chat.ChatFragment"
         android:label="@string/title_message"
         tools:layout="@layout/fragment_chat">
+        <argument android:name="roomId" app:argType="integer" />
     </fragment>
 
     <fragment
