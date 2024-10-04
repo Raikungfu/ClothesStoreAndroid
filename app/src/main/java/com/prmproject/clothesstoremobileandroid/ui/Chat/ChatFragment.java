@@ -46,19 +46,42 @@ public class ChatFragment extends Fragment {
     private NavController navController;
     private int roomId;
     private HubConnection hubConnection;
+    private boolean isLoading = false;
+    private int currentPage = 0;
+    private String key;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentChatBinding.inflate(inflater, container, false);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        key = sharedPreferences.getString("TOKEN_KEY", null);
+
         signalRService = ((ClothesStore) requireActivity().getApplication()).getSignalRService();
         hubConnection = signalRService.getHubConnection();
 
         Bundle args = getArguments();
         if (args != null) {
             roomId = args.getInt("roomId", -1);
-            if(roomId != -1) loadChatMessage();
         }
+
+        recyclerView = binding.messageRecyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
+        messageAdapter = new MessageAdapter();
+        recyclerView.setAdapter(messageAdapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (!isLoading && layoutManager != null && layoutManager.findLastCompletelyVisibleItemPosition() == chatMessages.size() - 1) {
+                    currentPage++;
+                    loadChatMessage(currentPage);
+                }
+            }
+        });
 
         TextView inputChat = binding.messageInput;
         ImageButton sendChatBtn = binding.sendButton;
@@ -69,6 +92,11 @@ public class ChatFragment extends Fragment {
             if (!message.isBlank()){
                 inputChat.setText("");
                 ChatMessage messageSend = new ChatMessage(message, roomId, null, null);
+
+                if (hubConnection.getConnectionState() != HubConnectionState.CONNECTED) {
+                    signalRService.reconnect();
+                }
+
                 signalRService.sendMessageToUser(messageSend, new Callback<ChatMessageResponse<ChatMessage>>() {
                     @Override
                     public void onSuccess(ChatMessageResponse<ChatMessage> result) {
@@ -108,7 +136,7 @@ public class ChatFragment extends Fragment {
     }
 
     private void adjustRecyclerView() {
-        if (chatMessages.size() > 0) recyclerView.scrollToPosition(chatMessages.size() - 1);
+        if (chatMessages != null && chatMessages.size() > 0) recyclerView.scrollToPosition(chatMessages.size() - 1);
     }
 
 
@@ -122,57 +150,50 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(roomId != -1) loadChatMessage();
+        if(roomId != -1) loadChatMessage(currentPage);
 
         if (hubConnection.getConnectionState() != HubConnectionState.CONNECTED) {
             signalRService.reconnect();
         }
 
         hubConnection.on("ReceiveMessage", (ChatMessageResponse messageResponse) -> {
-            getActivity().runOnUiThread(() -> {
-                try {
-                    Log.d("response", "error" + messageResponse.toString());
-                    if ("Success".equals(messageResponse.getStatus())) {
-                        Gson gson = new Gson();
-                        ChatMessage chatMessage = gson.fromJson(gson.toJson(messageResponse.getResponse()), ChatMessage.class);
-
-                        if (chatMessage.getRoomId() == roomId) {
-                            chatMessages.add(chatMessage);
-                            messageAdapter.submitList(chatMessages, () -> {
-                                adjustRecyclerView();
-                            });
-                        }
-                    } else {
-                        Log.e("SignalR", "Error: " + messageResponse.getContent());
-                    }
-                } catch (JsonSyntaxException e) {
-                    Log.e("ChatFragment", "JsonSyntaxException: " + e.getMessage());
-                }
-            });
-
+            getActivity().runOnUiThread(() -> handleReceivedMessage(messageResponse));
         }, ChatMessageResponse.class);
     }
 
+    private void handleReceivedMessage(ChatMessageResponse messageResponse) {
+        try {
+            if ("Success".equals(messageResponse.getStatus())) {
+                Gson gson = new Gson();
+                ChatMessage chatMessage = gson.fromJson(gson.toJson(messageResponse.getResponse()), ChatMessage.class);
 
-    private void loadChatMessage() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
-        String key = sharedPreferences.getString("TOKEN_KEY", null);
+                if (chatMessage.getRoomId() == roomId) {
+                    chatMessages.add(chatMessage);
+                    messageAdapter.submitList(new ArrayList<>(chatMessages), () -> {
+                        adjustRecyclerView();
+                    });
+                }
+            } else {
+                Log.e("SignalR", "Error: " + messageResponse.getContent());
+            }
+        } catch (JsonSyntaxException e) {
+            Log.e("ChatFragment", "JsonSyntaxException: " + e.getMessage());
+        }
+    }
 
+    private void loadChatMessage(int page) {
         if (key != null && !key.isBlank()) {
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
-            recyclerView = binding.messageRecyclerView;
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
-            messageAdapter = new MessageAdapter();
-            recyclerView.setAdapter(messageAdapter);
-
-            chatViewModel.getChatMessages(roomId).observe(getViewLifecycleOwner(), chatMessagesListResponse -> {
+            chatViewModel.getChatMessages(roomId, page).observe(getViewLifecycleOwner(), chatMessagesListResponse -> {
                 if (chatMessagesListResponse != null && chatMessagesListResponse.isSuccess()) {
-                    chatMessages = chatMessagesListResponse.getItems();
+                    if (chatMessages == null) {
+                        chatMessages = new ArrayList<>();
+                    }
+                    chatMessages.addAll(chatMessagesListResponse.getItems());
+
                     messageAdapter.submitList(new ArrayList<>(chatMessages), () -> {
-                        if (!chatMessages.isEmpty()) {
-                            recyclerView.smoothScrollToPosition(chatMessages.size() - 1);
-                        }
+                        adjustRecyclerView();
                     });
                 }
             });

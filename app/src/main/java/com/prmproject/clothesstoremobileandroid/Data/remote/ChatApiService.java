@@ -12,13 +12,14 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ChatApiService {
     @GET("api/Chat/listchat")
     Call<List<ChatItemResponse>> getListChat();
 
     @GET("api/ChatMessage/room/{roomId}")
-    Call<List<ChatMessage>> getChatMessages(@Path("roomId") int roomId);
+    Call<List<ChatMessage>> getChatMessages(@Path("roomId") int roomId, @Query("page") int page);
 
     @POST("api/Chat")
     Call<Chat> postChat(@Body ChatRoom chat);

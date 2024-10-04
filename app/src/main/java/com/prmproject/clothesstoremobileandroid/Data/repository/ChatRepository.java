@@ -50,10 +50,10 @@ public class ChatRepository {
         return responseListLiveData;
     }
 
-    public LiveData<ListResponse> getChatMessages(int id) {
+    public LiveData<ListResponse> getChatMessages(int id, int page) {
         MutableLiveData<ListResponse> responseListLiveData = new MutableLiveData<>();
 
-        apiService.getChatMessages(id).enqueue(new Callback<List<ChatMessage>>() {
+        apiService.getChatMessages(id, page).enqueue(new Callback<List<ChatMessage>>() {
             @Override
             public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
                 responseListLiveData.postValue(responseListMessageData.getListData(response).getValue());
