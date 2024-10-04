@@ -12,19 +12,25 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
+import com.prmproject.clothesstoremobileandroid.Data.model.Chat;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
+import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentProductDetailBinding;
 
 public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;
     private ProductDetailViewModel productDetailViewModel;
+    NavController navController;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductDetailBinding.inflate(inflater, container, false);
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         productDetailViewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
 
         loadProductsFromArguments();
@@ -90,8 +96,25 @@ public class ProductDetailFragment extends Fragment {
                 Glide.with(this).load(product.getSeller().getAvt()).placeholder(R.drawable.logor).error(R.drawable.logor).into(binding.sellerAvt);
                 binding.sellerAddress.setText(product.getSeller().getAddress());
                 binding.voteCount.setText(String.valueOf(product.getRatingCount()));
+                binding.chatButton.setOnClickListener(v -> {
+                    productDetailViewModel.postChat(product.getSellerId()).observe(getViewLifecycleOwner(), response -> {
+                        if (response != null && response.isSuccess()) {
+                            navigateToChatMessageFragment((Chat) response.getItem());
+                        } else {
+                            ((MainActivity) requireActivity()).onMessage("Failed to initiate chat: " + response.getErrorMessage() + " Status: " + response.getCodeError());
+                        }
+                    });
+                });
+
             }
         });
+    }
+
+    private void navigateToChatMessageFragment(Chat chatItemResponse) {
+        Bundle args = new Bundle();
+        args.putInt("roomId", chatItemResponse.getRoomId());
+
+        navController.navigate(R.id.action_navigation_list_chat_to_navigation_chat, args);
     }
 
     @Override

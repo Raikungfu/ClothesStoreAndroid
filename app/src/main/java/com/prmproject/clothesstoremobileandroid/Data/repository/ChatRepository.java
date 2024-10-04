@@ -4,11 +4,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.prmproject.Network.RetrofitClient;
+import com.prmproject.clothesstoremobileandroid.Data.model.Chat;
 import com.prmproject.clothesstoremobileandroid.Data.model.ChatMessage;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ChatItemResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.ChatRoom;
 import com.prmproject.clothesstoremobileandroid.Data.remote.ChatApiService;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseListData;
+import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseObjectData;
 
 import java.util.List;
 
@@ -20,6 +24,7 @@ public class ChatRepository {
     private ChatApiService apiService;
     private ResponseListData<ChatItemResponse> responseListData;
     private ResponseListData<ChatMessage> responseListMessageData;
+    private ResponseObjectData<Chat> responseChatData;
 
     public ChatRepository() {
         apiService = RetrofitClient.getInstance().create(ChatApiService.class);
@@ -61,5 +66,24 @@ public class ChatRepository {
         });
 
         return responseListLiveData;
+    }
+
+    public LiveData<ObjectResponse> postChat(int id){
+        ChatRoom room = new ChatRoom(id);
+        MutableLiveData<ObjectResponse> responseObjectLiveData = new MutableLiveData<>();
+
+        apiService.postChat(room).enqueue(new Callback<Chat>() {
+            @Override
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                responseObjectLiveData.postValue(responseChatData.getObjectData(response).getValue());
+            }
+
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
+            }
+        });
+
+        return responseObjectLiveData;
     }
 }

@@ -27,9 +27,9 @@ android {
 
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://192.168.1.166:7248/\"")
+            // buildConfigField("String", "BASE_URL", "\"http://192.168.1.166:7248/\"")
 
-            // buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
+            buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }
     compileOptions {

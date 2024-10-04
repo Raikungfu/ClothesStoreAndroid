@@ -162,7 +162,7 @@ public class ChatFragment extends Fragment {
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
             recyclerView = binding.messageRecyclerView;
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+            recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
             messageAdapter = new MessageAdapter();
             recyclerView.setAdapter(messageAdapter);
 

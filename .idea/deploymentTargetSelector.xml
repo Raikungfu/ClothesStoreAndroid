@@ -6,8 +6,8 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="ClothesStoreMobileAndroid">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-04T08:08:48.437725500Z">
+        <option name="selectionMode" value="DIALOG" />
+        <DropdownSelection timestamp="2024-10-04T16:57:47.553577Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=LMG710TMd0c19bda" />
@@ -18,12 +18,12 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="PhysicalDevice" identifier="serial=LMG710TMd0c19bda" />
+                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Raiku\.android\avd\Pixel_6_API_33.avd" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Raiku\.android\avd\Pixel_6_API_33.avd" />
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=LMG710TMd0c19bda" />
               </handle>
             </Target>
           </targets>

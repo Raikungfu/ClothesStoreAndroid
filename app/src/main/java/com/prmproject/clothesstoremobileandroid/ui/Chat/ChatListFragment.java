@@ -43,7 +43,7 @@ public class ChatListFragment extends Fragment {
                 if (chatListResponse != null && chatListResponse.isSuccess()) {
                     chatItems = chatListResponse.getItems();
                     chatListAdapter = new ChatListAdapter(chatItems, this::navigateToChatMessageFragment);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
                     recyclerView.setAdapter(chatListAdapter);
                 } else if (!chatListResponse.isSuccess() && chatListResponse.getCodeError() == 401) {
                     ((MainActivity) requireActivity()).onMessage("Login failed! " + chatListResponse.getErrorMessage());
