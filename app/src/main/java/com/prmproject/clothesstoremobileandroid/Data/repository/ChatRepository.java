@@ -30,6 +30,7 @@ public class ChatRepository {
         apiService = RetrofitClient.getInstance().create(ChatApiService.class);
         responseListData = new ResponseListData<>();
         responseListMessageData = new ResponseListData<>();
+        responseChatData = new ResponseObjectData<>();
     }
 
     public LiveData<ListResponse> getListChat() {

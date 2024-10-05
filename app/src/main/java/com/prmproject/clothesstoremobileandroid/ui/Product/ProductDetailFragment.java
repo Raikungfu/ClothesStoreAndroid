@@ -114,7 +114,7 @@ public class ProductDetailFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt("roomId", chatItemResponse.getRoomId());
 
-        navController.navigate(R.id.action_navigation_list_chat_to_navigation_chat, args);
+        navController.navigate(R.id.action_navigation_product_detail_to_navigation_chat, args);
     }
 
     @Override

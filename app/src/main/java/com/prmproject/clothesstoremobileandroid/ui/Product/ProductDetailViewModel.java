@@ -13,6 +13,7 @@ public class ProductDetailViewModel extends ViewModel {
 
     public ProductDetailViewModel(){
         productRepository = new ProductRepository();
+        chatRepository = new ChatRepository();
     }
 
     public LiveData<ObjectResponse> getProductDetail(int id) {

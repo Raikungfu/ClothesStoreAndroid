@@ -32,6 +32,9 @@
         <argument
             android:name="productId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_navigation_product_detail_to_navigation_chat"
+            app:destination="@id/navigation_chat" />
     </fragment>
 
 
