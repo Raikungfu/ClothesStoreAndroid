@@ -97,7 +97,7 @@ public class ProductDetailFragment extends Fragment {
                 binding.sellerAddress.setText(product.getSeller().getAddress());
                 binding.voteCount.setText(String.valueOf(product.getRatingCount()));
                 binding.chatButton.setOnClickListener(v -> {
-                    productDetailViewModel.postChat(product.getSellerId()).observe(getViewLifecycleOwner(), response -> {
+                    productDetailViewModel.postChat(product.getSeller().getUserId()).observe(getViewLifecycleOwner(), response -> {
                         if (response != null && response.isSuccess()) {
                             navigateToChatMessageFragment((Chat) response.getItem());
                         } else {

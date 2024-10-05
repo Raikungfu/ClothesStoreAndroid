@@ -78,7 +78,7 @@ public class ChatFragment extends Fragment {
                 LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 if (!isLoading && layoutManager != null && layoutManager.findLastCompletelyVisibleItemPosition() == chatMessages.size() - 1) {
                     currentPage++;
-                    loadChatMessage(currentPage);
+                    loadChatMessage(currentPage, false);
                 }
             }
         });
@@ -136,7 +136,7 @@ public class ChatFragment extends Fragment {
     }
 
     private void adjustRecyclerView() {
-        if (chatMessages != null && chatMessages.size() > 0) recyclerView.scrollToPosition(chatMessages.size() - 1);
+        if (chatMessages != null && chatMessages.size() > 0) recyclerView.scrollToPosition(0);
     }
 
 
@@ -150,7 +150,7 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(roomId != -1) loadChatMessage(currentPage);
+        if(roomId != -1) loadChatMessage(currentPage, true);
 
         if (hubConnection.getConnectionState() != HubConnectionState.CONNECTED) {
             signalRService.reconnect();
@@ -181,7 +181,7 @@ public class ChatFragment extends Fragment {
         }
     }
 
-    private void loadChatMessage(int page) {
+    private void loadChatMessage(int page, boolean isAdjustScreen) {
         if (key != null && !key.isBlank()) {
             chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
 
@@ -193,7 +193,7 @@ public class ChatFragment extends Fragment {
                     chatMessages.addAll(chatMessagesListResponse.getItems());
 
                     messageAdapter.submitList(new ArrayList<>(chatMessages), () -> {
-                        adjustRecyclerView();
+                        if(isAdjustScreen) adjustRecyclerView();
                     });
                 }
             });
