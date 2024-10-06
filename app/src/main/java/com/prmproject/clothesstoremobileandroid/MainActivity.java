@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
     private SearchView searchViewFilter;
     private Button clearButton, filterButton;
     private NavController navController;
+    private EditText priceFrom, priceTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +174,8 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         searchViewFilter = headerView.findViewById(R.id.search_view_filter);
         clearButton = headerView.findViewById(R.id.clearButton);
         filterButton = headerView.findViewById(R.id.filterButton);
+        priceFrom = headerView.findViewById(R.id.price_from);
+        priceTo = headerView.findViewById(R.id.price_to);
 
         clearButton.setOnClickListener(v -> clearOptionsAndSearch());
 
@@ -203,8 +207,28 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
     private void submitSearch() {
         Bundle args = new Bundle();
         try{
-            args.putInt("categoryId", -1);
+            String priceFromString = priceFrom.getText().toString();
+            String priceToString = priceTo.getText().toString();
+            int priceF = -1;
+            int priceT = -1;
 
+            if (!priceFromString.isBlank() || !priceToString.isBlank()) {
+                if (!priceFromString.isBlank()) {
+                    priceF = Integer.parseInt(priceFromString);
+                }
+                if (!priceToString.isBlank()) {
+                    priceT = Integer.parseInt(priceToString);
+                }
+
+                if (!priceFromString.isBlank() && !priceToString.isBlank() && priceF > priceT) {
+                    onMessage("Price From must not be greater than Price To");
+                    return;
+                }
+            }
+
+            args.putInt("categoryId", -1);
+            args.putInt("priceFrom", priceF);
+            args.putInt("priceTo", priceT);
             args.putString("name", searchViewFilter.getQuery().toString());
 
             int[] listOptionArray = new int[selectedOption.size()];

@@ -22,7 +22,7 @@ public class ShopViewModel extends ViewModel {
         return categoryRepository.getListCategory();
     }
 
-    public LiveData<ListResponse> getListProduct(String filter, Integer pageNumber, Integer categoryId, Integer sellerId, String name, Long priceFrom, Long priceTo, int[] listOptionId, int[] listCategoryId) {
+    public LiveData<ListResponse> getListProduct(String filter, Integer pageNumber, Integer categoryId, Integer sellerId, String name, Integer priceFrom, Integer priceTo, int[] listOptionId, int[] listCategoryId) {
         return productRepository.getListProduct(filter, pageNumber, categoryId, sellerId, name, priceFrom, priceTo, listOptionId, listCategoryId);
     }
 }

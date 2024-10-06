@@ -22,6 +22,8 @@
         android:label="@string/title_shop"
         tools:layout="@layout/fragment_shop">
         <argument android:name="categoryId" app:argType="integer"/>
+        <argument android:name="priceFrom" app:argType="integer"/>
+        <argument android:name="priceTo" app:argType="integer"/>
         <argument android:name="name" app:argType="string"
             app:nullable="true" />
         <argument android:name="listOptionId" app:argType="integer[]"

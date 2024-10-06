@@ -31,7 +31,7 @@ public class ProductRepository {
         responseFilterListObjectData = new ResponseObjectData<>();
     }
 
-    public LiveData<ListResponse> getListProduct(String orderBy, int pageNumber, Integer categoryId, Integer sellerId, String name, Long priceFrom, Long priceTo, int[] listOptionId, int[] listCategoryId) {
+    public LiveData<ListResponse> getListProduct(String orderBy, int pageNumber, Integer categoryId, Integer sellerId, String name, Integer priceFrom, Integer priceTo, int[] listOptionId, int[] listCategoryId) {
         MutableLiveData<ListResponse> responseListLiveData = new MutableLiveData<>();
 
         apiService.getListProduct(orderBy, pageNumber, categoryId, sellerId, name, priceFrom, priceTo, listOptionId, listCategoryId).enqueue(new Callback<List<Product>>() {

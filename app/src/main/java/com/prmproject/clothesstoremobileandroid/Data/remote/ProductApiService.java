@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface ProductApiService {
     @GET("api/Product")
-    Call<List<Product>> getListProduct(@Query("orderBy") String orderBy, @Query("pageNumber")  int pageNumber, @Query("categoryId") Integer categoryId, @Query("sellerId") Integer sellerId, @Query("name") String name, @Query("priceFrom") Long priceFrom, @Query("priceTo") Long priceTo, @Query("listOptionId") int[] listOptionId, @Query("listCategoryId") int[] listCategoryId);
+    Call<List<Product>> getListProduct(@Query("orderBy") String orderBy, @Query("pageNumber")  int pageNumber, @Query("categoryId") Integer categoryId, @Query("sellerId") Integer sellerId, @Query("name") String name, @Query("priceFrom") Integer priceFrom, @Query("priceTo") Integer priceTo, @Query("listOptionId") int[] listOptionId, @Query("listCategoryId") int[] listCategoryId);
 
     @GET("api/Product/{id}")
     Call<Product> getProductDetail(@Path("id") int id);
