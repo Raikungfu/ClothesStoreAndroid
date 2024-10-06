@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt("productId", product.getProductId());
 
-
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.navigation_product_detail, args);
     }

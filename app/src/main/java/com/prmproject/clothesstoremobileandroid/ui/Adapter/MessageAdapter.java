@@ -66,7 +66,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
-                    holder.messageTime.setText("Error Parsing Date");
+                    holder.messageTime.setText("");
                 }
             }
 
@@ -101,5 +101,4 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public void submitList(List<ChatMessage> newChatMessages, Runnable onListChanged) {
         differ.submitList(newChatMessages, onListChanged);
     }
-
 }

@@ -2,78 +2,77 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Customer {
-    private int customerId;
-    private String name;
-    private String address;
-    private String avt;
-    private int userId;
-    private User user;
-    private List<Cart> carts;
-    private List<Order> orders;
+    private int CustomerId;
+    private String Name;
+    private String Address;
+    private String Avt;
+    private int UserId;
+    private User User;
+    private List<Cart> Carts;
+    private List<Order> Orders;
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        CustomerId = customerId;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
     }
 
     public String getAvt() {
-        return avt;
+        return Avt;
     }
 
     public void setAvt(String avt) {
-        this.avt = avt;
+        Avt = avt;
     }
 
     public int getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        UserId = userId;
     }
 
-    public User getUser() {
-        return user;
+    public com.prmproject.clothesstoremobileandroid.Data.model.User getUser() {
+        return User;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(com.prmproject.clothesstoremobileandroid.Data.model.User user) {
+        User = user;
     }
 
     public List<Cart> getCarts() {
-        return carts;
+        return Carts;
     }
 
     public void setCarts(List<Cart> carts) {
-        this.carts = carts;
+        Carts = carts;
     }
 
     public List<Order> getOrders() {
-        return orders;
+        return Orders;
     }
 
     public void setOrders(List<Order> orders) {
-        this.orders = orders;
+        Orders = orders;
     }
-// Getters and Setters
 }
 

@@ -1,5 +1,6 @@
 package com.prmproject.clothesstoremobileandroid.ui.Product;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -8,51 +9,92 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.prmproject.clothesstoremobileandroid.Data.model.Chat;
+import com.prmproject.clothesstoremobileandroid.Data.model.Option;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
+import com.prmproject.clothesstoremobileandroid.Data.model.Review;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentProductDetailBinding;
+import com.prmproject.clothesstoremobileandroid.ui.Adapter.OptionAdapter;
+import com.prmproject.clothesstoremobileandroid.ui.Adapter.ReviewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;
     private ProductDetailViewModel productDetailViewModel;
-    NavController navController;
-
+    private NavController navController;
+    private LinearLayout containerLayout;
+    private RecyclerView reviewRecyclerView;
+    private List<Review> reviewList;
+    private int productId;
+    private ReviewAdapter reviewAdapter;
+    private int currentPage = 0;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductDetailBinding.inflate(inflater, container, false);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         productDetailViewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
+        reviewRecyclerView = binding.reviewRecyclerView;
+        reviewRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
+        reviewAdapter = new ReviewAdapter();
+        reviewRecyclerView.setAdapter(reviewAdapter);
 
-        loadProductsFromArguments();
+
+        Bundle args = getArguments();
+        if (args != null) {
+            productId = args.getInt("productId", -1);
+        }
+        binding.loadMoreReviewBtn.setOnClickListener(v -> {
+            ++currentPage;
+            loadReview(currentPage);
+        });
+
         return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        loadProductsFromArguments();
-    }
 
-    private void loadProductsFromArguments() {
-        Bundle args = getArguments();
-        if (args != null) {
-            int productId = args.getInt("productId", -1);
-            if(productId != -1) loadProductDetail(productId);
+        if(productId != -1) {
+            loadProductDetail();
+            loadReview(currentPage);
         }
     }
 
-    private void loadProductDetail(int id) {
-        productDetailViewModel.getProductDetail(id).observe(getViewLifecycleOwner(), productResponst -> {
+    private void loadReview(int page) {
+        productDetailViewModel.getListReview(productId, page).observe(getViewLifecycleOwner(), reviewListResponse -> {
+            if (reviewListResponse != null && reviewListResponse.isSuccess()) {
+                if (reviewList == null) {
+                    reviewList = new ArrayList<>();
+                }
+                reviewList.addAll(reviewListResponse.getItems());
+
+                reviewAdapter.submitList(new ArrayList<>(reviewList));
+            }
+        });
+    }
+
+    private void loadProductDetail() {
+        productDetailViewModel.getProductDetail(productId).observe(getViewLifecycleOwner(), productResponst -> {
             Product product = (Product) productResponst.getItem();
             if(product != null){
                 binding.productName.setText(product.getName());
@@ -95,7 +137,7 @@ public class ProductDetailFragment extends Fragment {
                 binding.sellerName.setText(product.getSeller().getCompanyName());
                 Glide.with(this).load(product.getSeller().getAvt()).placeholder(R.drawable.logor).error(R.drawable.logor).into(binding.sellerAvt);
                 binding.sellerAddress.setText(product.getSeller().getAddress());
-                binding.voteCount.setText(String.valueOf(product.getRatingCount()));
+                binding.voteCount.setText(product.getRatingCount() + "votes");
                 binding.chatButton.setOnClickListener(v -> {
                     productDetailViewModel.postChat(product.getSeller().getUserId()).observe(getViewLifecycleOwner(), response -> {
                         if (response != null && response.isSuccess()) {
@@ -106,8 +148,49 @@ public class ProductDetailFragment extends Fragment {
                     });
                 });
 
+                containerLayout = binding.productOptions;
+                Map<String, List<Option>> groupedOptions = product.getOptions().stream().collect(Collectors.groupingBy(Option::getProductOption));
+
+                groupedOptions.forEach((key, value) -> {
+                    createRecyclerView(key, value);
+                });
             }
         });
+    }
+
+    private void createRecyclerView(String key, List<Option> value) {
+        TextView optionTitle = new TextView(requireActivity());
+        optionTitle.setText(key);
+        optionTitle.setTextSize(18);
+        optionTitle.setTextColor(ContextCompat.getColor(requireActivity(), R.color.textPrimary));
+        optionTitle.setTypeface(null, Typeface.BOLD);
+
+        LinearLayout.LayoutParams titleLayoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        titleLayoutParams.setMargins(0, 16, 0, 8);
+        optionTitle.setLayoutParams(titleLayoutParams);
+
+        RecyclerView recyclerView = new RecyclerView(requireActivity());
+        recyclerView.setId(View.generateViewId());
+        recyclerView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        OptionAdapter adapter = new OptionAdapter(value, this::onOptionChoose);
+        recyclerView.setAdapter(adapter);
+
+        containerLayout.addView(optionTitle);
+        containerLayout.addView(recyclerView);
+    }
+
+    private void onOptionChoose(Option option){
+
     }
 
     private void navigateToChatMessageFragment(Chat chatItemResponse) {

@@ -1,86 +1,86 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 public class Review {
-    private int reviewId;
-    private int productId;
-    private int orderId;
-    private int customerId;
-    private int rating;
-    private String comment;
-    private Product product;
-    private Customer customer;
-    private Order order;
+    private int ReviewId;
+    private int ProductId;
+    private int OrderId;
+    private int CustomerId;
+    private int Rating;
+    private String Comment;
+    private Product Product;
+    private Customer Customer;
+    private Order Order;
 
     public int getReviewId() {
-        return reviewId;
+        return ReviewId;
     }
 
     public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
+        ReviewId = reviewId;
     }
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
     public int getOrderId() {
-        return orderId;
+        return OrderId;
     }
 
     public void setOrderId(int orderId) {
-        this.orderId = orderId;
+        OrderId = orderId;
     }
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        CustomerId = customerId;
     }
 
     public int getRating() {
-        return rating;
+        return Rating;
     }
 
     public void setRating(int rating) {
-        this.rating = rating;
+        Rating = rating;
     }
 
     public String getComment() {
-        return comment;
+        return Comment;
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
+        Comment = comment;
     }
 
-    public Product getProduct() {
-        return product;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Product getProduct() {
+        return Product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(com.prmproject.clothesstoremobileandroid.Data.model.Product product) {
+        Product = product;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Customer getCustomer() {
+        return Customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(com.prmproject.clothesstoremobileandroid.Data.model.Customer customer) {
+        Customer = customer;
     }
 
-    public Order getOrder() {
-        return order;
+    public com.prmproject.clothesstoremobileandroid.Data.model.Order getOrder() {
+        return Order;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(com.prmproject.clothesstoremobileandroid.Data.model.Order order) {
+        Order = order;
     }
 }
 

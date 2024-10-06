@@ -60,6 +60,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatVi
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
+                holder.messageTime.setText("");
             }
         }
 
