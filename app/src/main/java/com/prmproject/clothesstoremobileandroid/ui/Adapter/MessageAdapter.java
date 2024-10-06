@@ -1,5 +1,6 @@
 package com.prmproject.clothesstoremobileandroid.ui.Adapter;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         private final TextView messageContent;
         private final TextView messageTime;
-        private final LinearLayout messageContainer;
+        private final LinearLayout messageContaint, messageContainer;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
+            messageContaint = itemView.findViewById(R.id.message);
             messageContainer = itemView.findViewById(R.id.messageContainer);
             messageContent = itemView.findViewById(R.id.messageContent);
             messageTime = itemView.findViewById(R.id.messageTime);
@@ -70,7 +72,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 }
             }
 
-            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.messageContainer.getLayoutParams();
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
 
             int leftMargin = 0;
             int rightMargin = 0;
@@ -80,16 +82,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.messageContainer.setBackgroundResource(R.color.colorPrimary);
                 holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
                 holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
+                holder.messageContaint.setGravity(Gravity.END);
+                holder.messageContainer.setGravity(Gravity.END);
             } else {
                 rightMargin = 200;
                 holder.messageContainer.setBackgroundResource(R.color.colorSecondary);
                 holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
                 holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
+                holder.messageContaint.setGravity(Gravity.START);
+                holder.messageContainer.setGravity(Gravity.START);
             }
 
             params.setMargins(leftMargin, params.topMargin, rightMargin, params.bottomMargin);
-            holder.messageContainer.setLayoutParams(params);
-
+            holder.itemView.setLayoutParams(params);
         }
     }
 
