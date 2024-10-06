@@ -1,5 +1,6 @@
 package com.prmproject.clothesstoremobileandroid.ui.Adapter;
 
+import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,17 +77,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             int leftMargin = 0;
             int rightMargin = 0;
+            GradientDrawable background = (GradientDrawable) holder.messageContainer.getBackground();
 
             if (message.isSender()) {
                 leftMargin = 200;
-                holder.messageContainer.setBackgroundResource(R.color.colorPrimary);
+                background.setColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary));
                 holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
                 holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textPrimary));
                 holder.messageContaint.setGravity(Gravity.END);
                 holder.messageContainer.setGravity(Gravity.END);
             } else {
                 rightMargin = 200;
-                holder.messageContainer.setBackgroundResource(R.color.colorSecondary);
+                background.setColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorSecondary));
                 holder.messageContent.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
                 holder.messageTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.textSecondary));
                 holder.messageContaint.setGravity(Gravity.START);

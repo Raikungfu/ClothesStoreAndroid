@@ -105,9 +105,9 @@ public class ChatFragment extends Fragment {
                             ChatMessage chatMessage = gson.fromJson(gson.toJson(result.getResponse()), ChatMessage.class);
 
                             if (chatMessage.getRoomId() == roomId) {
-                                chatMessages.add(chatMessage);
+                                chatMessages.add(0, chatMessage);
                                 getActivity().runOnUiThread(() -> {
-                                    messageAdapter.submitList(chatMessages, () -> {
+                                    messageAdapter.submitList(new ArrayList<>(chatMessages), () -> {
                                         adjustRecyclerView();
                                     });
                                 });
@@ -168,7 +168,7 @@ public class ChatFragment extends Fragment {
                 ChatMessage chatMessage = gson.fromJson(gson.toJson(messageResponse.getResponse()), ChatMessage.class);
 
                 if (chatMessage.getRoomId() == roomId) {
-                    chatMessages.add(chatMessage);
+                    chatMessages.add(0, chatMessage);
                     messageAdapter.submitList(new ArrayList<>(chatMessages), () -> {
                         adjustRecyclerView();
                     });

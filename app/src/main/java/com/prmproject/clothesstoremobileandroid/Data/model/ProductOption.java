@@ -6,6 +6,7 @@ public class ProductOption {
     private int ProductOptionsId;
     private String Name;
     private List<Option> Options;
+    private String NameDescription;
 
     public int getProductOptionsId() {
         return ProductOptionsId;
@@ -29,6 +30,14 @@ public class ProductOption {
 
     public void setOptions(List<Option> options) {
         Options = options;
+    }
+
+    public String getNameDescription() {
+        return NameDescription;
+    }
+
+    public void setNameDescription(String nameDescription) {
+        NameDescription = nameDescription;
     }
 }
 

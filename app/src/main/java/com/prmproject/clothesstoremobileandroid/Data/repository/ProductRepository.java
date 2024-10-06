@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.prmproject.Network.RetrofitClient;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.FilterListResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
 import com.prmproject.clothesstoremobileandroid.Data.remote.ProductApiService;
@@ -21,17 +22,19 @@ public class ProductRepository {
     private ProductApiService apiService;
     private ResponseListData<Product> responseListData;
     private ResponseObjectData<Product> responseObjectData;
+    private ResponseObjectData<FilterListResponse> responseFilterListObjectData;
 
     public ProductRepository() {
         apiService = RetrofitClient.getInstance().create(ProductApiService.class);
         responseListData = new ResponseListData<>();
         responseObjectData = new ResponseObjectData<>();
+        responseFilterListObjectData = new ResponseObjectData<>();
     }
 
-    public LiveData<ListResponse> getListProduct(String orderBy, int pageNumber, Integer categoryId, Integer sellerId) {
+    public LiveData<ListResponse> getListProduct(String orderBy, int pageNumber, Integer categoryId, Integer sellerId, String name, Long priceFrom, Long priceTo, int[] listOptionId, int[] listCategoryId) {
         MutableLiveData<ListResponse> responseListLiveData = new MutableLiveData<>();
 
-        apiService.getListProduct(orderBy, pageNumber, categoryId, sellerId).enqueue(new Callback<List<Product>>() {
+        apiService.getListProduct(orderBy, pageNumber, categoryId, sellerId, name, priceFrom, priceTo, listOptionId, listCategoryId).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 responseListLiveData.postValue(responseListData.getListData(response).getValue());
@@ -58,6 +61,24 @@ public class ProductRepository {
 
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
+                responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
+            }
+        });
+
+        return responseObjectLiveData;
+    }
+
+    public LiveData<ObjectResponse> getFilterList(){
+        MutableLiveData<ObjectResponse> responseObjectLiveData = new MutableLiveData<>();
+
+        apiService.getFilterList().enqueue(new Callback<FilterListResponse>() {
+            @Override
+            public void onResponse(Call<FilterListResponse> call, Response<FilterListResponse> response) {
+                responseObjectLiveData.postValue(responseFilterListObjectData.getObjectData(response).getValue());
+            }
+
+            @Override
+            public void onFailure(Call<FilterListResponse> call, Throwable t) {
                 responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
             }
         });

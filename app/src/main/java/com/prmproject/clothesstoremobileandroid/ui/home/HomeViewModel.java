@@ -24,14 +24,14 @@ public class HomeViewModel extends ViewModel {
         return categoryRepository.getListCategory();
     }
     public LiveData<ListResponse> getListNewestProduct(Integer categoryId, Integer sellerId) {
-        return productRepository.getListProduct("Newest", 1, categoryId, sellerId);
+        return productRepository.getListProduct("Newest", 1, categoryId, sellerId, null, null, null, null, null);
     }
 
     public LiveData<ListResponse> getListBestSellerProduct(Integer categoryId, Integer sellerId) {
-        return productRepository.getListProduct("BestSeller", 1, categoryId, sellerId);
+        return productRepository.getListProduct("BestSeller", 1, categoryId, sellerId, null, null, null, null, null);
     }
 
     public LiveData<ListResponse> getListSaleOffProduct(Integer categoryId, Integer sellerId) {
-        return productRepository.getListProduct("SaleOff", 1, categoryId, sellerId);
+        return productRepository.getListProduct("SaleOff", 1, categoryId, sellerId, null, null, null, null, null);
     }
 }

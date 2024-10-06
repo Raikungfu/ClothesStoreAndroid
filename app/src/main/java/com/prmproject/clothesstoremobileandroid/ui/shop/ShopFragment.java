@@ -23,6 +23,7 @@ import com.prmproject.clothesstoremobileandroid.ui.Adapter.CategoryAdapter;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.ProductAdapter;
 import com.prmproject.clothesstoremobileandroid.ui.common.AutoScrollManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopFragment extends Fragment {
@@ -76,19 +77,26 @@ public class ShopFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             int categoryId = args.getInt("categoryId", -1);
-            loadProductsByCategory("BestSeller", categoryId == -1 ? null : categoryId);
+            String name = args.getString("name", "");
+            int[] listOptionId = args.getIntArray("listOptionId");
+            int[] listCategoryId = args.getIntArray("listCategoryId");
+            if (!name.isEmpty() || (listOptionId != null && listOptionId.length > 0) || (listCategoryId != null && listCategoryId.length > 0)) {
+                loadProductsByCategory("BestSeller", categoryId == -1 ? null : categoryId, name, null, null, listOptionId, listCategoryId);
+            } else {
+                loadProductsByCategory("BestSeller", categoryId == -1 ? null : categoryId, null, null, null, null, null);
+            }
             Log.d("ShopFragment", "Loaded products for categoryId: " + categoryId);
         } else {
-            loadProductsByCategory("BestSeller", null);
+            loadProductsByCategory("BestSeller", null, null, null, null, null, null);
         }
     }
 
     private void onCategorySelected(Category category) {
-        loadProductsByCategory("BestSeller", category.getCategoryId());
+        loadProductsByCategory("BestSeller", category.getCategoryId(), null, null, null, null, null);
     }
 
-    private void loadProductsByCategory(String filter, Integer categoryId) {
-        shopViewModel.getListProduct(filter, 1, categoryId, null).observe(getViewLifecycleOwner(), productListResponse -> {
+    private void loadProductsByCategory(String filter, Integer categoryId, String name, Long priceFrom, Long priceTo, int[] listOptionId, int[] listCategoryId) {
+        shopViewModel.getListProduct(filter, 1, categoryId, null, name, priceFrom, priceTo, listOptionId, listCategoryId).observe(getViewLifecycleOwner(), productListResponse -> {
             if (productListResponse != null && productListResponse.isSuccess()) {
                 List<Product> productList = productListResponse.getItems();
                 productAdapter = new ProductAdapter(productList, this::onProductSelected);
