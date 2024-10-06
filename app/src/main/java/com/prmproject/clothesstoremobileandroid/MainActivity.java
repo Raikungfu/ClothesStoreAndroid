@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
 
         for (ProductOption option : value) {
             CheckBox checkBox = new CheckBox(this);
-            checkBox.setText(option.getName());
+            checkBox.setText(option.getNameDescription());
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
                     if (!selectedOption.contains(option.getProductOptionsId())) {
