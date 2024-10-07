@@ -47,10 +47,12 @@ public class LoginFragment extends Fragment {
                 authViewModel.login(user).observe(getViewLifecycleOwner(), response -> {
                     if (response != null && response.isStatus()) {
                         ((MainActivity) getActivity()).onMessage("Login successful!");
+
                         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         String token = response.getToken();
                         editor.putString("TOKEN_KEY", token);
+
                         RetrofitClient.updateToken(token);
                         ((ClothesStore) requireActivity().getApplication()).getSignalRService().updateToken(token);
                         ((ClothesStore) requireActivity().getApplication()).getSignalRService().startConnection();

@@ -3,6 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_shop">Shop</string>
     <string name="title_bag">Bag</string>
+    <string name="title_myorder">My Order</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_address">Ship Address</string>
+    <string name="title_add_address">Add Address</string>
     <string name="title_chat">Chat</string>
     <string name="title_message">Message</string>
     <string name="title_profile">Profile</string>

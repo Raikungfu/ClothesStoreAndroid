@@ -115,4 +115,71 @@
             android:id="@+id/action_navigation_login_required_to_navigation_login"
             app:destination="@id/navigation_login" />
     </fragment>
+
+
+
+    <fragment
+            android:id="@+id/navigation_profile"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.profile.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_profile">
+
+        <action
+                android:id="@+id/action_navigation_home_to_navigation_shop"
+                app:destination="@+id/navigation_myorder" />
+        <action
+                android:id="@+id/action_navigation_myprofile_to_navigation_address"
+                app:destination="@+id/navigation_my_address" />
+        <action
+                android:id="@+id/action_navigation_myprofile_to_navigation_setting"
+                app:destination="@+id/navigation_setting" />
+        <action
+                android:id="@+id/action_navigation_myprofile_to_navigation_information_of_account"
+                app:destination="@+id/navigation_information" />
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_myorder"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.order.OrderFragment"
+            android:label="@string/title_myorder"
+            tools:layout="@layout/fragment_order">
+        <action
+                android:id="@+id/action_orderFragment_to_orderDetailFragment"
+                app:destination="@id/navigation_ordersDetail" />
+        <argument
+                android:name="userId"
+                app:argType="integer" />
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_setting"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.setting.SettingsFragment"
+            android:label="@string/title_setting"
+            tools:layout="@layout/fragment_settings"/>
+    <fragment
+            android:id="@+id/navigation_my_address"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.address.AddressFragment"
+            android:label="@string/title_address"
+            tools:layout="@layout/fragment_address">
+        <action
+                android:id="@+id/action_navigation_myorder_to_navigation_newAddress"
+                app:destination="@+id/navigation_add_address" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_add_address"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.address.AddAddressFragment"
+            android:label="@string/title_add_address"
+            tools:layout="@layout/fragment_add_address"/>
+    <fragment
+            android:id="@+id/navigation_information"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.setting.InformationFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_information"/>
+    <fragment
+            android:id="@+id/navigation_ordersDetail"
+            android:name="com.prmproject.clothesstoremobileandroid.ui.order.OrdersDetailFragment"
+            android:label="@string/title_myorder"
+            tools:layout="@layout/fragment_orders_detail"/>
+
+
+
 </navigation>

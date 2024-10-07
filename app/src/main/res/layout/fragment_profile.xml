@@ -1,22 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/text_profile"
+<FrameLayout
+        android:id="@+id/fragment_profile"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.ProfileFragment">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="top|left">
+
+        <ImageView
+                android:id="@+id/information_view"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_gravity="top|left"
+                android:scaleType="centerInside"/>
+
+
+        <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_marginLeft="99dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="-0.5dp"
+                android:layout_gravity="top|left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#FF222222"
+                android:textSize="18dp"/>
+
+        <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="top|left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#FF9B9B9B"
+                android:textSize="14dp"/>
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:padding="1dp"
+            android:scrollbars="vertical" >
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <ImageButton
+                    android:id="@+id/order_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+
+            <FrameLayout
+                    android:layout_width="122dp"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top|left"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="My orders"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginBottom="-2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Already have 12 orders"
+                        android:textColor="#FF9B9B9B"
+                        android:textSize="11dp"/>
+            </FrameLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="82dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+
+            <ImageButton
+                    android:id="@+id/address_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+            <FrameLayout
+                    android:layout_width="153dp"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Shipping addresses"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+
+            </FrameLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="164dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <ImageButton
+                    android:id="@+id/payment_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+            <FrameLayout
+                    android:layout_width="143dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Payment methods"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="-2dp"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Visa  **34"
+                        android:textColor="#FF9B9B9B"
+                        android:textSize="11dp"/>
+            </FrameLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="246dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <ImageButton
+                    android:id="@+id/promocode_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+
+            <FrameLayout
+                    android:layout_width="158dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top|left"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Promocodes"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="-2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="You have special promocodes"
+                        android:textColor="#FF9B9B9B"
+                        android:textSize="11dp"/>
+            </FrameLayout>
+
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="328dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <ImageButton
+                    android:id="@+id/myreview_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+
+            <FrameLayout
+                    android:layout_width="105dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top|left"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="My reviews"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="-2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Reviews for 4 items"
+                        android:textColor="#FF9B9B9B"
+                        android:textSize="11dp"/>
+            </FrameLayout>
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="410dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <ImageButton
+                    android:id="@+id/settings_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:background="#E9EAE8E8"/>
+
+            <FrameLayout
+                    android:layout_width="124dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_gravity="top|left">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="-2.5dp"
+                        android:layout_marginBottom="-2.5dp"
+                        android:layout_gravity="top|left"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Settings"
+                        android:textColor="#FF222222"
+                        android:textSize="16dp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="-2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Notifications, password"
+                        android:textColor="#FF9B9B9B"
+                        android:textSize="11dp"/>
+            </FrameLayout>
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="500dp"
+                android:layout_gravity="top|left"
+                android:background="#E9EAE8E8">
+            <Button
+                    android:id="@+id/logout_Btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="centerInside"
+                    android:text="Log out"
+                    android:background="#E9EAE8E8"/>
+
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

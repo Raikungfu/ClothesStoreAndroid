@@ -2,53 +2,53 @@ package com.prmproject.clothesstoremobileandroid.Data.model;
 import java.util.List;
 
 public class Customer {
-    private int customerId;
-    private String name;
-    private String address;
-    private String avt;
-    private int userId;
+    private int CustomerId;
+    private String Name;
+    private String Address;
+    private String Avt;
+    private int UserId;
     private User user;
     private List<Cart> carts;
     private List<Order> orders;
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        this.CustomerId = customerId;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.Address = address;
     }
 
     public String getAvt() {
-        return avt;
+        return Avt;
     }
 
     public void setAvt(String avt) {
-        this.avt = avt;
+        this.Avt = avt;
     }
 
     public int getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.UserId = userId;
     }
 
     public User getUser() {
