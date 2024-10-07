@@ -84,6 +84,8 @@ public class HomeFragment extends Fragment {
     private void navigateToShopFragment(int categoryId) {
         Bundle args = new Bundle();
         args.putInt("categoryId", categoryId);
+        args.putInt("priceFrom", -1);
+        args.putInt("priceTo", -1);
 
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.navigation_shop, args);
@@ -107,7 +109,6 @@ public class HomeFragment extends Fragment {
     private void onProductSelected(Product product) {
         Bundle args = new Bundle();
         args.putInt("productId", product.getProductId());
-
 
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.navigation_product_detail, args);

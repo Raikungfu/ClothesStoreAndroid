@@ -8,6 +8,7 @@ public class Option {
     private float Price;
     private ProductOption ProductOptions;
     private Product Product;
+    private String ProductOption;
 
     public int getOptionId() {
         return OptionId;
@@ -57,11 +58,19 @@ public class Option {
         ProductOptions = productOptions;
     }
 
-    public com.prmproject.clothesstoremobileandroid.Data.model.Product getProduct() {
+    public Product getProduct() {
         return Product;
     }
 
-    public void setProduct(com.prmproject.clothesstoremobileandroid.Data.model.Product product) {
+    public void setProduct(Product product) {
         Product = product;
+    }
+
+    public String getProductOption() {
+        return ProductOption;
+    }
+
+    public void setProductOption(String productOption) {
+        ProductOption = productOption;
     }
 }

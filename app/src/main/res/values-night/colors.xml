@@ -1,8 +1,10 @@
 <resources>
     <color name="colorPrimary">#966BCA</color>
+    <color name="colorPrimaryPress">#593B7C</color>
     <color name="colorPrimaryVariant">#004CFF</color>
     <color name="colorSecondary">#FFFFFF</color>
-    <color name="colorSecondaryVariant">#03DAC5</color>
+    <color name="colorSecondaryVariant">#013476</color>
+    <color name="colorSecondaryVariantPress">#001938</color>
 
     <color name="textPrimary">#FFFFFF</color>
     <color name="textSecondary">#B0BEC5</color>
@@ -11,5 +13,6 @@
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="gray">#808080</color>
+    <color name="yellow">#FFDC00</color>
     <color name="purple_700">#673AB7</color>
 </resources>

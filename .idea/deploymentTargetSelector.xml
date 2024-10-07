@@ -6,8 +6,8 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="ClothesStoreMobileAndroid">
-        <option name="selectionMode" value="DIALOG" />
-        <DropdownSelection timestamp="2024-10-04T16:57:47.553577Z">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-10-05T09:17:00.543284600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=LMG710TMd0c19bda" />

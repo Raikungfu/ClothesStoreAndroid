@@ -27,7 +27,7 @@ android {
 
         }
         debug {
-            // buildConfigField("String", "BASE_URL", "\"http://192.168.1.166:7248/\"")
+            // buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:7248/\"")
 
             buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
@@ -70,7 +70,6 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.25")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.0")
-
     implementation ("com.auth0.android:jwtdecode:2.0.0")
-
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 }
