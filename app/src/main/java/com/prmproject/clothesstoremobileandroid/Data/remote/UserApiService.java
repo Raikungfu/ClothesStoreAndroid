@@ -1,17 +1,17 @@
 package com.prmproject.clothesstoremobileandroid.Data.remote;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.Customer;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ProfileResponse;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-
-import java.util.List;
 
 public interface UserApiService {
-    @GET("api/Auth/Customer/{userId}")
-    Call<Customer> getInfoCustomer(@Path("userId") int userId);
+    @GET("api/Auth/GetProfile")
+    Call<ProfileResponse> getInfo();
+
     @POST("api/Auth/Customer/{userId}")
-    Call<Customer> updateCustomer(@Path("userId") int userId,@Body Customer customer);
+    Call<Customer> updateCustomer(@Body Customer customer);
 }

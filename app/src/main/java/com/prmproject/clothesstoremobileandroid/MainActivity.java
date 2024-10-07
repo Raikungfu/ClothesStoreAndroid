@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                 R.id.navigation_shop,
                 R.id.navigation_bag,
                 R.id.navigation_list_chat,
-                R.id.navigation_login)
+                R.id.navigation_profile)
                 .setOpenableLayout(drawerLayout)
                 .build();
 
@@ -142,8 +142,12 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
             });
         }
 
-        listenFromServer();
-        loadListFilter();
+        try{
+            listenFromServer();
+            loadListFilter();
+        }catch (Exception e){
+            Log.e("Error", "Error listen from server: " + e.getMessage());
+        }
     }
 
     private void loadListFilter(){

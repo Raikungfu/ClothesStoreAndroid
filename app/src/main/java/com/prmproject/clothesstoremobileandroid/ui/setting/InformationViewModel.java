@@ -13,10 +13,10 @@ public class InformationViewModel extends ViewModel {
         userRepository = new UserRepository();
     }
 
-    public LiveData<ObjectResponse> getCustomerInfo(int userId) {
-        return userRepository.getInfoCustomer(userId);
+    public LiveData<ObjectResponse> getInfo() {
+        return userRepository.getInfo();
     }
-    public LiveData<ObjectResponse> updateCustomerInfo(int userId, Customer customer) {
-        return userRepository.updateCustomer(userId, customer);
+    public LiveData<ObjectResponse> updateCustomerInfo(Customer customer) {
+        return userRepository.updateCustomer(customer);
     }
 }

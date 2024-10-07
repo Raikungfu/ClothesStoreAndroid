@@ -114,20 +114,21 @@ package com.prmproject.clothesstoremobileandroid.ui.profile;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import com.auth0.android.jwt.JWT;
+
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 
@@ -151,7 +152,6 @@ public class ProfileFragment extends Fragment {
             return view;
         }
 
-        decodeToken();
         if (username != null) {
             usernameTextView.setText(username);
         }
@@ -160,8 +160,7 @@ public class ProfileFragment extends Fragment {
         linkToOrder.setOnClickListener(v -> {
             if (userId != null) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("userId", Integer.parseInt(userId));
-                navController.navigate(R.id.navigation_myorder, bundle);
+                navController.navigate(R.id.navigation_myorder);
             }
         });
 
@@ -180,9 +179,7 @@ public class ProfileFragment extends Fragment {
         ImageView linkToInformation = view.findViewById(R.id.information_view);
         linkToInformation.setOnClickListener(v -> {
             if (userId != null) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("userId", Integer.parseInt(userId));
-                navController.navigate(R.id.navigation_information, bundle);
+                navController.navigate(R.id.navigation_information);
             }
         });
 
@@ -205,17 +202,6 @@ public class ProfileFragment extends Fragment {
         navController.popBackStack(R.id.navigation_home, true);
         navController.navigate(R.id.navigation_login_required);
         ((MainActivity) requireActivity()).onMessage("Please log in to access your profile.");
-    }
-
-    private void decodeToken() {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("TOKEN_KEY", null);
-
-        if (token != null && !token.isEmpty()) {
-            JWT jwt = new JWT(token);
-            userId = jwt.getClaim("Id").asString();
-
-        }
     }
 
     private void logout() {
