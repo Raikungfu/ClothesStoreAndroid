@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp">
+
+    <TextView
+            android:id="@+id/CartProductName"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginRight="165dp"
+            android:layout_marginTop="15dp"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/textPrimary"
+            android:textSize="16dp" />
+    <ImageView
+            android:id="@+id/CartProductImage"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|left"
+            android:scaleType="centerInside"/>
+
+
+    <TextView
+            android:id="@+id/CartProductQuantity"
+            android:layout_width="60dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="76dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="11dp" />
+    <ImageButton
+            android:id="@+id/btn_plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="73dp"
+            android:background="@drawable/plus"/>
+    <ImageButton
+            android:id="@+id/btn_minus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="73dp"
+    android:background="@drawable/minus"/>
+
+    <TextView
+            android:id="@+id/CartProductDescription"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="11dp" />
+
+    <TextView
+            android:id="@+id/CartProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="70dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="14dp" />
+
+</androidx.cardview.widget.CardView>

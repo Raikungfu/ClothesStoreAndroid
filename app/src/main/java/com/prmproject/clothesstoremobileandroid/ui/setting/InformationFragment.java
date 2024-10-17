@@ -106,7 +106,7 @@ public class InformationFragment extends Fragment {
     private FragmentInformationBinding binding;
     private InformationViewModel informationViewModel;
     private EditText txtFullName, txtAddress;
-    private ImageView imgAvt;
+    private ImageView imgAvt,imgCover;
     private Button updateInfoBtn;
 
     @Override
@@ -116,6 +116,7 @@ public class InformationFragment extends Fragment {
 
         setupViews();
         setupUpdateButton();
+        loadInfo();
 
         return binding.getRoot();
     }
@@ -124,6 +125,7 @@ public class InformationFragment extends Fragment {
         txtFullName = binding.txtFullname;
         txtAddress = binding.txtAddress;
         imgAvt = binding.customerAvatar;
+        imgCover = binding.cover;
         updateInfoBtn = binding.updateInfoBtn;
     }
 
@@ -132,6 +134,9 @@ public class InformationFragment extends Fragment {
             if (customerResponse != null && customerResponse.isSuccess()) {
                 ProfileResponse customer = (ProfileResponse) customerResponse.getItem();
                 displayInfo(customer);
+            if (customerResponse != null) {
+                ProfileResponse profile = (ProfileResponse) customerResponse.getItem();
+                displayInfo(profile);
             }
         });
     }
@@ -147,18 +152,28 @@ public class InformationFragment extends Fragment {
                         .placeholder(R.drawable.logor)
                         .error(R.drawable.logor)
                         .into(imgAvt);
-                return;
+//                Glide.with(this)
+//                        .load(userRes.getAdmin().getCover())
+//                        .placeholder(R.drawable.logor)
+//                        .error(R.drawable.logor)
+//                        .into(imgCover);
+                break;
 
             case SELLER:
                 txtFullName.setText(userRes.getSeller().getCompanyName());
                 txtAddress.setText(userRes.getSeller().getAddress());
-
+//                Glide.with(this)
+//                        .load(userRes.getAdmin().getCover())
+//                        .placeholder(R.drawable.logor)
+//                        .error(R.drawable.logor)
+//                        .into(imgCover);
                 Glide.with(this)
                         .load(userRes.getSeller().getAvt())
                         .placeholder(R.drawable.logor)
                         .error(R.drawable.logor)
                         .into(imgAvt);
-                return;
+                break;
+
             case CUSTOMER:
                 txtFullName.setText(userRes.getCustomer().getName());
                 txtAddress.setText(userRes.getCustomer().getAddress());
@@ -168,9 +183,10 @@ public class InformationFragment extends Fragment {
                         .placeholder(R.drawable.logor)
                         .error(R.drawable.logor)
                         .into(imgAvt);
-                return;
+                break;
+
             default:
-                Log.e("Error", "Not found type user!");
+                Log.e("Error", "User type not found!");
         }
     }
 
@@ -190,7 +206,7 @@ public class InformationFragment extends Fragment {
     }
 
     private boolean validateInputs(String name, String address) {
-        if (name.isEmpty() || address.isEmpty() ) {
+        if (name.isEmpty() || address.isEmpty()) {
             Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
             return false;
         }

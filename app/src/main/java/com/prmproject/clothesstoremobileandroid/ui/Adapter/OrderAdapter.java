@@ -103,7 +103,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         Order order = orderList.get(position);
         if (order != null) {
-            holder.txtOrderNumber.setText(String.valueOf(order.getOrderId()));
+            holder.txtOrderNumber.setText("Order ID :"+String.valueOf(order.getOrderId()));
             holder.txtStatus.setText(order.getStatus());
             holder.txtOrderDate.setText(order.getOrderDate().toString());
             holder.txtTotalAmountValue.setText("$" + String.valueOf(order.getTotalAmount()));
@@ -130,7 +130,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     public void updateOrders(List<Order> newOrderList) {
         this.orderList = newOrderList;
-        notifyDataSetChanged(); // Refresh the RecyclerView
+        notifyDataSetChanged();
     }
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder {

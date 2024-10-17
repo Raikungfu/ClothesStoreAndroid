@@ -1,19 +1,21 @@
 package com.prmproject.clothesstoremobileandroid.ui.profile;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ProfileViewModel extends ViewModel {
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
+import com.prmproject.clothesstoremobileandroid.Data.repository.UserRepository;
 
-    private final MutableLiveData<String> mText;
+public class ProfileViewModel extends ViewModel {
+    private UserRepository userRepository;
+    private LiveData<ObjectResponse> userProfile;
 
     public ProfileViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        userRepository = new UserRepository();
+        userProfile = userRepository.getUser();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<ObjectResponse> getUserProfile() {
+        return userProfile;
     }
 }

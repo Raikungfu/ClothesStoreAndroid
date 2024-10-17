@@ -9,10 +9,11 @@ import retrofit2.http.Path;
 import java.util.List;
 
 public interface OrderApiService {
-    @GET("api/Order/GetOrderItem/{userId}")
-    Call<List<Order>> getOrdersByUserId(@Path("userId") int userId);
+    @GET("api/Order/GetOrderItem")
+    Call<List<Order>> getOrdersByUserId();
 
-    @GET("api/OrderItem/GetOrderItem/{orderId}")
-    Call<List<OrderItem>> getOrderDetail(@Path("userId") int orderId);
+    @GET("api/OrderItem/GetOrderItemDetail/{orderId}")
+    Call<List<OrderItem>> getOrderDetail(@Path("orderId") int orderId);
+
 
 }

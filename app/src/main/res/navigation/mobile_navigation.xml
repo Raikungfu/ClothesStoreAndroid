@@ -134,7 +134,9 @@
             android:name="com.prmproject.clothesstoremobileandroid.ui.profile.ProfileFragment"
             android:label="@string/title_profile"
             tools:layout="@layout/fragment_profile">
-
+        <argument
+                android:name="userId"
+                app:argType="integer" />
         <action
                 android:id="@+id/action_navigation_home_to_navigation_shop"
                 app:destination="@+id/navigation_myorder" />

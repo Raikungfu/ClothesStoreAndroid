@@ -17,15 +17,21 @@
                 android:id="@+id/information_view"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="top|left"
                 android:scaleType="centerInside"/>
-
+        <ImageView
+                android:id="@+id/userAvt"
+                android:layout_width="93dp"
+                android:layout_height="72dp"
+                android:layout_gravity="top|left"
+                android:scaleType="centerInside"/>
 
         <TextView
                 android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
-                android:layout_marginLeft="99dp"
+                android:layout_marginLeft="110dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="-0.5dp"
                 android:layout_gravity="top|left"
@@ -33,21 +39,22 @@
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="#FF222222"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
                 android:textSize="18dp"/>
 
         <TextView
                 android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="40dp"
                 android:layout_gravity="top|left"
                 android:gravity="left|center_vertical"
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="#FF9B9B9B"
+                android:textColor="@color/textPrimary"
                 android:textSize="14dp"/>
 
 
@@ -60,18 +67,16 @@
             android:layout_marginTop="120dp"
             android:padding="1dp"
             android:scrollbars="vertical" >
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
-            <ImageButton
+                android:layout_gravity="top|left">
+            <ImageView
                     android:id="@+id/order_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
 
             <FrameLayout
                     android:layout_width="122dp"
@@ -91,7 +96,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="My orders"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
 
@@ -111,21 +116,19 @@
             </FrameLayout>
 
 
-        </FrameLayout>
-        <FrameLayout
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="82dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
+                android:layout_gravity="top|left">
 
-            <ImageButton
+            <ImageView
                     android:id="@+id/address_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
             <FrameLayout
                     android:layout_width="153dp"
                     android:layout_height="36dp"
@@ -144,27 +147,25 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="Shipping addresses"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
 
             </FrameLayout>
 
 
-        </FrameLayout>
-        <FrameLayout
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="164dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
-            <ImageButton
+                android:layout_gravity="top|left">
+            <ImageView
                     android:id="@+id/payment_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
             <FrameLayout
                     android:layout_width="143dp"
                     android:layout_height="35dp"
@@ -183,7 +184,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="Payment methods"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
                 <TextView
@@ -202,20 +203,18 @@
             </FrameLayout>
 
 
-        </FrameLayout>
-        <FrameLayout
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="246dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
-            <ImageButton
+                android:layout_gravity="top|left">
+            <ImageView
                     android:id="@+id/promocode_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
 
             <FrameLayout
                     android:layout_width="158dp"
@@ -235,7 +234,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="Promocodes"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
                 <TextView
@@ -252,20 +251,18 @@
                         android:textSize="11dp"/>
             </FrameLayout>
 
-        </FrameLayout>
-        <FrameLayout
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="328dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
-            <ImageButton
+                android:layout_gravity="top|left">
+            <ImageView
                     android:id="@+id/myreview_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
 
             <FrameLayout
                     android:layout_width="105dp"
@@ -285,7 +282,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="My reviews"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
                 <TextView
@@ -302,20 +299,18 @@
                         android:textColor="#FF9B9B9B"
                         android:textSize="11dp"/>
             </FrameLayout>
-        </FrameLayout>
-        <FrameLayout
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="410dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
-            <ImageButton
+                android:layout_gravity="top|left">
+            <ImageView
                     android:id="@+id/settings_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_gravity="top|left"
-                    android:scaleType="centerInside"
-                    android:background="#E9EAE8E8"/>
+                    android:scaleType="centerInside"/>
 
             <FrameLayout
                     android:layout_width="124dp"
@@ -335,7 +330,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="Settings"
-                        android:textColor="#FF222222"
+                        android:textColor="@color/textPrimary"
                         android:textSize="16dp"/>
 
                 <TextView
@@ -351,13 +346,12 @@
                         android:textColor="#FF9B9B9B"
                         android:textSize="11dp"/>
             </FrameLayout>
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginTop="500dp"
-                android:layout_gravity="top|left"
-                android:background="#E9EAE8E8">
+                android:layout_gravity="top|left">
             <Button
                     android:id="@+id/logout_Btn"
                     android:layout_width="match_parent"
@@ -365,7 +359,7 @@
                     android:layout_gravity="top|left"
                     android:scaleType="centerInside"
                     android:text="Log out"
-                    android:background="#E9EAE8E8"/>
+                    android:background="@drawable/bg_button_primary"/>
 
         </FrameLayout>
     </FrameLayout>

@@ -4,42 +4,50 @@ import com.prmproject.clothesstoremobileandroid.Data.model.Admin;
 import com.prmproject.clothesstoremobileandroid.Data.model.Customer;
 import com.prmproject.clothesstoremobileandroid.Data.model.Seller;
 import com.prmproject.clothesstoremobileandroid.Data.model.User;
+import com.google.gson.annotations.SerializedName;
 
 public class ProfileResponse {
-    private User User;
-    private Customer Customer;
-    private Seller Seller;
-    private Admin Admin;
+    @SerializedName("User")
+    private User user;
+
+    @SerializedName("Customer")
+    private Customer customer;
+
+    @SerializedName("Seller")
+    private Seller seller;
+
+    @SerializedName("Admin")
+    private Admin admin;
 
     public User getUser() {
-        return User;
+        return user;
     }
 
     public void setUser(User user) {
-        User = user;
+        this.user = user;
     }
 
     public Customer getCustomer() {
-        return Customer;
+        return customer;
     }
 
     public void setCustomer(Customer customer) {
-        Customer = customer;
+        this.customer = customer;
     }
 
     public Seller getSeller() {
-        return Seller;
+        return seller;
     }
 
     public void setSeller(Seller seller) {
-        Seller = seller;
+        this.seller = seller;
     }
 
     public Admin getAdmin() {
-        return Admin;
+        return admin;
     }
 
     public void setAdmin(Admin admin) {
-        Admin = admin;
+        this.admin = admin;
     }
 }

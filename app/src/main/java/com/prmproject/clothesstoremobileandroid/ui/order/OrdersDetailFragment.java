@@ -5,72 +5,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.prmproject.clothesstoremobileandroid.Data.model.Order;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.prmproject.clothesstoremobileandroid.R;
-import com.prmproject.clothesstoremobileandroid.Data.repository.OrderRepository; // Assuming you have a repository to get the order data
+import com.prmproject.clothesstoremobileandroid.Data.model.OrderItem;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
+import com.prmproject.clothesstoremobileandroid.ui.Adapter.OrderItemAdapter;
+import com.prmproject.clothesstoremobileandroid.ui.order.OrdersDetailViewModel;
 
+import java.util.List;
 
-//    private TextView txtOrderNumber, txtOrderDate, txtTotalAmountValue, txtStatus;
-//    private TextView address, payment, shipFee, discount, totalAmount;
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_orders_detail, container, false);
-//
-//        // Initialize TextViews
-//        txtOrderNumber = view.findViewById(R.id.txt_order_number);
-//        txtOrderDate = view.findViewById(R.id.txt_order_date);
-//        txtTotalAmountValue = view.findViewById(R.id.txt_total_amount_value);
-//        txtStatus = view.findViewById(R.id.txt_status);
-//        address = view.findViewById(R.id.address);
-//        payment = view.findViewById(R.id.payment);
-//        shipFee = view.findViewById(R.id.shipFee);
-//        discount = view.findViewById(R.id.discount);
-//        totalAmount = view.findViewById(R.id.totalAmount);
-//
-//        // Get the order ID from the arguments
-//        if (getArguments() != null) {
-//            int orderId = getArguments().getInt("orderId");
-//
-//            // Fetch the order details using the repository (implement the method in your repository)
-//            Order order = OrderViewModel.
-//
-//            // Display the order details
-//            if (order != null) {
-//                displayOrderDetails(order);
-//            }
-//        }
-//
-//        return view;
-//    }
-//
-//    private void displayOrderDetails(Order order) {
-//        txtOrderNumber.setText(String.valueOf(order.getOrderId()));
-//        txtOrderDate.setText(order.getOrderDate());
-//        txtTotalAmountValue.setText("$" + order.getTotalAmount());
-//        txtStatus.setText(order.getStatus());
-//        address.setText(order.getShipAddress());
-//        payment.setText(order.getPaymentMethod());
-//        shipFee.setText("$" + order.getShipFee());
-//        discount.setText(order.getDiscountCode() != null ? order.getDiscountCode() : "No discount");
-//        totalAmount.setText("$" + order.getTotalAmount()); // Adjust if necessary
-//    }
-//}
 public class OrdersDetailFragment extends Fragment {
-
+    private OrdersDetailViewModel ordersDetailViewModel;
+    private OrderItemAdapter orderDetailAdapter;
+    private RecyclerView recyclerView;
     private TextView txtOrderNumber, txtOrderDate, txtTotalAmount, txtStatus, txtAddress, txtPayment, txtShipFee, txtDiscount;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_orders_detail, container, false);
 
-        // Initialize views
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_orders_detail, container, false);
+        recyclerView = view.findViewById(R.id.listViewProduct);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        ordersDetailViewModel = new ViewModelProvider(this).get(OrdersDetailViewModel.class);
+
         txtOrderNumber = view.findViewById(R.id.txt_order_number);
         txtOrderDate = view.findViewById(R.id.txt_order_date);
         txtTotalAmount = view.findViewById(R.id.txt_total_amount_value);
@@ -80,19 +45,20 @@ public class OrdersDetailFragment extends Fragment {
         txtShipFee = view.findViewById(R.id.shipFee);
         txtDiscount = view.findViewById(R.id.discount);
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            int orderId = bundle.getInt("orderId");
-            String orderDate = bundle.getString("orderDate");
-            double totalAmount = bundle.getDouble("totalAmount");
-            String status = bundle.getString("status");
-            String shipAddress = bundle.getString("shipAddress");
-            String paymentMethod = bundle.getString("paymentMethod");
-            double shipFee = bundle.getDouble("shipFee");
-            String discountCode = bundle.getString("discountCode");
+        Bundle args = getArguments();
+        if (args != null) {
+            int orderId = args.getInt("orderId");
+            String orderDate =args.getString("orderDate");
+            double totalAmount = args.getDouble("totalAmount");
+            String status = args.getString("status");
+            String shipAddress = args.getString("shipAddress");
+            String paymentMethod = args.getString("paymentMethod");
+            double shipFee = args.getDouble("shipFee");
+            String discountCode = args.getString("discountCode");
+            ordersDetailViewModel.getOrderDetail(orderId).observe(getViewLifecycleOwner(), this::updateUI);
 
-            // Set the retrieved data to the respective views
-            txtOrderNumber.setText(String.valueOf(orderId));
+
+                        txtOrderNumber.setText(String.valueOf(orderId));
             txtOrderDate.setText(orderDate);
             txtTotalAmount.setText("$" + totalAmount);
             txtStatus.setText(status);
@@ -100,8 +66,20 @@ public class OrdersDetailFragment extends Fragment {
             txtPayment.setText(paymentMethod);
             txtShipFee.setText("$" + shipFee);
             txtDiscount.setText(discountCode != null ? discountCode : "No Discount");
+
+
         }
 
         return view;
+    }
+
+    private void updateUI(ListResponse<OrderItem> orderItemListResponse) {
+        if (orderItemListResponse != null && orderItemListResponse.getItems() != null) {
+            List<OrderItem> orderItems = orderItemListResponse.getItems();
+            orderDetailAdapter = new OrderItemAdapter(orderItems);
+            recyclerView.setAdapter(orderDetailAdapter);
+        } else {
+            Toast.makeText(getContext(), "Failed to load order items", Toast.LENGTH_SHORT).show();
+        }
     }
 }

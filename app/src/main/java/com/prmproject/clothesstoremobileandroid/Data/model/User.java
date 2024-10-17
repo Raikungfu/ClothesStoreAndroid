@@ -1,15 +1,31 @@
 package com.prmproject.clothesstoremobileandroid.Data.model;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.type.UserType;
+import com.google.gson.annotations.SerializedName;
 
 public class User {
+    @SerializedName("UserId")
     private int userId;
+
+    @SerializedName("Username")
     private String username;
+
+    @SerializedName("Password")
     private String password;
+
+    @SerializedName("Email")
     private String email;
+
+    @SerializedName("Phone")
     private String phone;
+
+    @SerializedName("Status")
     private boolean status;
-    private UserType userType;
+
+    @SerializedName("UserType")
+    private int userType;
+
+    // Getter và Setter
 
     public int getUserId() {
         return userId;
@@ -60,10 +76,10 @@ public class User {
     }
 
     public UserType getUserType() {
-        return userType;
+        return UserType.values()[userType];
     }
 
-    public void setUserType(UserType userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
     }
 }

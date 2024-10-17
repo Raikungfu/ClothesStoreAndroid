@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.prmproject.Network.RetrofitClient;
 import com.prmproject.clothesstoremobileandroid.Data.model.Customer;
+import com.prmproject.clothesstoremobileandroid.Data.model.User;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ProfileResponse;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.UserResponse;
 import com.prmproject.clothesstoremobileandroid.Data.remote.UserApiService;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseObjectData;
 
@@ -18,11 +20,14 @@ public class UserRepository {
     private UserApiService apiService;
     private ResponseObjectData<Customer> responseObjectData;
     private ResponseObjectData<ProfileResponse> responseProfileObjectData;
+    private ResponseObjectData<UserResponse> responseUserData;
+
 
     public UserRepository() {
         apiService = RetrofitClient.getInstance().create(UserApiService.class);
         responseObjectData = new ResponseObjectData<>();
-
+        responseProfileObjectData=new ResponseObjectData<>();
+responseUserData=new ResponseObjectData<>();
     }
 
     public LiveData<ObjectResponse> getInfo() {
@@ -38,6 +43,27 @@ public class UserRepository {
 
             @Override
             public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
+            }
+        });
+
+        return responseObjectLiveData;
+    }
+
+
+    public LiveData<ObjectResponse> getUser() {
+        MutableLiveData<ObjectResponse> responseObjectLiveData = new MutableLiveData<>();
+
+        apiService.getUsers().enqueue(new Callback<UserResponse>() {
+            @Override
+
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                responseObjectLiveData.postValue(responseUserData.getObjectData(response).getValue());
+            }
+
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
             }
         });

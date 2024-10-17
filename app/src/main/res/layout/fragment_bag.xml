@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,17 +7,96 @@
     android:layout_height="match_parent"
     tools:context=".ui.bag.BagFragment" >
 
-    <TextView
-        android:id="@+id/text_bag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <TextView-->
+<!--        android:id="@+id/text_bag"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+                android:id="@+id/textViewNoOrders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You have no order"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCart"
+                android:layout_width="match_parent"
+                android:layout_height="505dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:dividerHeight="8dp"/>
+
+
+        <EditText
+                android:layout_width="370dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="147dp"
+                android:layout_marginTop="30dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:hint="Enter your promo code"
+                android:textSize="14dp"/>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="40dp">
+            <TextView
+                    android:layout_width="162dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="200dp"
+                    android:gravity="left|center_vertical"
+                    android:text="Total Amount"
+                    android:textSize="14dp"/>
+            <TextView
+                    android:id="@+id/txt_total"
+                    android:layout_width="162dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginRight="200dp"
+                    android:gravity="left|center_vertical"
+                    android:textSize="14dp"/>
+        </FrameLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="40dp">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text="Checkout"
+                android:textSize="14sp"
+                android:textColor="@color/textPrimary"
+                android:background="@drawable/bg_button_secondary"/>
+        </FrameLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

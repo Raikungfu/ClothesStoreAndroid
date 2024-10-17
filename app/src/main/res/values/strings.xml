@@ -16,6 +16,7 @@
     <string name="enter_your_password">Enter your password...</string>
     <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
+    <string name="save">SAVE</string>
     <string name="or_sign_up_with_social_account">Or sign up with social account</string>
     <string name="image_description">Image Description</string>
     <string name="already_have_an_account">Already have an account?</string>

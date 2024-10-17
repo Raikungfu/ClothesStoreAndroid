@@ -14,7 +14,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="14dp">
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginLeft="2dp"
@@ -24,7 +24,6 @@
                     android:id="@+id/txt_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:hint="Full name"
                     android:textColorHint="#FF9B9B9B"
                     android:textSize="16sp"
@@ -32,10 +31,10 @@
                     android:textColor="#FF222222"
                     android:gravity="center_vertical"/>
 
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginLeft="1dp"
@@ -47,7 +46,6 @@
                     android:id="@+id/txt_address"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:paddingLeft="20dp"
                     android:gravity="left|center_vertical"
                     android:textColor="#FF222222"
@@ -67,9 +65,9 @@
                     android:text="Address"
                     android:textColor="#FF9B9B9B"
                     android:textSize="11dp" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginLeft="1dp"
@@ -80,7 +78,6 @@
                     android:id="@+id/txt_city"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:paddingLeft="20dp"
                     android:gravity="left|center_vertical"
                     android:textColor="#FF222222"
@@ -100,9 +97,9 @@
                     android:text="City"
                     android:textColor="#FF9B9B9B"
                     android:textSize="11dp" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -113,7 +110,6 @@
                     android:id="@+id/txt_state"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:paddingLeft="20dp"
                     android:gravity="left|center_vertical"
                     android:textColor="#FF222222"
@@ -132,9 +128,9 @@
                     android:text="State/Province/Region"
                     android:textColor="#FF9B9B9B"
                     android:textSize="11dp" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
@@ -146,7 +142,6 @@
                     android:id="@+id/txt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:paddingLeft="20dp"
                     android:gravity="left|center_vertical"
                     android:textColor="#FF222222"
@@ -165,9 +160,9 @@
                     android:text="Phone"
                     android:textColor="#FF9B9B9B"
                     android:textSize="11dp" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
                 android:layout_width="343dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="420dp"
@@ -177,7 +172,6 @@
                     android:id="@+id/txt_country"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:background="#FDFFFFFF"
                     android:paddingLeft="20dp"
                     android:gravity="left|center_vertical"
                     android:textColor="#FF222222"
@@ -194,7 +188,7 @@
                     android:text="Country"
                     android:textColor="#FF9B9B9B"
                     android:textSize="11dp" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
 
 
@@ -213,7 +207,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:scaleType="centerCrop"
-                android:text="Save Address"/>
+                android:text="Save Address"
+                android:background="@drawable/img_rect_button_primary_big_inactive"
+                android:textColor="#FFFFFFFF"/>
 
     </FrameLayout>
 

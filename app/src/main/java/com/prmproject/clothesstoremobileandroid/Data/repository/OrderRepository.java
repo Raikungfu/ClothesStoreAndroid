@@ -27,10 +27,10 @@ public class OrderRepository {
     }
 
 
-    public LiveData<ListResponse> getOrders(int userId) {
+    public LiveData<ListResponse> getOrders() {
         MutableLiveData<ListResponse> ordersLiveData = new MutableLiveData<>();
 
-        apiService.getOrdersByUserId(userId).enqueue(new Callback<List<Order>>() {
+        apiService.getOrdersByUserId().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 if (response.isSuccessful()) {
@@ -47,22 +47,26 @@ public class OrderRepository {
         return ordersLiveData;
     }
 
-    public LiveData<ListResponse> getOrderDetail(int orderId) {
-        MutableLiveData<ListResponse> orderDetailLiveData = new MutableLiveData<>();
+    public LiveData<ListResponse<OrderItem>> getOrderDetail(int orderId) {
+        MutableLiveData<ListResponse<OrderItem>> orderItemsLiveData = new MutableLiveData<>();
 
         apiService.getOrderDetail(orderId).enqueue(new Callback<List<OrderItem>>() {
             @Override
-            public void onResponse(Call<List<OrderItem>> call, Response<List<OrderItem>> responseDetail) {
-                orderDetailLiveData.postValue(responseListDetail.getListData(responseDetail).getValue());
+            public void onResponse(Call<List<OrderItem>> call, Response<List<OrderItem>> response) {
+                if (response.isSuccessful()) {
+                    orderItemsLiveData.postValue(responseListDetail.getListData(response).getValue());
+                } else {
+                    orderItemsLiveData.setValue(new ListResponse<>(null, "Failed to load order items", false));
+                }
             }
 
             @Override
             public void onFailure(Call<List<OrderItem>> call, Throwable t) {
-                orderDetailLiveData.setValue(new ListResponse<>(null, t.getMessage(), false));
+                orderItemsLiveData.setValue(new ListResponse<>(null, t.getMessage(), false));
             }
         });
 
-        return orderDetailLiveData;
+        return orderItemsLiveData;
     }
 }
 //package com.prmproject.clothesstoremobileandroid.Data.repository;
