@@ -16,6 +16,6 @@ public class ProfileViewModel extends ViewModel {
     }
 
     public LiveData<ObjectResponse> getUserProfile() {
-        return userProfile;
+        return userRepository.getUser();
     }
 }
