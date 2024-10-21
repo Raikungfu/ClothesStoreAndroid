@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                     Bundle args = new Bundle();
                     try{
                         args.putInt("categoryId", -1);
+                        args.putInt("priceFrom", -1);
+                        args.putInt("priceTo", -1);
                         args.putString("name", query);
                         navController.navigate(R.id.navigation_shop, args);
                     }catch (Exception e){

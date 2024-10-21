@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.shop.ShopInfo">
+    tools:context=".ui.shop.ShopInfoFragment">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -25,31 +24,31 @@
             android:id="@+id/shopName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Shop Name"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/shopDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop Description"
+            android:layout_marginTop="8dp"
 
-            android:layout_marginTop="8dp" />
+            android:text="Shop Description" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/map_shop"
             android:layout_width="match_parent"
-            android:layout_height="200sp"/>
+            android:layout_height="200sp" />
         <!-- Product Suggestions -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Recommended Products"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommendedProductsRecyclerView"
@@ -62,10 +61,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Other Products"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/otherProductsRecyclerView"

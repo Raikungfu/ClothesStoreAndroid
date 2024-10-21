@@ -2,6 +2,7 @@
     <string name="app_name">Clothes Store</string>
     <string name="title_home">Home</string>
     <string name="title_shop">Shop</string>
+    <string name="title_shop_info">Shop Info</string>
     <string name="title_bag">Bag</string>
     <string name="title_chat">Chat</string>
     <string name="title_message">Message</string>

@@ -45,6 +45,7 @@ public class ProductDetailFragment extends Fragment {
     private RecyclerView reviewRecyclerView;
     private List<Review> reviewList;
     private int productId;
+    private int sellerId;
     private ReviewAdapter reviewAdapter;
     private int currentPage = 0;
     @Override
@@ -56,7 +57,6 @@ public class ProductDetailFragment extends Fragment {
         reviewRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
         reviewAdapter = new ReviewAdapter();
         reviewRecyclerView.setAdapter(reviewAdapter);
-
 
         Bundle args = getArguments();
         if (args != null) {
@@ -146,6 +146,15 @@ public class ProductDetailFragment extends Fragment {
                             ((MainActivity) requireActivity()).onMessage("Failed to initiate chat: " + response.getErrorMessage() + " Status: " + response.getCodeError());
                         }
                     });
+                });
+
+                binding.shopTitleDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle args = new Bundle();
+                        args.putInt("shopId", product.getSellerId());
+                        navController.navigate(R.id.action_navigation_product_detail_to_navigation_shop_info, args);
+                    }
                 });
 
                 containerLayout = binding.productOptions;
