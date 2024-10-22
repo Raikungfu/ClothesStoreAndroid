@@ -2,6 +2,7 @@ package com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive;
 
 public class TokenResponse {
     private String Token;
+    private String ClientToken;
     private String Message;
     private boolean Status;
 
@@ -22,6 +23,14 @@ public class TokenResponse {
 
     public void setToken(String token) {
         Token = token;
+    }
+
+    public String getClientToken() {
+        return ClientToken;
+    }
+
+    public void setClientToken(String clientToken) {
+        ClientToken = clientToken;
     }
 
     public String getMessage() {

@@ -28,7 +28,7 @@ android {
         }
         debug {
             // buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:7248/\"")
-
+            buildConfigField("String", "CONFIG_CLIENT_ID", "\"${findProperty("CONFIG_CLIENT_ID")}\"")
             buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }
@@ -71,4 +71,6 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.0")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("com.paypal.android:paypal-web-payments:1.5.0")
+    implementation("com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4")
 }

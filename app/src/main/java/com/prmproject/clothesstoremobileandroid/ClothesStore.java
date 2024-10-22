@@ -13,7 +13,17 @@ public class ClothesStore extends Application {
     public void onCreate() {
         super.onCreate();
         signalRService = new SignalRService();
+/*
+        PayPalCheckout.setConfig(new CheckoutConfig(
+                this,
+                "Ab98Q28k3JktqKyFi21rzdra3u8ZHAxZl-uD7rChJaKWMArvSHp1PUwCjw7t8Ugwy4--KK3Xz9LOI9qM",
 
+                Environment.SANDBOX,
+                CurrencyCode.USD,
+                UserAction.PAY_NOW,
+                "clothesstore://paypalpay"
+        ));
+*/
         SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
         String token = sharedPreferences.getString("TOKEN_KEY", null);
 

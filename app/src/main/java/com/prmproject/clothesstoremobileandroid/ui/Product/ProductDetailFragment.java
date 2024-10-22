@@ -163,6 +163,13 @@ public class ProductDetailFragment extends Fragment {
                 groupedOptions.forEach((key, value) -> {
                     createRecyclerView(key, value);
                 });
+
+                binding.buyNowButton.setOnClickListener(v -> {
+                    Bundle args = new Bundle();
+                    args.putFloat("totalPayment", product.getNewPrice());
+
+                    navController.navigate(R.id.action_navigation_product_detail_to_payment, args);
+                });
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.prmproject.clothesstoremobileandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -365,4 +366,23 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         containerFilterLayout.addView(title);
         containerFilterLayout.addView(flexboxLayout);
     }
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+
+    if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null) {
+        String opType = intent.getData().getQueryParameter("opType");
+
+        Log.d("MainActivity", intent.getData().toString());
+
+        if (opType.equals("payment")) {
+            Bundle bundle = new Bundle();
+            bundle.putFloat("totalPayment", -1);
+            bundle.putString("opType", "payment");
+            navController.navigate(R.id.navigation_payment, bundle);
+        } else if (opType.equals("cancel")) {
+            Toast.makeText(this, "Payment Cancelled", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
 }
