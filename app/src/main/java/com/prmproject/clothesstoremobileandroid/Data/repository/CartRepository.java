@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.prmproject.Network.RetrofitClient;
 import com.prmproject.clothesstoremobileandroid.Data.model.CartItem;
 import com.prmproject.clothesstoremobileandroid.Data.model.Chat;
+import com.prmproject.clothesstoremobileandroid.Data.model.Order;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.CartItemDetail;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.OrderCreateViewModel;
 import com.prmproject.clothesstoremobileandroid.Data.remote.CartApiService;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseListData;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseObjectData;
@@ -66,5 +68,26 @@ public class CartRepository {
         });
 
         return result;
+    }
+    public LiveData<ObjectResponse<Order>> createOrder(OrderCreateViewModel orderCreateViewModel) {
+        MutableLiveData<ObjectResponse<Order>> orderLiveData = new MutableLiveData<>();
+
+        apiService.createOrder(orderCreateViewModel).enqueue(new Callback<Order>() {
+            @Override
+            public void onResponse(Call<Order> call, Response<Order> response) {
+                if (response.isSuccessful()) {
+                    orderLiveData.postValue(new ObjectResponse<>(response.body(), "Order created successfully", true));
+                } else {
+                    orderLiveData.postValue(new ObjectResponse<>(null, "Failed to create order", false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Order> call, Throwable t) {
+                orderLiveData.postValue(new ObjectResponse<>(null, t.getMessage(), false));
+            }
+        });
+
+        return orderLiveData;
     }
 }

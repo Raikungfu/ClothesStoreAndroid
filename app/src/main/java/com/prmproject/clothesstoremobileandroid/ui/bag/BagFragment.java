@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.OrderCreateViewModel;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentBagBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.CartAdapter;
@@ -32,6 +34,31 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
         setupRecyclerView();
         loadCartItems();
 
+        binding.paymentMethodChangeBtn.setOnClickListener(v -> {
+            if (binding.cardPaymentView.getVisibility() == View.GONE) {
+                binding.cardPaymentView.setVisibility(View.VISIBLE);
+                binding.cardPaymentView.animate().translationY(0).setDuration(300);
+            } else {
+                binding.cardPaymentView.animate().translationY(binding.cardPaymentView.getHeight()).setDuration(300).withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.cardPaymentView.setVisibility(View.GONE);
+                    }
+                });
+            }
+        });
+        binding.radioGroupPaymentMethods.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton selectedRadioButton = binding.getRoot().findViewById(checkedId);
+            String paymentMethod = selectedRadioButton.getText().toString();
+            binding.paymentMethod.setText(paymentMethod);
+        });
+
+        binding.btnCheckout.setOnClickListener(v -> {
+            String discountCode = binding.discountCode.getText().toString().trim();
+            String paymentMethod=binding.paymentMethod.getText().toString().trim();
+            createOrder(discountCode,paymentMethod);
+        });
+
         return binding.getRoot();
     }
 
@@ -46,7 +73,7 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
                 cartItems = cartListResponse.getItems();
                 cartAdapter = new CartAdapter(cartItems,this);
                 cartRecyclerView.setAdapter(cartAdapter);
-                binding.textViewNoOrders.setVisibility(cartItems.isEmpty() ? View.VISIBLE : View.GONE);
+                binding.textViewNoCarts.setVisibility(cartItems.isEmpty() ? View.VISIBLE : View.GONE);
 
                 updateTotalAmount();
 
@@ -77,4 +104,16 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
         binding.txtTotal.setText("$" + total);
     }
 
+    private void createOrder(String discountCode,String paymentMethod) {
+        OrderCreateViewModel orderCreateViewModel = new OrderCreateViewModel();
+        orderCreateViewModel.setDiscountCode(discountCode);
+        orderCreateViewModel.setPaymentMethod(paymentMethod);
+        cartViewModel.CreateOrder(orderCreateViewModel).observe(getViewLifecycleOwner(), orderResponse -> {
+            if (orderResponse != null && orderResponse.isSuccess()) {
+                ((MainActivity) requireActivity()).onMessage("Order created successfully!");
+            } else {
+                ((MainActivity) requireActivity()).onMessage("Order creation failed: " + orderResponse.getErrorMessage());
+            }
+        });
+    }
 }

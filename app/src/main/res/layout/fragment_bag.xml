@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.bag.BagFragment" >
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.bag.BagFragment" >
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_bag"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 
     <LinearLayout
@@ -27,10 +14,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
-                android:id="@+id/textViewNoOrders"
+                android:id="@+id/textViewNoCarts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You have no order"
+                android:text="You have no item in cart"
                 android:visibility="gone"
                 android:gravity="center"
                 android:layout_gravity="center" />
@@ -38,17 +25,61 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCart"
                 android:layout_width="match_parent"
-                android:layout_height="505dp"
+                android:layout_height="640dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:clipToPadding="false"
                 android:dividerHeight="8dp"/>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="10dp">
+            <Button
+                    android:id="@+id/paymentMethodChange_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:text="Change"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="12dp"
+                    android:background="@drawable/bg_button_primary"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:scaleType="centerCrop"/>
 
+            <TextView
+                    android:id="@+id/paymentMethod"
+                    android:layout_width="264dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="255dp"
+                    android:layout_marginTop="30dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="14dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="257dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="22dp"
+                    android:gravity="left|center_vertical"
+                    android:text="Payment Method"
+                    android:textColor="#FF9B9B9B"
+                    android:textSize="11dp"/>
+        </androidx.cardview.widget.CardView>
 
         <EditText
+                android:id="@+id/discountCode"
                 android:layout_width="370dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
@@ -61,10 +92,11 @@
                 android:hint="Enter your promo code"
                 android:textSize="14dp"/>
 
+
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp">
             <TextView
                     android:layout_width="162dp"
                     android:layout_height="match_parent"
@@ -85,18 +117,78 @@
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="15dp">
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:text="Checkout"
-                android:textSize="14sp"
-                android:textColor="@color/textPrimary"
-                android:background="@drawable/bg_button_secondary"/>
+                    android:id="@+id/btn_checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:text="Submit order"
+                    android:textSize="14sp"
+                    android:textColor="@color/textPrimary"
+                    android:background="@drawable/bg_button_secondary"/>
         </FrameLayout>
     </LinearLayout>
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardPaymentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="0dp"
+            android:elevation="4dp"
+            android:visibility="gone">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Method"
+                    android:textSize="18sp"
+                    android:textColor="@color/textPrimary"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"/>
+
+            <RadioGroup
+                    android:id="@+id/radioGroupPaymentMethods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <RadioButton
+                        android:id="@+id/payDirect"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textPrimary"
+                        android:text="Thanh toán trực tiếp"
+                        android:textSize="14sp"/>
+
+                <RadioButton
+                        android:id="@+id/paypal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thanh toán Paypal"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="14sp"/>
+
+                <RadioButton
+                        android:id="@+id/payDebit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thanh toán thẻ ghi nợ"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="14sp"/>
+            </RadioGroup>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
