@@ -26,6 +26,7 @@ import com.prmproject.clothesstoremobileandroid.Data.model.Chat;
 import com.prmproject.clothesstoremobileandroid.Data.model.Option;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
 import com.prmproject.clothesstoremobileandroid.Data.model.Review;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.CartItemDetail;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentProductDetailBinding;
@@ -66,7 +67,7 @@ public class ProductDetailFragment extends Fragment {
             ++currentPage;
             loadReview(currentPage);
         });
-
+        binding.addToCartButton.setOnClickListener(v -> addToCart());
         return binding.getRoot();
     }
 
@@ -199,7 +200,19 @@ public class ProductDetailFragment extends Fragment {
 
         navController.navigate(R.id.action_navigation_product_detail_to_navigation_chat, args);
     }
+    private void addToCart() {
+        CartItemDetail cartItemDetail = new CartItemDetail();
+        cartItemDetail.setProductId(productId);
+        cartItemDetail.setQuantity(1);
 
+        productDetailViewModel.addCartItem(cartItemDetail).observe(getViewLifecycleOwner(), response -> {
+            if (response != null && response.isSuccess()) {
+                ((MainActivity) requireActivity()).onMessage("Product added to cart successfully!");
+            } else {
+                ((MainActivity) requireActivity()).onMessage("Failed to add product to cart: " + response.getErrorMessage() + " Status: " + response.getCodeError());
+            }
+        });
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

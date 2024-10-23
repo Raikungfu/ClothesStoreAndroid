@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation(libs.recyclerview)
+    implementation(libs.legacy.support.v4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

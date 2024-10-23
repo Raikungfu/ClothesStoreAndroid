@@ -44,8 +44,7 @@ public class AddAddressFragment extends Fragment {
                     boolean isInserted = dbHelper.addAddress(fullName, address, city, state, phone, country);
                     if (isInserted) {
                         Toast.makeText(getContext(), "Address Saved", Toast.LENGTH_SHORT).show();
-                        // Navigate back to MyAddressFragment
-                        getFragmentManager().popBackStack(); // Or use NavController
+                        getFragmentManager().popBackStack();
                     } else {
                         Toast.makeText(getContext(), "Error Saving Address", Toast.LENGTH_SHORT).show();
                     }
