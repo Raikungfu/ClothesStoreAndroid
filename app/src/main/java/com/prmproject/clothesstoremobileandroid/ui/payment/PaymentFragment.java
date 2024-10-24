@@ -24,6 +24,7 @@ import com.paypal.android.paypalwebpayments.PayPalWebCheckoutFundingSource;
 import com.paypal.android.paypalwebpayments.PayPalWebCheckoutListener;
 import com.paypal.android.paypalwebpayments.PayPalWebCheckoutRequest;
 import com.paypal.android.paypalwebpayments.PayPalWebCheckoutResult;
+import com.prmproject.clothesstoremobileandroid.BuildConfig;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentPaymentBinding;
 
@@ -35,8 +36,8 @@ import java.util.UUID;
 public class PaymentFragment extends Fragment {
     private FragmentPaymentBinding binding;
 
-    private final String clientID = "Ab98Q28k3JktqKyFi21rzdra3u8ZHAxZl-uD7rChJaKWMArvSHp1PUwCjw7t8Ugwy4--KK3Xz9LOI9qM";
-    private final String returnUrl = "com.prmproject.clothesstoremobileandroid://paypal-return";
+    private final String clientID = BuildConfig.CONFIG_CLIENT_ID;
+    private final String returnUrl = BuildConfig.URL_PAYPAL_RETURN;
     private String accessToken = "";
     private String uniqueId;
     private float amount = 5.00f;
