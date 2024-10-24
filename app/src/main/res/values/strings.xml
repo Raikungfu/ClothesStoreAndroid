@@ -5,6 +5,10 @@
     <string name="title_shop_info">Shop Info</string>
     <string name="title_payment">Payment</string>
     <string name="title_bag">Bag</string>
+    <string name="title_myorder">My Order</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_address">Ship Address</string>
+    <string name="title_add_address">Add Address</string>
     <string name="title_chat">Chat</string>
     <string name="title_message">Message</string>
     <string name="title_profile">Profile</string>
@@ -14,6 +18,7 @@
     <string name="enter_your_password">Enter your password...</string>
     <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
+    <string name="save">SAVE</string>
     <string name="or_sign_up_with_social_account">Or sign up with social account</string>
     <string name="image_description">Image Description</string>
     <string name="already_have_an_account">Already have an account?</string>

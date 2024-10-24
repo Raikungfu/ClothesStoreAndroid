@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container_order_card"
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:layout_marginTop="10dp"
+        android:background="#E9EAE8E8">
+
+    <ImageView
+            android:id="@+id/orderView"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:scaleType="centerCrop" />
+
+    <TextView
+            android:id="@+id/txt_order_number"
+            android:layout_width="187dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="16.5dp"
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold"
+            android:textSize="22dp"/>
+    <TextView
+            android:id="@+id/txt_order_date"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="251dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:textColor="#FF9B9B9B"
+            android:textSize="14dp" />
+
+    <FrameLayout
+            android:id="@+id/container__total_amount"
+            android:layout_width="170dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="74dp">
+
+        <TextView
+                android:id="@+id/txt_total_amount_label"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="Total Amount:"
+                android:textColor="@color/textPrimary"              android:textSize="14dp" />
+
+        <TextView
+                android:id="@+id/txt_total_amount_value"
+                android:layout_width="match_parent"
+                android:layout_height="21dp"
+                android:layout_marginLeft="95dp"
+                android:gravity="center"
+                android:textColor="@color/textPrimary"
+                android:textSize="16dp" />
+    </FrameLayout>
+
+    <FrameLayout
+            android:id="@+id/container_button_secondary_outline_small"
+            android:layout_width="98dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="108dp">
+
+        <Button
+                android:id="@+id/detail_btn"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textColor="@color/textPrimary"
+                android:background="@drawable/bg_button_primary"
+                android:text="Detail"
+                android:scaleType="centerCrop"/>
+
+
+
+    </FrameLayout>
+    <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginLeft="254dp"
+            android:layout_marginTop="116.5dp"
+            android:gravity="center"
+            android:textColor="#FF2AA952"
+            android:textSize="14dp" />
+
+</androidx.cardview.widget.CardView>

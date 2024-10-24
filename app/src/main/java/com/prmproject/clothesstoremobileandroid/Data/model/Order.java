@@ -9,7 +9,7 @@ public class Order {
     private String ShipMail;
     private String ShipPhone;
     private String ShipAddress;
-    private Date OrderDate;
+    private String OrderDate;
     private int ShipFee;
     private String DiscountCode;
     private double TotalAmount;
@@ -65,11 +65,11 @@ public class Order {
         ShipAddress = shipAddress;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return OrderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         OrderDate = orderDate;
     }
 
