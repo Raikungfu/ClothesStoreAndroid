@@ -3,76 +3,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.shop.ShopInfoFragment">
+    tools:context=".ui.shop.ShopInfoFragment"
+   >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:fillViewport="true">
 
-        <!-- Shop Information -->
-        <ImageView
-            android:id="@+id/shopImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:contentDescription="Shop Image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:id="@+id/shopName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Shop Name"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/shopDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-
-            android:text="Shop Description" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/map_shop"
-            android:layout_width="match_parent"
-            android:layout_height="200sp" />
-        <!-- Product Suggestions -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Recommended Products"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommendedProductsRecyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Other Products -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Other Products"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <!-- Shop Image -->
+            <ImageView
+                android:id="@+id/shopImage"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Shop Image" />
+<!--                android:src="@drawable/shop_image_placeholder"-->
+<!--                android:background="@drawable/image_background_rounded_corners" -->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/otherProductsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal" />
 
-    </LinearLayout>
+            <!-- Shop Name -->
+            <TextView
+                android:id="@+id/shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shop Name"
+                android:textSize="24sp"
+                android:textStyle="bold"
 
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                />
+
+            <!-- Shop Description -->
+            <TextView
+                android:id="@+id/shopDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is a description of the shop. It should provide information about the shop, its products, and any other relevant details."
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+<!--                android:textColor="@color/"-->
+
+
+            <!-- MapView for Location -->
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                />
+
+            <!-- Recommended Products Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommended Products"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                android:layout_marginBottom="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendedProductsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:clipToPadding="false"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
+
+            <!-- Other Products Section -->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Other Products"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+
+<!--                android:layout_marginBottom="8dp" />-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/otherProductsRecyclerView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:clipToPadding="false"-->
+<!--                android:paddingLeft="8dp"-->
+<!--                android:paddingRight="8dp" />-->
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
