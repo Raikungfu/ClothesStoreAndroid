@@ -11,6 +11,26 @@ public class Seller {
     private String Description;
     private int UserId;
     private User User;
+    private Double Latitude;
+    private Double Longitude;
+
+
+    public Double getLatitude() {
+        return Latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        Latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return Longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        Longitude = longitude;
+    }
+
     private List<Product> Products;
 
     public int getSellerId() {

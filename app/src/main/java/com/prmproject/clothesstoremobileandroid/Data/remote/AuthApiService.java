@@ -1,13 +1,16 @@
 package com.prmproject.clothesstoremobileandroid.Data.remote;
 
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.MessageResponse;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.TokenResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserForgotPassword;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserLogin;
-import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.TokenResponse;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.UserRegister;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface AuthApiService {
@@ -25,4 +28,5 @@ public interface AuthApiService {
 
     @POST("api/Forgot/reset-password")
     Call<MessageResponse> resetPassword(@Body UserForgotPassword user);
+
 }

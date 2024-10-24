@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.shop.ShopInfoFragment"
+   >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Shop Image -->
+            <ImageView
+                android:id="@+id/shopImage"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Shop Image" />
+<!--                android:src="@drawable/shop_image_placeholder"-->
+<!--                android:background="@drawable/image_background_rounded_corners" -->
+
+
+            <!-- Shop Name -->
+            <TextView
+                android:id="@+id/shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shop Name"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                />
+
+            <!-- Shop Description -->
+            <TextView
+                android:id="@+id/shopDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is a description of the shop. It should provide information about the shop, its products, and any other relevant details."
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+<!--                android:textColor="@color/"-->
+
+
+            <!-- MapView for Location -->
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                />
+
+            <!-- Recommended Products Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommended Products"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                android:layout_marginBottom="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendedProductsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:clipToPadding="false"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
+
+            <!-- Other Products Section -->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Other Products"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+
+<!--                android:layout_marginBottom="8dp" />-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/otherProductsRecyclerView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:clipToPadding="false"-->
+<!--                android:paddingLeft="8dp"-->
+<!--                android:paddingRight="8dp" />-->
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
