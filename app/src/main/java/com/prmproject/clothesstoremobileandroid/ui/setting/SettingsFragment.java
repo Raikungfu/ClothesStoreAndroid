@@ -19,7 +19,12 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel mViewModel;
     private CardView cardPassView;
-    private Button PasswordChangeButton;
+    private EditText oldPassEditText, newPassEditText, rePassEditText;
+    private UserRepository userRepository;
+
+    private Button PasswordChangeButton,savePassButton;
+
+
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
     }
@@ -42,6 +47,11 @@ public class SettingsFragment extends Fragment {
 
         cardPassView = view.findViewById(R.id.cardPassView);
         PasswordChangeButton = view.findViewById(R.id.passChange_Btn);
+
+        oldPassEditText = view.findViewById(R.id.oldPass);
+        newPassEditText = view.findViewById(R.id.newPass);
+        rePassEditText = view.findViewById(R.id.rePass);
+        userRepository = new UserRepository();
 
         cardPassView.setVisibility(View.GONE);
 

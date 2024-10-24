@@ -55,6 +55,7 @@ public class ProfileFragment extends Fragment {
                             .into(binding.userAvt);
                 }
                 username = user.getName();
+
             } else if (!userResponse.isSuccess() && userResponse.getCodeError() == 401) {
                 ((MainActivity) requireActivity()).onMessage("Session expired. Please log in again.");
                 requireLogin();
@@ -84,13 +85,16 @@ public class ProfileFragment extends Fragment {
         });
 
         ImageView linkToAddress = binding.addressBtn;
-        linkToAddress.setOnClickListener(v -> navController.navigate(R.id.navigation_my_address));
-
+        linkToAddress.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("USERNAME", username);
+            navController.navigate(R.id.navigation_my_address, bundle);
+        });
         ImageView linkToInformation = binding.informationView;
         linkToInformation.setOnClickListener(v -> {
-     //       if (userId != null) {
+
                 navController.navigate(R.id.navigation_information);
-       //     }
+
         });
 
         Button logoutBtn = binding.logoutBtn;

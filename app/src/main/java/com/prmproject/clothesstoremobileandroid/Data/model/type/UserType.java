@@ -5,4 +5,3 @@ public enum UserType {
     SELLER,
     CUSTOMER
 }
-

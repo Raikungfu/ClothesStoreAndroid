@@ -100,19 +100,6 @@
                         android:textSize="16dp"/>
 
 
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="15dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginTop="23dp"
-                        android:layout_marginBottom="-2dp"
-                        android:gravity="left|center_vertical"
-                        android:includeFontPadding="false"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="Already have 12 orders"
-                        android:textColor="#FF9B9B9B"
-                        android:textSize="11dp"/>
             </FrameLayout>
 
 

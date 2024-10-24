@@ -16,6 +16,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserRepository {
     private UserApiService apiService;
     private ResponseObjectData<Customer> responseObjectData;
@@ -88,5 +91,32 @@ responseUserData=new ResponseObjectData<>();
 
         return responseObjectLiveData;
     }
+
+
+//    public LiveData<ObjectResponse> changePassword(String oldPassword, String newPassword) {
+//        MutableLiveData<ObjectResponse> responseObjectLiveData = new MutableLiveData<>();
+//
+//        Map<String, String> passwords = new HashMap<>();
+//        passwords.put("OldPassword", oldPassword);
+//        passwords.put("NewPassword", newPassword);
+//
+//        apiService.changePassword(passwords).enqueue(new Callback<ObjectResponse>() {
+//            @Override
+//            public void onResponse(Call<ObjectResponse> call, Response<ObjectResponse> response) {
+//                if (response.isSuccessful()) {
+//                    responseObjectLiveData.postValue(response.body());
+//                } else {
+//                    responseObjectLiveData.postValue(new ObjectResponse(null, "Password change failed", false));
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ObjectResponse> call, Throwable t) {
+//                responseObjectLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
+//            }
+//        });
+//
+//        return responseObjectLiveData;
+//    }
 }
 
