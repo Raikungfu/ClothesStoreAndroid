@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:background="#E9EAE8E8"
+        tools:context=".ui.address.AddAddressFragment">
+
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"/>
+
+    <TextView
+            android:id="@+id/fullAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="53dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:lineHeight="21dp"
+            android:maxLines="2"
+            android:textColor="@color/textPrimary"
+            android:textSize="14dp"/>
+
+    <TextView
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="250dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="102dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:textSize="14dp"/>
+
+    <Button
+            android:id="@+id/editAddress_Btn"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="102dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Edit"
+            android:textColor="@color/textPrimary"
+            android:background="@drawable/bg_button_secondary"
+            android:textSize="10dp"/>
+    <Button
+            android:id="@+id/deleteAddress_Btn"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="102dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Delete"
+            android:textSize="10dp"
+            android:textColor="@color/textPrimary"
+            android:background="@drawable/bg_button_primary"
+    />
+
+    <FrameLayout
+            android:layout_width="368dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="252dp"
+            android:layout_marginTop="101dp"
+            android:layout_marginBottom="18dp">
+
+        <TextView
+                android:layout_width="340dp"
+                android:layout_height="21dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="-155dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Use as the shipping address"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp"/>
+
+        <CheckBox
+                android:id="@+id/useAddress"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:scaleType="centerInside"></CheckBox>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,65 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/tabLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_gravity="top"-->
+<!--            app:tabGravity="fill"-->
+<!--            app:tabMode="fixed"-->
+<!--            app:tabIndicatorColor="@android:color/holo_blue_light"-->
+<!--            app:tabTextColor="@android:color/black"-->
+<!--            app:tabSelectedTextColor="@android:color/holo_blue_dark">-->
+
+<!--        &lt;!&ndash; Tabs representing different order statuses &ndash;&gt;-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--                android:id="@+id/tabDelivered"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="pending"/>-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--                android:id="@+id/tabProcessing"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="completed"/>-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--                android:id="@+id/tabCancelled"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="complete"/>-->
+<!--    </com.google.android.material.tabs.TabLayout>-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <TextView
+            android:id="@+id/textViewNoOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have no order"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_gravity="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:dividerHeight="8dp"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

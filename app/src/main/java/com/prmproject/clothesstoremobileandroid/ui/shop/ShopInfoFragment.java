@@ -14,7 +14,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.prmproject.clothesstoremobileandroid.Data.model.Product;
+import com.prmproject.clothesstoremobileandroid.Data.model.Seller;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentShopInfoBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.ProductAdapter;
@@ -22,7 +30,7 @@ import com.prmproject.clothesstoremobileandroid.ui.common.AutoScrollManager;
 
 import java.util.List;
 
-public class ShopInfoFragment extends Fragment {
+public class ShopInfoFragment extends Fragment  implements OnMapReadyCallback {
     private FragmentShopInfoBinding binding;
     private ShopViewModel shopViewModel;
     private NavController navController;
@@ -37,6 +45,9 @@ public class ShopInfoFragment extends Fragment {
 
     private int sellerId;
 
+    private MapView mapView;
+    private GoogleMap googleMap;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentShopInfoBinding.inflate(inflater, container, false);
@@ -48,21 +59,54 @@ public class ShopInfoFragment extends Fragment {
         }
 
         setupRecyclerViews();
+
+        mapView = binding.mapView;
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this); // Get the map asynchronously
         return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mapView.onResume();
+        loadInfoShop();
         loadProductsFromArguments();
     }
 
     private void setupRecyclerViews() {
-        otherProductRecyclerView = binding.otherProductsRecyclerView;
+//        otherProductRecyclerView = binding.otherProductsRecyclerView;
         recommendedProductRecyclerView = binding.recommendedProductsRecyclerView;
 
-        otherProductRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+//        otherProductRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
         recommendedProductRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    private void loadInfoShop(){
+        shopViewModel.getShopDetail(sellerId).observe(getViewLifecycleOwner(), shopDetailResponse -> {
+            if (shopDetailResponse != null && shopDetailResponse.isSuccess()) {
+                Seller seller = (Seller) shopDetailResponse.getItem();
+
+                if(seller != null){
+                    Glide.with(this).load(seller.getAvt()).placeholder(R.drawable.logor).error(R.drawable.logor).into(binding.shopImage);
+                    binding.shopName.setText(seller.getCompanyName());
+                    binding.shopDescription.setText(seller.getDescription());
+
+                    double latitude = seller.getLatitude();
+                    double longitude = seller.getLongitude();
+
+                    if (googleMap != null) {
+                        googleMap.clear();
+                        LatLng shopLocation = new LatLng(latitude, longitude);
+                        googleMap.addMarker(new MarkerOptions().position(shopLocation).title(seller.getCompanyName()));
+
+                        // Di chuyển camera tới vị trí cửa hàng với mức zoom 15
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shopLocation, 15f));
+                    }
+                }
+            }
+        });
+
     }
 
     private void loadProductsFromArguments() {
@@ -97,6 +141,17 @@ public class ShopInfoFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        mapView.onPause();
         productAutoScrollManager.stopAutoScroll();
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        this.googleMap = googleMap;
+
+        // Đặt vị trí mặc định (ví dụ tọa độ cửa hàng)
+        LatLng shopLocation = new LatLng(10.762622, 106.660172); // Đặt tọa độ cửa hàng tại đây
+        googleMap.addMarker(new MarkerOptions().position(shopLocation).title("Shop Location"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(shopLocation, 15f));
     }
 }

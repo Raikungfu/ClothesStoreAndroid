@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="You need to log in to view this content."
         android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/textPrimary"
         android:gravity="center" />
 
     <Button

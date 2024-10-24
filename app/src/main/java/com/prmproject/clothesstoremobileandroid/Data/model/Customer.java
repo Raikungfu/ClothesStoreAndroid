@@ -9,7 +9,6 @@ public class Customer {
     private int UserId;
     private User User;
     private List<Cart> Carts;
-    private List<Order> Orders;
 
     public int getCustomerId() {
         return CustomerId;
@@ -65,14 +64,6 @@ public class Customer {
 
     public void setCarts(List<Cart> carts) {
         Carts = carts;
-    }
-
-    public List<Order> getOrders() {
-        return Orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        Orders = orders;
     }
 }
 
