@@ -30,6 +30,7 @@ android {
             // buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:7248/\"")
             buildConfigField("String", "CONFIG_CLIENT_ID", "\"${findProperty("CONFIG_CLIENT_ID")}\"")
             buildConfigField("String", "URL_PAYPAL_RETURN", "\"${findProperty("URL_PAYPAL_RETURN")}\"")
+            buildConfigField("String", "URL_PAYPAL_NO_RETURN", "\"${findProperty("URL_PAYPAL_NO_RETURN")}\"")
             buildConfigField("String", "BASE_URL", "\"https://clothesstore-ftfud4cmcjhub3fy.southeastasia-01.azurewebsites.net/\"")
         }
     }

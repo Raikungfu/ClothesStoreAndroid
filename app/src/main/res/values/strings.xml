@@ -26,4 +26,9 @@
         <string name="message_hint">Enter messages....</string>
         <string name="send"></string>
         <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="title_myorder">My Order</string>
+        <string name="title_setting">Settings</string>
+        <string name="title_address">Ship Address</string>
+        <string name="title_add_address">Add Address</string>
+        <string name="save">SAVE</string>
     </resources>

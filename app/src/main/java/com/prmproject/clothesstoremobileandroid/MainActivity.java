@@ -370,23 +370,20 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         containerFilterLayout.addView(title);
         containerFilterLayout.addView(flexboxLayout);
     }
-@Override
-protected void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
 
-    if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null) {
-        String opType = intent.getData().getQueryParameter("opType");
+        if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null && intent.getData().getHost().equals("paypal-return")) {
+            String opType = intent.getData().getQueryParameter("opType");
 
-        Log.d("MainActivity", intent.getData().toString());
+            Log.d("MainActivity", intent.getData().toString());
 
-        if (opType.equals("payment")) {
-            Bundle bundle = new Bundle();
-            bundle.putFloat("totalPayment", -1);
-            bundle.putString("opType", "payment");
-            navController.navigate(R.id.navigation_payment, bundle);
-        } else if (opType.equals("cancel")) {
-            Toast.makeText(this, "Payment Cancelled", Toast.LENGTH_SHORT).show();
+            if (opType.equals("payment")) {
+                navController.navigate(R.id.navigation_myorder);
+            } else if (opType.equals("cancel")) {
+                Toast.makeText(this, "Payment Cancelled", Toast.LENGTH_SHORT).show();
+            }
         }
     }
-}
 }
