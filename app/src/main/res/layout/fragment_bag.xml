@@ -173,15 +173,7 @@
                         android:id="@+id/paypal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Thanh toán Paypal"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="14sp"/>
-
-                <RadioButton
-                        android:id="@+id/payDebit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Thanh toán thẻ ghi nợ"
+                        android:text="Paypal"
                         android:textColor="@color/textPrimary"
                         android:textSize="14sp"/>
             </RadioGroup>

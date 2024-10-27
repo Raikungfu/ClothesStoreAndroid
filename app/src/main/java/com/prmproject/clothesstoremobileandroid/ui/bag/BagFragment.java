@@ -44,7 +44,7 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
         binding = FragmentBagBinding.inflate(inflater, container, false);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         paymentPaypal = new PaymentPaypal(requireActivity());
-        paymentPaypal.setReturnUrl(BuildConfig.URL_PAYPAL_NO_RETURN);
+        paymentPaypal.setReturnUrl(BuildConfig.URL_PAYPAL_RETURN);
 
         cartViewModel = new ViewModelProvider(this).get(BagViewModel.class);
 

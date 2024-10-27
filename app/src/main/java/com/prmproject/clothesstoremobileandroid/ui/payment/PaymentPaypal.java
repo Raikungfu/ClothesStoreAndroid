@@ -53,22 +53,31 @@ public class PaymentPaypal {
         this.returnUrl = returnUrl;
     }
 
-    private void handlerOrderID(String orderID) {
+    private void handlerOrderID(String orderID, OrderIDListener listener) {
         CoreConfig config = new CoreConfig(clientID, Environment.SANDBOX);
         PayPalWebCheckoutClient payPalWebCheckoutClient = new PayPalWebCheckoutClient(activity, config, returnUrl);
         payPalWebCheckoutClient.setListener(new PayPalWebCheckoutListener() {
             @Override
             public void onPayPalWebSuccess(@NonNull PayPalWebCheckoutResult result) {
+                if (listener != null) {
+                    listener.onOrderCreated(orderID);
+                }
                 Log.d("PaymentFragment", "onPayPalWebSuccess: " + result.toString());
             }
 
             @Override
             public void onPayPalWebFailure(@NonNull PayPalSDKError error) {
+                if (listener != null) {
+                    listener.onError(error.getMessage());
+                }
                 Log.d("PaymentFragment", "onPayPalWebFailure: " + error.toString());
             }
 
             @Override
             public void onPayPalWebCanceled() {
+                if (listener != null) {
+                    listener.onOrderCreated(orderID);
+                }
                 Log.d("PaymentFragment", "onPayPalWebCanceled");
             }
         });
@@ -109,12 +118,7 @@ public class PaymentPaypal {
                     public void onResponse(JSONObject response) {
                         Log.d("PaymentFragment", "Order Response: " + response.toString());
                         String orderId = response.optString("id");
-
-                        if (listener != null) {
-                            listener.onOrderCreated(orderId);
-                        }
-
-                        handlerOrderID(orderId);
+                        handlerOrderID(orderId, listener);
                     }
 
                     @Override

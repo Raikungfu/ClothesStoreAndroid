@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment {
                 }
                 username = user.getName();
 
-            } else if (!userResponse.isSuccess() && userResponse.getCodeError() == 401) {
+            } else if ((!userResponse.isSuccess() && userResponse.getCodeError() == 401)) {
                 ((MainActivity) requireActivity()).onMessage("Session expired. Please log in again.");
                 requireLogin();
             } else {

@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         super.onNewIntent(intent);
 
         if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null && intent.getData().getHost().equals("paypal-return")) {
-            String opType = intent.getData().getQueryParameter("opType");
+            /* String opType = intent.getData().getQueryParameter("opType");
 
             Log.d("MainActivity", intent.getData().toString());
 
@@ -383,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                 navController.navigate(R.id.navigation_myorder);
             } else if (opType.equals("cancel")) {
                 Toast.makeText(this, "Payment Cancelled", Toast.LENGTH_SHORT).show();
-            }
+            }*/
         }
     }
 }

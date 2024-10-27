@@ -20,11 +20,4 @@
         android:text="Thanh toán PayPal"
         android:layout_marginTop="16dp" />
 
-    <Button
-        android:id="@+id/btnDebitCardPayment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thanh toán thẻ ghi nợ"
-        android:layout_marginTop="16dp" />
-
 </LinearLayout>
