@@ -1,5 +1,4 @@
-package com.prmproject.clothesstoremobileandroid.ui.payment;
-
+package com.prmproject.Network.Service;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -24,29 +23,25 @@ import com.prmproject.clothesstoremobileandroid.BuildConfig;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.AccessTokenCallback;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderCaptureListener;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderIDListener;
+import com.prmproject.clothesstoremobileandroid.ui.payment.PaymentViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.UUID;
 
-public class PaymentPaypal {
+public class PaymentPaypalService {
     private final String clientID = BuildConfig.CONFIG_CLIENT_ID;
     private String returnUrl;
     private String accessToken = "";
     private String uniqueId;
-    private float amount = 5.00f;
     private PaymentViewModel paymentViewModel;
     private FragmentActivity activity;
 
-    public PaymentPaypal(FragmentActivity activity) {
+    public PaymentPaypalService(FragmentActivity activity) {
         this.activity = activity;
         this.paymentViewModel = new ViewModelProvider(activity).get(PaymentViewModel.class);
         AndroidNetworking.initialize(activity.getApplicationContext());
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
     }
 
     public void setReturnUrl(String returnUrl) {
@@ -85,7 +80,7 @@ public class PaymentPaypal {
         PayPalWebCheckoutRequest payPalWebCheckoutRequest = new PayPalWebCheckoutRequest(orderID, PayPalWebCheckoutFundingSource.PAYPAL);
         payPalWebCheckoutClient.start(payPalWebCheckoutRequest);
     }
-    public void startOrder(OrderIDListener listener) {
+    public void startOrder(OrderIDListener listener, int orderId, double amount) {
         uniqueId = UUID.randomUUID().toString();
         JSONObject orderRequestJson = new JSONObject();
         try {
@@ -99,7 +94,7 @@ public class PaymentPaypal {
                     .put("landing_page", "LOGIN")
                     .put("shipping_preference", "NO_SHIPPING")
                     .put("user_action", "PAY_NOW")
-                    .put("return_url", returnUrl)
+                    .put("return_url", returnUrl + "?orderId=" + orderId)
                     .put("cancel_url", "https://example.com/cancelUrl"))));
 
         } catch (Exception e) {
@@ -117,8 +112,8 @@ public class PaymentPaypal {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("PaymentFragment", "Order Response: " + response.toString());
-                        String orderId = response.optString("id");
-                        handlerOrderID(orderId, listener);
+                        String createdOrderId = response.optString("id");
+                        handlerOrderID(createdOrderId, listener);
                     }
 
                     @Override
@@ -174,6 +169,6 @@ public class PaymentPaypal {
                         }
                     }
                 });
-    }
+        }
 
-}
+    }

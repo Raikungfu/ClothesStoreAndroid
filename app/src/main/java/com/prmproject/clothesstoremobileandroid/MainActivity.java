@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
     private Button clearButton, filterButton;
     private NavController navController;
     private EditText priceFrom, priceTo;
+
+    private static final int PAYMENT_REQUEST_CODE = 222;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -375,15 +379,44 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         super.onNewIntent(intent);
 
         if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null && intent.getData().getHost().equals("paypal-return")) {
-            /* String opType = intent.getData().getQueryParameter("opType");
-
-            Log.d("MainActivity", intent.getData().toString());
-
-            if (opType.equals("payment")) {
-                navController.navigate(R.id.navigation_myorder);
-            } else if (opType.equals("cancel")) {
-                Toast.makeText(this, "Payment Cancelled", Toast.LENGTH_SHORT).show();
-            }*/
+            String opType = intent.getData().getQueryParameter("opType");
+            if ("success".equals(opType)) {
+                showPaymentSuccessDialog();
+            } else {
+                showPaymentFailureDialog();
+            }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PAYMENT_REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
+                String paymentStatus = data.getStringExtra("payment_status");
+                if ("success".equals(paymentStatus)) {
+
+                    showPaymentSuccessDialog();
+                } else {
+                    showPaymentFailureDialog();
+                }
+            }
+        }
+    }
+
+    private void showPaymentSuccessDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Thanh toán thành công")
+                .setMessage("Cảm ơn bạn đã thanh toán. Đơn hàng của bạn đã được xác nhận.")
+                .setPositiveButton("OK", null)
+                .show();
+    }
+
+    private void showPaymentFailureDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Thanh toán thất bại")
+                .setMessage("Có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.")
+                .setPositiveButton("OK", null)
+                .show();
     }
 }

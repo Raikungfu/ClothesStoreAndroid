@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.prmproject.Network.Service.PaymentPaypalService;
 import com.prmproject.clothesstoremobileandroid.BuildConfig;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderCaptureListener;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderIDListener;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 public class PaymentFragment extends Fragment {
     private FragmentPaymentBinding binding;
     private float amount = 5.00f;
-    private PaymentPaypal paymentPaypal;
+    private PaymentPaypalService paymentPaypal;
     private NavController navController;
 
     @Nullable
@@ -32,8 +33,7 @@ public class PaymentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         amount = getArguments() != null ? getArguments().getFloat("totalPayment") : -1;
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-        paymentPaypal = new PaymentPaypal(requireActivity());
-        paymentPaypal.setAmount(amount);
+        paymentPaypal = new PaymentPaypalService(requireActivity());
         paymentPaypal.setReturnUrl(BuildConfig.URL_PAYPAL_RETURN);
 
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
@@ -56,7 +56,6 @@ public class PaymentFragment extends Fragment {
                             Log.d("PaymentFragment", "Capture Response: " + response.toString());
                             ((MainActivity) requireActivity()).onMessage("Payment Successful");
                             navController.navigate(R.id.navigation_myorder);
-
                         }
 
                         @Override
@@ -71,7 +70,7 @@ public class PaymentFragment extends Fragment {
                 public void onError(String error) {
                     Log.e("MainActivity", "Order Creation Error: " + error);
                 }
-            }));
+            }, 1, amount));
         }else{
             binding.btnPaypalPayment.setVisibility(View.GONE);
             binding.btnDirectPayment.setVisibility(View.GONE);

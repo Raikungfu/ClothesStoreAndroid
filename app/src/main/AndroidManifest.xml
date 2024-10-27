@@ -46,6 +46,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".PaymentWebViewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.prmproject.clothesstoremobileandroid" android:host="payment-return" />
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAJxg6V6h41Cipe_894-dQI0JAJ76HfNoU" />

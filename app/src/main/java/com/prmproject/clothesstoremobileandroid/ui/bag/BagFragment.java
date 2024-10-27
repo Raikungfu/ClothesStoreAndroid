@@ -15,16 +15,21 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.prmproject.Network.Service.PaymentPaypalService;
+import com.prmproject.Network.Service.PaymentVNPayService;
 import com.prmproject.clothesstoremobileandroid.BuildConfig;
 import com.prmproject.clothesstoremobileandroid.Data.model.CartItem;
+import com.prmproject.clothesstoremobileandroid.Data.model.Order;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.OrderCreateViewModel;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToSend.VnPaymentRequestModel;
+import com.prmproject.clothesstoremobileandroid.Data.model.type.VnPayMethod;
+import com.prmproject.clothesstoremobileandroid.Data.repository.OrderCallback;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderCaptureListener;
 import com.prmproject.clothesstoremobileandroid.Data.repository.PaypalPayment.OrderIDListener;
 import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 import com.prmproject.clothesstoremobileandroid.databinding.FragmentBagBinding;
 import com.prmproject.clothesstoremobileandroid.ui.Adapter.CartAdapter;
-import com.prmproject.clothesstoremobileandroid.ui.payment.PaymentPaypal;
 
 import org.json.JSONObject;
 
@@ -36,15 +41,17 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
     private RecyclerView cartRecyclerView;
     private CartAdapter cartAdapter;
     private List<CartItem> cartItems;
-    private PaymentPaypal paymentPaypal;
+    private PaymentPaypalService paymentPaypal;
     private NavController navController;
+    private PaymentVNPayService paymentVNPayService;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBagBinding.inflate(inflater, container, false);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-        paymentPaypal = new PaymentPaypal(requireActivity());
+        paymentPaypal = new PaymentPaypalService(requireActivity());
         paymentPaypal.setReturnUrl(BuildConfig.URL_PAYPAL_RETURN);
+        paymentVNPayService = new PaymentVNPayService(requireContext());
 
         cartViewModel = new ViewModelProvider(this).get(BagViewModel.class);
 
@@ -129,56 +136,75 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
         OrderCreateViewModel orderCreateViewModel = new OrderCreateViewModel();
         orderCreateViewModel.setDiscountCode(discountCode);
         orderCreateViewModel.setPaymentMethod(paymentMethod);
-        if(paymentMethod.equals("Paypal")){
-            paymentPaypal.fetchAccessToken(success -> {
-                if (success) {
-                    paymentPaypal.startOrder(new OrderIDListener() {
-                        @Override
-                        public void onOrderCreated(String orderId) {
-                            Log.d("MainActivity", "Order Created Successfully: " + orderId);
-                            paymentPaypal.captureOrder(orderId, new OrderCaptureListener() {
+
+        createOrder(orderCreateViewModel, orderResponse -> {
+            if (orderResponse != null) {
+                if(paymentMethod.equals("Cash")){
+                    navController.navigate(R.id.navigation_myorder);
+                } else if(paymentMethod.equals("Paypal")){
+                    paymentPaypal.fetchAccessToken(success -> {
+                        if (success) {
+                            paymentPaypal.startOrder(new OrderIDListener() {
                                 @Override
-                                public void onSuccess(JSONObject response) {
-                                    Log.d("PaymentFragment", "Capture Response: " + response.toString());
-                                    ((MainActivity) requireActivity()).onMessage("Payment Successful");
-                                    createOrder(orderCreateViewModel);
+                                public void onOrderCreated(String orderId) {
+                                    Log.d("MainActivity", "Order Created Successfully: " + orderId);
+                                    paymentPaypal.captureOrder(orderId, new OrderCaptureListener() {
+                                        @Override
+                                        public void onSuccess(JSONObject response) {
+                                            Log.d("PaymentFragment", "Capture Response: " + response.toString());
+                                            ((MainActivity) requireActivity()).onMessage("Payment Successful");
+                                            navController.navigate(R.id.navigation_myorder);
+                                        }
+
+                                        @Override
+                                        public void onError(String error) {
+                                            Log.e("PaymentFragment", "Capture Error: " + error);
+                                            ((MainActivity) requireActivity()).onMessage("Payment failed: " + error);
+                                            return;
+                                        }
+                                    });
                                 }
 
                                 @Override
                                 public void onError(String error) {
-                                    Log.e("PaymentFragment", "Capture Error: " + error);
-                                    ((MainActivity) requireActivity()).onMessage("Payment failed: " + error);
+                                    Log.e("MainActivity", "Order Creation Error: " + error);
                                     return;
                                 }
-                            });
-                        }
-
-                        @Override
-                        public void onError(String error) {
-                            Log.e("MainActivity", "Order Creation Error: " + error);
+                            }, orderResponse.getOrderId(), orderResponse.getTotalAmount());
+                        }else{
+                            ((MainActivity) requireActivity()).onMessage("Fetch Access Token failed!");
                             return;
                         }
                     });
-                }else{
-                    ((MainActivity) requireActivity()).onMessage("Fetch Access Token failed!");
-                    return;
+                } else if (paymentMethod.equals("ATM Card")){
+                    paymentVNPayService.createPayment(new VnPaymentRequestModel(orderResponse.getOrderId(), orderResponse.getTotalAmount() * 25369, VnPayMethod.ATM.ordinal()));
+                } else if (paymentMethod.equals("Visa/Mastercard")){
+                    paymentVNPayService.createPayment(new VnPaymentRequestModel(orderResponse.getOrderId(), orderResponse.getTotalAmount() * 25369, VnPayMethod.CreditCard.ordinal()));
                 }
-            });
-        }else{
-            createOrder(orderCreateViewModel);
-        }
+            } else {
+                ((MainActivity) requireActivity()).onMessage("Order creation failed: response is null.");
+            }
+        });
+
 
     }
 
-    public void createOrder(OrderCreateViewModel orderCreateViewModel){
+    public void createOrder(OrderCreateViewModel orderCreateViewModel, OrderCallback callback) {
         cartViewModel.CreateOrder(orderCreateViewModel).observe(getViewLifecycleOwner(), orderResponse -> {
-            if (orderResponse != null && orderResponse.isSuccess()) {
-                ((MainActivity) requireActivity()).onMessage("Order created successfully!");
-                navController.navigate(R.id.navigation_myorder);
+            if (orderResponse != null) {
+                callback.onOrderCreated((Order) orderResponse.getItem());
+
+                if (orderResponse.isSuccess()) {
+                    ((MainActivity) requireActivity()).onMessage("Order created successfully!");
+                } else {
+                    ((MainActivity) requireActivity()).onMessage("Order creation failed: " + orderResponse.getErrorMessage());
+                }
             } else {
-                ((MainActivity) requireActivity()).onMessage("Order creation failed: " + orderResponse.getErrorMessage());
+                callback.onOrderCreated(null);
+                ((MainActivity) requireActivity()).onMessage("Order creation failed: response is null.");
             }
         });
     }
+
 }
 

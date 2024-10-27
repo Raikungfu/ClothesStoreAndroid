@@ -176,6 +176,22 @@
                         android:text="Paypal"
                         android:textColor="@color/textPrimary"
                         android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/payATM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textPrimary"
+                    android:text="ATM Card"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/visa_mastercard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Visa/Mastercard"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="14sp"/>
             </RadioGroup>
 
         </LinearLayout>
