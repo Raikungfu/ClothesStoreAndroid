@@ -6,6 +6,7 @@ import com.prmproject.Network.RetrofitClient;
 import com.prmproject.clothesstoremobileandroid.Data.model.Order;
 import com.prmproject.clothesstoremobileandroid.Data.model.OrderItem;
 import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ListResponse;
+import com.prmproject.clothesstoremobileandroid.Data.model.dataToReceive.ObjectResponse;
 import com.prmproject.clothesstoremobileandroid.Data.remote.OrderApiService;
 import com.prmproject.clothesstoremobileandroid.Data.repository.Generic.ResponseListData;
 import retrofit2.Call;
@@ -67,5 +68,26 @@ public class OrderRepository {
         });
 
         return orderItemsLiveData;
+    }
+    public LiveData<ObjectResponse> updateStatus(int orderId, String newStatus) {
+        MutableLiveData<ObjectResponse> responseLiveData = new MutableLiveData<>();
+
+        apiService.updateStatus(orderId, newStatus).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    responseLiveData.postValue(new ObjectResponse(null, "Status updated successfully", true));
+                } else {
+                    responseLiveData.postValue(new ObjectResponse(null, "Failed to update status", false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                responseLiveData.setValue(new ObjectResponse(null, t.getMessage(), false));
+            }
+        });
+
+        return responseLiveData;
     }
 }

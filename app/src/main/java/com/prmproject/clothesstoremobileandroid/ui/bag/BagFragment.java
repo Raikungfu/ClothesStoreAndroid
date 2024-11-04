@@ -152,6 +152,7 @@ public class BagFragment extends Fragment  implements CartAdapter.OnQuantityChan
                                         @Override
                                         public void onSuccess(JSONObject response) {
                                             Log.d("PaymentFragment", "Capture Response: " + response.toString());
+                                            cartViewModel.updateStatus(Integer.parseInt(orderId), "completed");
                                             ((MainActivity) requireActivity()).onMessage("Payment Successful");
                                             navController.navigate(R.id.navigation_myorder);
                                         }

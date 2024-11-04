@@ -16,6 +16,16 @@
             android:gravity="left|center_vertical"
             android:textColor="@color/textPrimary"
             android:textSize="16dp" />
+    <Button
+            android:id="@+id/deleteCartItem_btn"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="340dp"
+            android:layout_marginTop="15dp"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/textPrimary"
+            android:textSize="16dp"
+            android:background="#3CFF0000"/>
     <ImageView
             android:id="@+id/CartProductImage"
             android:layout_width="105dp"
@@ -45,7 +55,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="120dp"
             android:layout_marginTop="73dp"
-    android:background="@drawable/minus"/>
+            android:background="@drawable/minus"/>
 
     <TextView
             android:id="@+id/CartProductDescription"
