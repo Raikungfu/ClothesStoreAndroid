@@ -18,6 +18,4 @@ public interface OrderApiService {
     Call<List<OrderItem>> getOrderDetail(@Path("orderId") int orderId);
     @PUT("api/Order/update-status/{id}")
     Call<Void> updateStatus(@Path("id") int orderId, @Body String newStatus);
-
-
 }

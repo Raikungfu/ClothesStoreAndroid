@@ -83,7 +83,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     private void updateTotal() {
         int total = 0;
         for (CartItem item : cartItems) {
-            total += item.getQuantity() * item.getProduct().getOldPrice();
+            total += item.getQuantity() * item.getProduct().getNewPrice();
         }
         if (quantityChangeListener != null) {
             quantityChangeListener.onQuantityChanged(total);

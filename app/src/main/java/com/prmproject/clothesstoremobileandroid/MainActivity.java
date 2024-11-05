@@ -380,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
 
         if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null && intent.getData().getHost().equals("paypal-return")) {
             String opType = intent.getData().getQueryParameter("opType");
-            if ("success".equals(opType)) {
+            if ("payment".equals(opType)) {
                 showPaymentSuccessDialog();
             } else {
                 showPaymentFailureDialog();
@@ -395,7 +395,6 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
             if (data != null) {
                 String paymentStatus = data.getStringExtra("payment_status");
                 if ("success".equals(paymentStatus)) {
-
                     showPaymentSuccessDialog();
                 } else {
                     showPaymentFailureDialog();
