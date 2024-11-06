@@ -15,13 +15,20 @@ import com.prmproject.clothesstoremobileandroid.Data.repository.OrderRepository;
 public class BagViewModel extends ViewModel {
 
     private final CartRepository cartRepository;
+    private final OrderRepository orderRepository;
+
     public BagViewModel() {
         cartRepository = new CartRepository();
+        orderRepository=new OrderRepository();
     }
     public LiveData<ListResponse<CartItem>> getCartItems(){
         return cartRepository.getCartItems();
     }
     public  LiveData<ObjectResponse<Order>> CreateOrder(OrderCreateViewModel orderCreateViewModel) {
         return cartRepository.createOrder(orderCreateViewModel);
+    }
+
+    public LiveData<ObjectResponse> updateStatus(int orderId, String newStatus) {
+        return orderRepository.updateStatus(orderId, newStatus);
     }
 }

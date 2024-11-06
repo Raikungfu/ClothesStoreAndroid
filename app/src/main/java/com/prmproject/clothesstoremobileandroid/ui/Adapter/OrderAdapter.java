@@ -45,7 +45,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
                 bundle.putString("status", order.getStatus());
                 bundle.putString("shipAddress", order.getShipAddress());
                 bundle.putString("paymentMethod", order.getPaymentMethod());
-                bundle.putDouble("shipFee", order.getShipFee());
+                bundle.putDouble("shipFee", 0);
                 bundle.putString("discountCode", order.getDiscountCode());
                 Navigation.findNavController(v).navigate(R.id.action_orderFragment_to_orderDetailFragment, bundle);
             });

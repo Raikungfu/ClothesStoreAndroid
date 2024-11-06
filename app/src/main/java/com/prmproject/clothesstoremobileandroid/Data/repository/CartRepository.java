@@ -90,4 +90,26 @@ public class CartRepository {
 
         return orderLiveData;
     }
+    public LiveData<ObjectResponse<Void>> deleteCartItem(int cartItemId) {
+        MutableLiveData<ObjectResponse<Void>> result = new MutableLiveData<>();
+
+        apiService.deleteCartItem(cartItemId).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    result.postValue(new ObjectResponse<>(null, "Cart item deleted successfully", true));
+                } else {
+                    result.postValue(new ObjectResponse<>(null, "Failed to delete cart item", false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                result.postValue(new ObjectResponse<>(null, t.getMessage(), false));
+            }
+        });
+
+        return result;
+    }
 }
+

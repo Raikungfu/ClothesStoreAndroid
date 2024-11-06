@@ -82,23 +82,7 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp" />
 
-            <!-- Other Products Section -->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Other Products"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
 
-<!--                android:layout_marginBottom="8dp" />-->
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/otherProductsRecyclerView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:clipToPadding="false"-->
-<!--                android:paddingLeft="8dp"-->
-<!--                android:paddingRight="8dp" />-->
 
         </LinearLayout>
     </ScrollView>

@@ -41,7 +41,7 @@ public class OrderFragment extends Fragment {
 
     private void setupRecyclerView() {
         orderRecyclerView = binding.recyclerViewOrders;
-        orderRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+        orderRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true));
     }
 
     private void loadOrders() {
@@ -50,6 +50,7 @@ public class OrderFragment extends Fragment {
                 orderItems = orderListResponse.getItems();
                 orderAdapter = new OrderAdapter(orderItems);
                 orderRecyclerView.setAdapter(orderAdapter);
+                orderRecyclerView.scrollToPosition(orderItems.size() - 1);
             } else if (!orderListResponse.isSuccess() && orderListResponse.getCodeError() == 401) {
                 ((MainActivity) requireActivity()).onMessage("Login failed! " + orderListResponse.getErrorMessage());
             } else if (!orderListResponse.isSuccess()) {
