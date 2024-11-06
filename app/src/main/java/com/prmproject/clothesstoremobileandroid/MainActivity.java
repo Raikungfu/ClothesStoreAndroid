@@ -377,10 +377,9 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
         if (intent.getData() != null && intent.getData().getQueryParameter("opType") != null && intent.getData().getHost().equals("paypal-return")) {
             String opType = intent.getData().getQueryParameter("opType");
-            if ("success".equals(opType)) {
+            if ("payment".equals(opType)) {
                 showPaymentSuccessDialog();
             } else {
                 showPaymentFailureDialog();
@@ -395,7 +394,6 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
             if (data != null) {
                 String paymentStatus = data.getStringExtra("payment_status");
                 if ("success".equals(paymentStatus)) {
-
                     showPaymentSuccessDialog();
                 } else {
                     showPaymentFailureDialog();
@@ -408,7 +406,12 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         new AlertDialog.Builder(this)
                 .setTitle("Thanh toán thành công")
                 .setMessage("Cảm ơn bạn đã thanh toán. Đơn hàng của bạn đã được xác nhận.")
-                .setPositiveButton("OK", null)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    navController.navigate(R.id.navigation_myorder);
+                })
+                .setOnCancelListener(dialog -> {
+                    navController.navigate(R.id.navigation_myorder);
+                })
                 .show();
     }
 
