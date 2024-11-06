@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.lifecycle.ViewModelProvider;
 
 
@@ -20,7 +22,10 @@ import com.prmproject.clothesstoremobileandroid.MainActivity;
 import com.prmproject.clothesstoremobileandroid.R;
 
 public class ForgotPasswordFragment extends Fragment {
-    private EditText emailEditText, otpEditText, newPasswordEditText, confirmPasswordEditText;
+    //    private EditText emailEditText, otpEditText, newPasswordEditText, confirmPasswordEditText;
+    private EditText emailEditText, newPasswordEditText, confirmPasswordEditText;
+    private EditText[] otpEditTexts;
+    private LinearLayout otpContainer;
     private Button requestOtpButton, verifyOtpButton, resetPasswordButton, backToEmailButton;
     private AuthViewModel authViewModel;
     private UserForgotPassword user = new UserForgotPassword();
@@ -34,7 +39,16 @@ public class ForgotPasswordFragment extends Fragment {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         emailEditText = view.findViewById(R.id.editTextEmail);
-        otpEditText = view.findViewById(R.id.editTextOtp);
+//        otpEditText = view.findViewById(R.id.editTextOtp);
+        otpContainer = view.findViewById(R.id.otpContainer);
+        otpEditTexts = new EditText[]{
+                view.findViewById(R.id.editTextOtp1),
+                view.findViewById(R.id.editTextOtp2),
+                view.findViewById(R.id.editTextOtp3),
+                view.findViewById(R.id.editTextOtp4),
+                view.findViewById(R.id.editTextOtp5),
+                view.findViewById(R.id.editTextOtp6)
+        };
         newPasswordEditText = view.findViewById(R.id.editTextNewPassword);
         confirmPasswordEditText = view.findViewById(R.id.editTextConfirmPassword);
         requestOtpButton = view.findViewById(R.id.buttonRequestOtp);
@@ -51,8 +65,16 @@ public class ForgotPasswordFragment extends Fragment {
             }
         });
 
+//        verifyOtpButton.setOnClickListener(v -> {
+//            String otp = otpEditText.getText().toString();
+//            if (otp.isEmpty()) {
+//                Toast.makeText(getActivity(), "Please enter the OTP", Toast.LENGTH_SHORT).show();
+//            } else {
+//                verifyOtp(Integer.parseInt(otp));
+//            }
+//        });
         verifyOtpButton.setOnClickListener(v -> {
-            String otp = otpEditText.getText().toString();
+            String otp = getOtpInput();
             if (otp.isEmpty()) {
                 Toast.makeText(getActivity(), "Please enter the OTP", Toast.LENGTH_SHORT).show();
             } else {
@@ -74,7 +96,8 @@ public class ForgotPasswordFragment extends Fragment {
         });
 
         backToEmailButton.setOnClickListener(v -> {
-            otpEditText.setVisibility(View.GONE);
+//            otpEditText.setVisibility(View.GONE);
+            otpContainer.setVisibility(View.GONE);
             verifyOtpButton.setVisibility(View.GONE);
             newPasswordEditText.setVisibility(View.GONE);
             confirmPasswordEditText.setVisibility(View.GONE);
@@ -98,16 +121,34 @@ public class ForgotPasswordFragment extends Fragment {
         return view;
     }
 
+    //    private void requestOtp(String email) {
+//        user.setEmail(email);
+//        authViewModel.sendOtpToEmail(user).observe(getViewLifecycleOwner(), response -> {
+//            if (response != null && response.isStatus()) {
+//                ((MainActivity) getActivity()).onMessage("OTP sent to email! Please check your email...");
+//                tokenVerifyOtp = response.getToken();
+//                otpEditText.setVisibility(View.VISIBLE);
+//                verifyOtpButton.setVisibility(View.VISIBLE);
+//                backToEmailButton.setVisibility(View.VISIBLE);
+//                otpEditText.setText("");
+//
+//                emailEditText.setVisibility(View.GONE);
+//                requestOtpButton.setVisibility(View.GONE);
+//            } else {
+//                ((MainActivity) getActivity()).onMessage("OTP send failed! " + response.getMessage());
+//            }
+//        });
+//    }
     private void requestOtp(String email) {
         user.setEmail(email);
         authViewModel.sendOtpToEmail(user).observe(getViewLifecycleOwner(), response -> {
             if (response != null && response.isStatus()) {
                 ((MainActivity) getActivity()).onMessage("OTP sent to email! Please check your email...");
                 tokenVerifyOtp = response.getToken();
-                otpEditText.setVisibility(View.VISIBLE);
+
+                otpContainer.setVisibility(View.VISIBLE);
                 verifyOtpButton.setVisibility(View.VISIBLE);
                 backToEmailButton.setVisibility(View.VISIBLE);
-                otpEditText.setText("");
 
                 emailEditText.setVisibility(View.GONE);
                 requestOtpButton.setVisibility(View.GONE);
@@ -117,6 +158,27 @@ public class ForgotPasswordFragment extends Fragment {
         });
     }
 
+    //    private void verifyOtp(int otp) {
+//        user.setOtp(otp);
+//        authViewModel.verifyOtp(user, tokenVerifyOtp).observe(getViewLifecycleOwner(), response -> {
+//            if (response != null && response.isStatus()) {
+//                tokenVerifyOtp = response.getToken();
+//
+//                newPasswordEditText.setVisibility(View.VISIBLE);
+//                confirmPasswordEditText.setVisibility(View.VISIBLE);
+//                resetPasswordButton.setVisibility(View.VISIBLE);
+//
+//                newPasswordEditText.setText("");
+//                confirmPasswordEditText.setText("");
+//
+//                otpEditText.setVisibility(View.GONE);
+//                verifyOtpButton.setVisibility(View.GONE);
+//                ((MainActivity) getActivity()).onMessage("Verify OTP successful! Reset password now..." + response.getMessage());
+//            } else {
+//                ((MainActivity) getActivity()).onMessage("Verify OTP failed! " + response.getMessage());
+//            }
+//        });
+//    }
     private void verifyOtp(int otp) {
         user.setOtp(otp);
         authViewModel.verifyOtp(user, tokenVerifyOtp).observe(getViewLifecycleOwner(), response -> {
@@ -127,12 +189,9 @@ public class ForgotPasswordFragment extends Fragment {
                 confirmPasswordEditText.setVisibility(View.VISIBLE);
                 resetPasswordButton.setVisibility(View.VISIBLE);
 
-                newPasswordEditText.setText("");
-                confirmPasswordEditText.setText("");
-
-                otpEditText.setVisibility(View.GONE);
+                otpContainer.setVisibility(View.GONE);
                 verifyOtpButton.setVisibility(View.GONE);
-                ((MainActivity) getActivity()).onMessage("Verify OTP successful! Reset password now..." + response.getMessage());
+                ((MainActivity) getActivity()).onMessage("Verify OTP successful! Reset password now...");
             } else {
                 ((MainActivity) getActivity()).onMessage("Verify OTP failed! " + response.getMessage());
             }
@@ -149,5 +208,13 @@ public class ForgotPasswordFragment extends Fragment {
                 ((MainActivity) getActivity()).onMessage("Reset password failed! " + response.getMessage());
             }
         });
+    }
+
+    private String getOtpInput() {
+        StringBuilder otp = new StringBuilder();
+        for (EditText otpEditText : otpEditTexts) {
+            otp.append(otpEditText.getText().toString().trim());
+        }
+        return otp.toString();
     }
 }
