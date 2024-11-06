@@ -1,11 +1,13 @@
 package com.prmproject.clothesstoremobileandroid.ui.Auth;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -63,6 +65,19 @@ public class RegisterFragment extends Fragment {
         TextView linkToForgotPass = view.findViewById(R.id.forgot_password_reset);
         linkToForgotPass.setOnClickListener(v -> {
             navController.navigate(R.id.action_navigation_register_to_navigation_forgot_password);
+        });
+
+        ImageButton showPasswordButton = view.findViewById(R.id.button_show_password);
+
+        showPasswordButton.setOnClickListener(v -> {
+            if (passwordEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                showPasswordButton.setImageResource(R.drawable.ic_visibility_off);
+            } else {
+                passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                showPasswordButton.setImageResource(R.drawable.ic_visibility);
+            }
+            passwordEditText.setSelection(passwordEditText.length());
         });
 
         return view;
